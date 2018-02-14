@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.example.org/CreditServiceRpc/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CreditServiceRpc"
+	targetNamespace="http://www.example.org/CreditServiceRpc/">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="http://www.example.org/CreditServiceRpc/">
+			<xsd:simpleType name="transaction-id">
+				<xsd:restriction></xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="transaction-status">
+				<xsd:restriction></xsd:restriction>
+			</xsd:simpleType>
+			<xsd:complexType name="user-details">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" />
+					<xsd:element name="adres" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="CreditCardSaleRequest">
+		<wsdl:part name="MerchantID" type="xsd:string" />
+		<wsdl:part name="CardNumber" type="xsd:string" />
+	</wsdl:message>
+	<wsdl:message name="CreditCardSaleResponse">
+		<wsdl:part name="TransID" type="tns:transaction-id" />
+	</wsdl:message>
+	<wsdl:message name="CreditCardSaleFault">
+	</wsdl:message>
+	<wsdl:message name="CreditCardSaleFault1">
+	</wsdl:message>
+	<wsdl:message name="DebitCardSaleRequest">
+		<wsdl:part name="MerchantID" type="xsd:string"></wsdl:part>
+		<wsdl:part name="CardNumber" type="xsd:string"></wsdl:part>
+		<wsdl:part name="CardPin" type="xsd:int"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="DebitCardSaleResponse">
+		<wsdl:part name="TransID" type="tns:transaction-id"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="DebitCardSaleFault">
+	</wsdl:message>
+	<wsdl:message name="CancelCreditCardSaleRequest">
+		<wsdl:part name="MerchantID" type="xsd:string"></wsdl:part>
+		<wsdl:part name="TransID" type="tns:transaction-id"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CancelCreditCardSaleResponse">
+		<wsdl:part name="IsCancelled" type="xsd:boolean"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CheckCardDebitStatusRequest">
+		<wsdl:part name="MerchantID" type="xsd:string"></wsdl:part>
+		<wsdl:part name="TransID" type="tns:transaction-id"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CheckCardDebitStatusResponse">
+		<wsdl:part name="Status" type="tns:transaction-status"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CreditCardUserDetailsRequest">
+		<wsdl:part name="MerchantID" type="xsd:string"></wsdl:part>
+		<wsdl:part name="CardNumber" type="xsd:string"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CreditCardUserDetailsResponse">
+		<wsdl:part name="UserDetails" type="tns:user-details"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="CreditServiceRpc">
+		<wsdl:operation name="CreditCardSale">
+			<wsdl:input message="tns:CreditCardSaleRequest" />
+			<wsdl:output message="tns:CreditCardSaleResponse" />
+			<wsdl:fault name="fault" message="tns:CreditCardSaleFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="DebitCardSale">
+			<wsdl:input message="tns:DebitCardSaleRequest"></wsdl:input>
+			<wsdl:output message="tns:DebitCardSaleResponse"></wsdl:output>
+			<wsdl:fault name="fault" message="tns:DebitCardSaleFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="CancelCreditCardSale">
+			<wsdl:input message="tns:CancelCreditCardSaleRequest"></wsdl:input>
+			<wsdl:output message="tns:CancelCreditCardSaleResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="CheckCardDebitStatus">
+			<wsdl:input message="tns:CheckCardDebitStatusRequest"></wsdl:input>
+			<wsdl:output message="tns:CheckCardDebitStatusResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="CreditCardUserDetails">
+			<wsdl:input message="tns:CreditCardUserDetailsRequest"></wsdl:input>
+			<wsdl:output message="tns:CreditCardUserDetailsResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="CreditServiceRpcSOAP" type="tns:CreditServiceRpc">
+		<soap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="CreditCardSale">
+			<soap:operation
+				soapAction="http://www.example.org/CreditServiceRpc/CreditCardSale" />
+			<wsdl:input>
+				<soap:body namespace="http://www.example.org/CreditServiceRpc/"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body namespace="http://www.example.org/CreditServiceRpc/"
+					use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="CreditServiceRpcService">
+		<wsdl:port binding="tns:CreditServiceRpcSOAP" name="CreditServiceRpcSOAP">
+			<soap:address location="http://www.example.org/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
