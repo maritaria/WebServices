@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/CreditCardService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CreditCardService" targetNamespace="http://www.example.org/CreditCardService/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/CreditCardService/">
+      <xsd:element name="CreditCardSale">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="MerchantID" type="xsd:string" />
+          	<xsd:element name="CardNumber" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreditCardSaleResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="TransID" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DebitCardSaleResponse1">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DebitCardSale">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="MerchantID" type="xsd:string"></xsd:element>
+      			<xsd:element name="CardNumber" type="xsd:string"></xsd:element>
+      			<xsd:element name="CardPin" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NewOperationResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CancelCreditCardSale">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="MerchantID" type="xsd:string"></xsd:element>
+      			<xsd:element name="TransID" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CancelCreditCardSaleResponse1">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="IsCancelled" type="xsd:boolean"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CheckCardDebitStatus">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="MerchantID" type="xsd:string"></xsd:element>
+      			<xsd:element name="TransID" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CheckCardDebitStatusResponse1">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="Status" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreditCardUserDetails">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="MerchantID" type="xsd:string"></xsd:element>
+      			<xsd:element name="CardNumber" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreditCardUserDetailsResponse1">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="UserDetails" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CreditCardSaleRequest">
+  	<wsdl:part element="tns:CreditCardSale" name="parameters" />
+  </wsdl:message>
+  <wsdl:message name="CreditCardSaleResponse">
+    <wsdl:part element="tns:CreditCardSaleResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="DebitCardSaleResponse1">
+  	<wsdl:part name="parameters" element="tns:DebitCardSaleResponse1"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DebitCardSaleRequest">
+  	<wsdl:part name="parameters" element="tns:DebitCardSale"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NewOperationResponse">
+  	<wsdl:part name="parameters" element="tns:NewOperationResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelCreditCardSaleRequest">
+  	<wsdl:part name="parameters" element="tns:CancelCreditCardSale"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelCreditCardSaleResponse1">
+  	<wsdl:part name="parameters" element="tns:CancelCreditCardSaleResponse1"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CheckCardDebitStatusRequest">
+  	<wsdl:part name="parameters" element="tns:CheckCardDebitStatus"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CheckCardDebitStatusResponse1">
+  	<wsdl:part name="parameters" element="tns:CheckCardDebitStatusResponse1"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditCardUserDetailsRequest">
+  	<wsdl:part name="parameters" element="tns:CreditCardUserDetails"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditCardUserDetailsResponse1">
+  	<wsdl:part name="parameters" element="tns:CreditCardUserDetailsResponse1"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CreditCardService">
+    <wsdl:operation name="CreditCardSale">
+      <wsdl:input message="tns:CreditCardSaleRequest"/>
+      <wsdl:output message="tns:CreditCardSaleResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="DebitCardSale">
+    	<wsdl:input message="tns:DebitCardSaleRequest"></wsdl:input>
+    	<wsdl:output message="tns:DebitCardSaleResponse1"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelCreditCardSale">
+    	<wsdl:input message="tns:CancelCreditCardSaleRequest"></wsdl:input>
+    	<wsdl:output message="tns:CancelCreditCardSaleResponse1"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckCardDebitStatus">
+    	<wsdl:input message="tns:CheckCardDebitStatusRequest"></wsdl:input>
+    	<wsdl:output message="tns:CheckCardDebitStatusResponse1"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditCardUserDetails">
+    	<wsdl:input message="tns:CreditCardUserDetailsRequest"></wsdl:input>
+    	<wsdl:output message="tns:CreditCardUserDetailsResponse1"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CreditCardServiceSOAP"
+  	type="tns:CreditCardService">
+
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="CreditCardSale">
+
+  		<soap:operation
+  			soapAction="http://www.example.org/CreditCardService/CreditCardSale" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="DebitCardSale">
+  		<soap:operation
+  			soapAction="http://www.example.org/CreditCardService/DebitCardSale" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="CancelCreditCardSale">
+  		<soap:operation
+  			soapAction="http://www.example.org/CreditCardService/CancelCreditCardSale" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="CheckCardDebitStatus">
+  		<soap:operation
+  			soapAction="http://www.example.org/CreditCardService/CheckCardDebitStatus" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="CreditCardUserDetails">
+  		<soap:operation
+  			soapAction="http://www.example.org/CreditCardService/CreditCardUserDetails" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CreditCardService">
+    <wsdl:port binding="tns:CreditCardServiceSOAP" name="CreditCardServiceSOAP">
+      <soap:address location="http://www.credit-services.com/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

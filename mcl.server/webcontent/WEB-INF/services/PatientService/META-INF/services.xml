@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:03:39 GMT) --><serviceGroup>
+    <service name="PatientService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="nl.mcl.server.PatientServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">nl.mcl.server.PatientServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="SendMessage" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://services.mcl.nl/PatientService/">
+            <actionMapping>http://services.mcl.nl/PatientService/SendMessage</actionMapping>
+            <outputActionMapping>http://services.mcl.nl/PatientService/PatientService/SendMessageResponse</outputActionMapping>
+            <faultActionMapping faultName="fault">http://services.mcl.nl/PatientService/PatientService/SendMessage/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="SendMessageFault">http://services.mcl.nl/PatientService/PatientService/SendMessage/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="SendMessageFault_Exception">http://services.mcl.nl/PatientService/PatientService/SendMessage/Fault/fault</faultActionMapping>
+        </operation>
+    </service>
+</serviceGroup>
