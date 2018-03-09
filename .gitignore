@@ -12,6 +12,7 @@
 
 # Package Files #
 *.jar
+!WEB-INF/*.jar
 *.war
 *.ear
 *.zip
