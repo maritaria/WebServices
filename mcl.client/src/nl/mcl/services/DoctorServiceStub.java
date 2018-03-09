@@ -86,7 +86,7 @@ public class DoctorServiceStub extends org.apache.axis2.client.Stub {
 	public DoctorServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext)
 			throws org.apache.axis2.AxisFault {
 
-		this(configurationContext, "http://services.mcl.nl/doctor");
+		this(configurationContext, "http://localhost:8080/mcl.server/services/DoctorService");
 
 	}
 
@@ -95,7 +95,7 @@ public class DoctorServiceStub extends org.apache.axis2.client.Stub {
 	 */
 	public DoctorServiceStub() throws org.apache.axis2.AxisFault {
 
-		this("http://services.mcl.nl/doctor");
+		this("http://localhost:8080/mcl.server/services/DoctorService");
 
 	}
 

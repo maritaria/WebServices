@@ -93,7 +93,7 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 	public RoomServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext)
 			throws org.apache.axis2.AxisFault {
 
-		this(configurationContext, "http://services.mcl.nl/room");
+		this(configurationContext, "http://localhost:8080/mcl.server/services/RoomService");
 
 	}
 
@@ -102,7 +102,7 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 	 */
 	public RoomServiceStub() throws org.apache.axis2.AxisFault {
 
-		this("http://services.mcl.nl/room");
+		this("http://localhost:8080/mcl.server/services/RoomService");
 
 	}
 

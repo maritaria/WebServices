@@ -18,14 +18,16 @@ public class AgendaServiceTest extends junit.framework.TestCase {
 	 */
 	public void testgetFreeSlots() throws java.lang.Exception {
 
-		nl.mcl.services.AgendaServiceStub stub = new nl.mcl.services.AgendaServiceStub();// the default implementation
-																							// should point to the right
-																							// endpoint
+		AgendaServiceStub stub = new AgendaServiceStub();// the default implementation
+															// should point to the right
+															// endpoint
 
-		nl.mcl.services.AgendaServiceStub.GetFreeSlots getFreeSlots4 = (nl.mcl.services.AgendaServiceStub.GetFreeSlots) getTestObject(
-				nl.mcl.services.AgendaServiceStub.GetFreeSlots.class);
+		AgendaServiceStub.GetFreeSlots getFreeSlots4 = (AgendaServiceStub.GetFreeSlots) getTestObject(
+				AgendaServiceStub.GetFreeSlots.class);
 		// TODO : Fill in the getFreeSlots4 here
 
+		getFreeSlots4.setAgendaID(new String[] {"1"});
+		
 		assertNotNull(stub.getFreeSlots(getFreeSlots4));
 
 	}
@@ -35,12 +37,12 @@ public class AgendaServiceTest extends junit.framework.TestCase {
 	 */
 	public void testadjustAgenda() throws java.lang.Exception {
 
-		nl.mcl.services.AgendaServiceStub stub = new nl.mcl.services.AgendaServiceStub();// the default implementation
-																							// should point to the right
-																							// endpoint
+		AgendaServiceStub stub = new AgendaServiceStub();// the default implementation
+															// should point to the right
+															// endpoint
 
-		nl.mcl.services.AgendaServiceStub.AdjustAgenda adjustAgenda6 = (nl.mcl.services.AgendaServiceStub.AdjustAgenda) getTestObject(
-				nl.mcl.services.AgendaServiceStub.AdjustAgenda.class);
+		AgendaServiceStub.AdjustAgenda adjustAgenda6 = (AgendaServiceStub.AdjustAgenda) getTestObject(
+				AgendaServiceStub.AdjustAgenda.class);
 		// TODO : Fill in the adjustAgenda6 here
 
 		assertNotNull(stub.adjustAgenda(adjustAgenda6));

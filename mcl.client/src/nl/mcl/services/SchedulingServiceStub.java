@@ -86,7 +86,7 @@ public class SchedulingServiceStub extends org.apache.axis2.client.Stub {
 	public SchedulingServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext)
 			throws org.apache.axis2.AxisFault {
 
-		this(configurationContext, "http://services.mcl.nl/scheduling");
+		this(configurationContext, "http://localhost:8080/mcl.server/services/SchedulingService");
 
 	}
 
@@ -95,7 +95,7 @@ public class SchedulingServiceStub extends org.apache.axis2.client.Stub {
 	 */
 	public SchedulingServiceStub() throws org.apache.axis2.AxisFault {
 
-		this("http://services.mcl.nl/scheduling");
+		this("http://localhost:8080/mcl.server/services/SchedulingService");
 
 	}
 

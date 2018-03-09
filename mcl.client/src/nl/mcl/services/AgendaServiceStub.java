@@ -106,7 +106,7 @@ public class AgendaServiceStub extends org.apache.axis2.client.Stub {
 	public AgendaServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext)
 			throws org.apache.axis2.AxisFault {
 
-		this(configurationContext, "http://services.mcl.nl/agenda");
+		this(configurationContext, "http://localhost:8080/mcl.server/services/AgendaService");
 
 	}
 
@@ -115,7 +115,7 @@ public class AgendaServiceStub extends org.apache.axis2.client.Stub {
 	 */
 	public AgendaServiceStub() throws org.apache.axis2.AxisFault {
 
-		this("http://services.mcl.nl/agenda");
+		this("http://localhost:8080/mcl.server/services/AgendaService");
 
 	}
 
