@@ -15,6 +15,7 @@ package nl.mcl.services;
 
 public class Doctor implements org.apache.axis2.databinding.ADBBean {
 	
+	protected Doctor() {}
 	public Doctor(String id, String fullName, String[] skills)
 	{
 		setFullname(fullName);
