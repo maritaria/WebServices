@@ -6,7 +6,7 @@
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:03:39 GMT)
  */
 
-package nl.mcl.server;
+package nl.mcl.services;
 
 /**
  * PatientServiceCallbackHandler Callback class, Users can extend this class and
@@ -48,7 +48,7 @@ public abstract class PatientServiceCallbackHandler {
 	 * auto generated Axis2 call back method for sendMessage method override this
 	 * method for handling normal response from sendMessage operation
 	 */
-	public void receiveResultsendMessage(nl.mcl.server.SendMessageResponse result) {
+	public void receiveResultsendMessage(nl.mcl.services.SendMessageResponse result) {
 	}
 
 	/**

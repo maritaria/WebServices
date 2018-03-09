@@ -5,11 +5,7 @@
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:03:39 GMT)
  */
-package nl.mcl.client.test;
-
-import org.apache.tomcat.dbcp.pool2.impl.SecurityManagerCallStack;
-
-import nl.mcl.client.*;
+package nl.mcl.services;
 
 /*
  *  PatientServiceTest Junit test case
@@ -22,18 +18,15 @@ public class PatientServiceTest extends junit.framework.TestCase {
 	 */
 	public void testsendMessage() throws java.lang.Exception {
 
-		PatientServiceStub stub = new PatientServiceStub();
+		nl.mcl.services.PatientServiceStub stub = new nl.mcl.services.PatientServiceStub();// the default implementation
+																							// should point to the right
+																							// endpoint
 
-		PatientServiceStub.SendMessage request = (PatientServiceStub.SendMessage) getTestObject(
-				PatientServiceStub.SendMessage.class);
+		nl.mcl.services.PatientServiceStub.SendMessage sendMessage2 = (nl.mcl.services.PatientServiceStub.SendMessage) getTestObject(
+				nl.mcl.services.PatientServiceStub.SendMessage.class);
+		// TODO : Fill in the sendMessage2 here
 
-		request.setPatientNumber("101");
-		request.setMessage("Hello World");
-		request.setImportance("high");
-		
-		PatientServiceStub.SendMessageResponse response = stub.sendMessage(request);
-		
-		assertNotNull(response);
+		assertNotNull(stub.sendMessage(sendMessage2));
 
 	}
 

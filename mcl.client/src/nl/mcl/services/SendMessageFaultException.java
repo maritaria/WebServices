@@ -6,13 +6,13 @@
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:03:39 GMT)
  */
 
-package nl.mcl.server;
+package nl.mcl.services;
 
 public class SendMessageFaultException extends java.lang.Exception {
 
-	private static final long serialVersionUID = 1519223450100L;
+	private static final long serialVersionUID = 1520587873241L;
 
-	private nl.mcl.server.SendMessageFault faultMessage;
+	private nl.mcl.services.PatientServiceStub.SendMessageFault faultMessage;
 
 	public SendMessageFaultException() {
 		super("SendMessageFaultException");
@@ -30,11 +30,11 @@ public class SendMessageFaultException extends java.lang.Exception {
 		super(cause);
 	}
 
-	public void setFaultMessage(nl.mcl.server.SendMessageFault msg) {
+	public void setFaultMessage(nl.mcl.services.PatientServiceStub.SendMessageFault msg) {
 		faultMessage = msg;
 	}
 
-	public nl.mcl.server.SendMessageFault getFaultMessage() {
+	public nl.mcl.services.PatientServiceStub.SendMessageFault getFaultMessage() {
 		return faultMessage;
 	}
 }

@@ -1,47 +1,76 @@
 
 /**
- * SendMessageFault.java
+ * GetFreeSlots.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
  */
 
-package nl.mcl.server;
+package nl.mcl.services;
 
 /**
- * SendMessageFault bean class
+ * GetFreeSlots bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class SendMessageFault implements org.apache.axis2.databinding.ADBBean {
+public class GetFreeSlots implements org.apache.axis2.databinding.ADBBean {
 
-	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-			"http://services.mcl.nl/PatientService/", "SendMessageFault", "ns1");
+	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://services.mcl.nl/",
+			"GetFreeSlots", "ns2");
 
 	/**
-	 * field for Error
+	 * field for AgendaID This was an Array!
 	 */
 
-	protected java.lang.String localError;
+	protected java.lang.String[] localAgendaID;
 
 	/**
 	 * Auto generated getter method
 	 * 
-	 * @return java.lang.String
+	 * @return java.lang.String[]
 	 */
-	public java.lang.String getError() {
-		return localError;
+	public java.lang.String[] getAgendaID() {
+		return localAgendaID;
+	}
+
+	/**
+	 * validate the array for AgendaID
+	 */
+	protected void validateAgendaID(java.lang.String[] param) {
+
+		if ((param != null) && (param.length < 1)) {
+			throw new java.lang.RuntimeException("Input values do not follow defined XSD restrictions");
+		}
+
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            Error
+	 *            AgendaID
 	 */
-	public void setError(java.lang.String param) {
+	public void setAgendaID(java.lang.String[] param) {
 
-		this.localError = param;
+		validateAgendaID(param);
+
+		this.localAgendaID = param;
+	}
+
+	/**
+	 * Auto generated add method for the array for convenience
+	 * 
+	 * @param param
+	 *            java.lang.String
+	 */
+	public void addAgendaID(java.lang.String param) {
+		if (localAgendaID == null) {
+			localAgendaID = new java.lang.String[] {};
+		}
+
+		java.util.List list = org.apache.axis2.databinding.utils.ConverterUtil.toList(localAgendaID);
+		list.add(param);
+		this.localAgendaID = (java.lang.String[]) list.toArray(new java.lang.String[list.size()]);
 
 	}
 
@@ -77,40 +106,49 @@ public class SendMessageFault implements org.apache.axis2.databinding.ADBBean {
 
 		if (serializeType) {
 
-			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://services.mcl.nl/PatientService/");
+			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://services.mcl.nl/");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
 				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type",
-						namespacePrefix + ":SendMessageFault", xmlWriter);
+						namespacePrefix + ":GetFreeSlots", xmlWriter);
 			} else {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "SendMessageFault",
-						xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "GetFreeSlots", xmlWriter);
 			}
 
 		}
 
-		namespace = "";
-		writeStartElement(null, namespace, "error", xmlWriter);
+		if (localAgendaID != null) {
+			namespace = "";
+			for (int i = 0; i < localAgendaID.length; i++) {
 
-		if (localError == null) {
-			// write the nil attribute
+				if (localAgendaID[i] != null) {
 
-			throw new org.apache.axis2.databinding.ADBException("error cannot be null!!");
+					writeStartElement(null, namespace, "AgendaID", xmlWriter);
 
+					xmlWriter.writeCharacters(
+							org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localAgendaID[i]));
+
+					xmlWriter.writeEndElement();
+
+				} else {
+
+					throw new org.apache.axis2.databinding.ADBException("AgendaID cannot be null!!");
+
+				}
+
+			}
 		} else {
 
-			xmlWriter.writeCharacters(localError);
+			throw new org.apache.axis2.databinding.ADBException("AgendaID cannot be null!!");
 
 		}
-
-		xmlWriter.writeEndElement();
 
 		xmlWriter.writeEndElement();
 
 	}
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
-		if (namespace.equals("http://services.mcl.nl/PatientService/")) {
-			return "ns1";
+		if (namespace.equals("http://services.mcl.nl/")) {
+			return "ns2";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
 	}
@@ -289,12 +327,23 @@ public class SendMessageFault implements org.apache.axis2.databinding.ADBBean {
 		java.util.ArrayList elementList = new java.util.ArrayList();
 		java.util.ArrayList attribList = new java.util.ArrayList();
 
-		elementList.add(new javax.xml.namespace.QName("", "error"));
+		if (localAgendaID != null) {
+			for (int i = 0; i < localAgendaID.length; i++) {
 
-		if (localError != null) {
-			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localError));
+				if (localAgendaID[i] != null) {
+					elementList.add(new javax.xml.namespace.QName("", "AgendaID"));
+					elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localAgendaID[i]));
+				} else {
+
+					throw new org.apache.axis2.databinding.ADBException("AgendaID cannot be null!!");
+
+				}
+
+			}
 		} else {
-			throw new org.apache.axis2.databinding.ADBException("error cannot be null!!");
+
+			throw new org.apache.axis2.databinding.ADBException("AgendaID cannot be null!!");
+
 		}
 
 		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(),
@@ -316,8 +365,8 @@ public class SendMessageFault implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static SendMessageFault parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			SendMessageFault object = new SendMessageFault();
+		public static GetFreeSlots parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
+			GetFreeSlots object = new GetFreeSlots();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -340,11 +389,10 @@ public class SendMessageFault implements org.apache.axis2.databinding.ADBBean {
 
 						java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":") + 1);
 
-						if (!"SendMessageFault".equals(type)) {
+						if (!"GetFreeSlots".equals(type)) {
 							// find namespace for the prefix
 							java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-							return (SendMessageFault) nl.mcl.server.ExtensionMapper
-									.getTypeObject(nsUri, type, reader);
+							return (GetFreeSlots) nl.mcl.services.ExtensionMapper.getTypeObject(nsUri, type, reader);
 						}
 
 					}
@@ -357,22 +405,43 @@ public class SendMessageFault implements org.apache.axis2.databinding.ADBBean {
 
 				reader.next();
 
+				java.util.ArrayList list1 = new java.util.ArrayList();
+
 				while (!reader.isStartElement() && !reader.isEndElement())
 					reader.next();
 
-				if (reader.isStartElement() && new javax.xml.namespace.QName("", "error").equals(reader.getName())) {
+				if (reader.isStartElement() && new javax.xml.namespace.QName("", "AgendaID").equals(reader.getName())) {
 
-					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
-					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
-						throw new org.apache.axis2.databinding.ADBException(
-								"The element: " + "error" + "  cannot be null");
+					// Process the array and step past its final element's end.
+					list1.add(reader.getElementText());
+
+					// loop until we find a start element that is not part of this array
+					boolean loopDone1 = false;
+					while (!loopDone1) {
+						// Ensure we are at the EndElement
+						while (!reader.isEndElement()) {
+							reader.next();
+						}
+						// Step out of this element
+						reader.next();
+						// Step to next element event.
+						while (!reader.isStartElement() && !reader.isEndElement())
+							reader.next();
+						if (reader.isEndElement()) {
+							// two continuous end elements means we are exiting the xml structure
+							loopDone1 = true;
+						} else {
+							if (new javax.xml.namespace.QName("", "AgendaID").equals(reader.getName())) {
+								list1.add(reader.getElementText());
+
+							} else {
+								loopDone1 = true;
+							}
+						}
 					}
+					// call the converter utility to convert and set the array
 
-					java.lang.String content = reader.getElementText();
-
-					object.setError(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-
-					reader.next();
+					object.setAgendaID((java.lang.String[]) list1.toArray(new java.lang.String[list1.size()]));
 
 				} // End of if for expected property start element
 

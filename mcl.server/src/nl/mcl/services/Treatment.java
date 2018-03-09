@@ -1,113 +1,199 @@
 
 /**
- * SendMessage.java
+ * Treatment.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
  */
 
-package nl.mcl.server;
+package nl.mcl.services;
 
 /**
- * SendMessage bean class
+ * Treatment bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class SendMessage implements org.apache.axis2.databinding.ADBBean {
-
-	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-			"http://services.mcl.nl/PatientService/", "SendMessage", "ns1");
-
-	/**
-	 * field for PatientNumber
+public class Treatment implements org.apache.axis2.databinding.ADBBean {
+	/*
+	 * This type was generated from the piece of schema that had name = Treatment
+	 * Namespace URI = http://services.mcl.nl/ Namespace Prefix = ns2
 	 */
 
-	protected java.lang.String localPatientNumber;
-
 	/**
-	 * Auto generated getter method
-	 * 
-	 * @return java.lang.String
-	 */
-	public java.lang.String getPatientNumber() {
-		return localPatientNumber;
-	}
-
-	/**
-	 * Auto generated setter method
-	 * 
-	 * @param param
-	 *            PatientNumber
-	 */
-	public void setPatientNumber(java.lang.String param) {
-
-		this.localPatientNumber = param;
-
-	}
-
-	/**
-	 * field for Message
+	 * field for Id
 	 */
 
-	protected java.lang.String localMessage;
+	protected java.lang.String localId;
 
 	/**
 	 * Auto generated getter method
 	 * 
 	 * @return java.lang.String
 	 */
-	public java.lang.String getMessage() {
-		return localMessage;
+	public java.lang.String getId() {
+		return localId;
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            Message
+	 *            Id
 	 */
-	public void setMessage(java.lang.String param) {
+	public void setId(java.lang.String param) {
 
-		this.localMessage = param;
+		this.localId = param;
 
 	}
 
 	/**
-	 * field for Importance
+	 * field for RequiredSkill This was an Array!
 	 */
 
-	protected java.lang.String localImportance;
+	protected java.lang.String[] localRequiredSkill;
+
+	/**
+	 * Auto generated getter method
+	 * 
+	 * @return java.lang.String[]
+	 */
+	public java.lang.String[] getRequiredSkill() {
+		return localRequiredSkill;
+	}
+
+	/**
+	 * validate the array for RequiredSkill
+	 */
+	protected void validateRequiredSkill(java.lang.String[] param) {
+
+		if ((param != null) && (param.length < 1)) {
+			throw new java.lang.RuntimeException("Input values do not follow defined XSD restrictions");
+		}
+
+	}
+
+	/**
+	 * Auto generated setter method
+	 * 
+	 * @param param
+	 *            RequiredSkill
+	 */
+	public void setRequiredSkill(java.lang.String[] param) {
+
+		validateRequiredSkill(param);
+
+		this.localRequiredSkill = param;
+	}
+
+	/**
+	 * Auto generated add method for the array for convenience
+	 * 
+	 * @param param
+	 *            java.lang.String
+	 */
+	public void addRequiredSkill(java.lang.String param) {
+		if (localRequiredSkill == null) {
+			localRequiredSkill = new java.lang.String[] {};
+		}
+
+		java.util.List list = org.apache.axis2.databinding.utils.ConverterUtil.toList(localRequiredSkill);
+		list.add(param);
+		this.localRequiredSkill = (java.lang.String[]) list.toArray(new java.lang.String[list.size()]);
+
+	}
+
+	/**
+	 * field for ExpectedDuration
+	 */
+
+	protected int localExpectedDuration;
+
+	/**
+	 * Auto generated getter method
+	 * 
+	 * @return int
+	 */
+	public int getExpectedDuration() {
+		return localExpectedDuration;
+	}
+
+	/**
+	 * Auto generated setter method
+	 * 
+	 * @param param
+	 *            ExpectedDuration
+	 */
+	public void setExpectedDuration(int param) {
+
+		this.localExpectedDuration = param;
+
+	}
+
+	/**
+	 * field for Equipment This was an Array!
+	 */
+
+	protected java.lang.String[] localEquipment;
 
 	/*
 	 * This tracker boolean wil be used to detect whether the user called the set
 	 * method for this attribute. It will be used to determine whether to include
 	 * this field in the serialized XML
 	 */
-	protected boolean localImportanceTracker = false;
+	protected boolean localEquipmentTracker = false;
 
-	public boolean isImportanceSpecified() {
-		return localImportanceTracker;
+	public boolean isEquipmentSpecified() {
+		return localEquipmentTracker;
 	}
 
 	/**
 	 * Auto generated getter method
 	 * 
-	 * @return java.lang.String
+	 * @return java.lang.String[]
 	 */
-	public java.lang.String getImportance() {
-		return localImportance;
+	public java.lang.String[] getEquipment() {
+		return localEquipment;
+	}
+
+	/**
+	 * validate the array for Equipment
+	 */
+	protected void validateEquipment(java.lang.String[] param) {
+
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            Importance
+	 *            Equipment
 	 */
-	public void setImportance(java.lang.String param) {
-		localImportanceTracker = param != null;
+	public void setEquipment(java.lang.String[] param) {
 
-		this.localImportance = param;
+		validateEquipment(param);
+
+		localEquipmentTracker = param != null;
+
+		this.localEquipment = param;
+	}
+
+	/**
+	 * Auto generated add method for the array for convenience
+	 * 
+	 * @param param
+	 *            java.lang.String
+	 */
+	public void addEquipment(java.lang.String param) {
+		if (localEquipment == null) {
+			localEquipment = new java.lang.String[] {};
+		}
+
+		// update the setting tracker
+		localEquipmentTracker = true;
+
+		java.util.List list = org.apache.axis2.databinding.utils.ConverterUtil.toList(localEquipment);
+		list.add(param);
+		this.localEquipment = (java.lang.String[]) list.toArray(new java.lang.String[list.size()]);
 
 	}
 
@@ -120,8 +206,8 @@ public class SendMessage implements org.apache.axis2.databinding.ADBBean {
 	public org.apache.axiom.om.OMElement getOMElement(final javax.xml.namespace.QName parentQName,
 			final org.apache.axiom.om.OMFactory factory) throws org.apache.axis2.databinding.ADBException {
 
-		org.apache.axiom.om.OMDataSource dataSource = new org.apache.axis2.databinding.ADBDataSource(this, MY_QNAME);
-		return factory.createOMElement(dataSource, MY_QNAME);
+		org.apache.axiom.om.OMDataSource dataSource = new org.apache.axis2.databinding.ADBDataSource(this, parentQName);
+		return factory.createOMElement(dataSource, parentQName);
 
 	}
 
@@ -143,71 +229,106 @@ public class SendMessage implements org.apache.axis2.databinding.ADBBean {
 
 		if (serializeType) {
 
-			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://services.mcl.nl/PatientService/");
+			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://services.mcl.nl/");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
 				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type",
-						namespacePrefix + ":SendMessage", xmlWriter);
+						namespacePrefix + ":Treatment", xmlWriter);
 			} else {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "SendMessage", xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "Treatment", xmlWriter);
 			}
 
 		}
 
 		namespace = "";
-		writeStartElement(null, namespace, "PatientNumber", xmlWriter);
+		writeStartElement(null, namespace, "id", xmlWriter);
 
-		if (localPatientNumber == null) {
+		if (localId == null) {
 			// write the nil attribute
 
-			throw new org.apache.axis2.databinding.ADBException("PatientNumber cannot be null!!");
+			throw new org.apache.axis2.databinding.ADBException("id cannot be null!!");
 
 		} else {
 
-			xmlWriter.writeCharacters(localPatientNumber);
+			xmlWriter.writeCharacters(localId);
 
 		}
 
 		xmlWriter.writeEndElement();
 
-		namespace = "";
-		writeStartElement(null, namespace, "Message", xmlWriter);
-
-		if (localMessage == null) {
-			// write the nil attribute
-
-			throw new org.apache.axis2.databinding.ADBException("Message cannot be null!!");
-
-		} else {
-
-			xmlWriter.writeCharacters(localMessage);
-
-		}
-
-		xmlWriter.writeEndElement();
-		if (localImportanceTracker) {
+		if (localRequiredSkill != null) {
 			namespace = "";
-			writeStartElement(null, namespace, "Importance", xmlWriter);
+			for (int i = 0; i < localRequiredSkill.length; i++) {
 
-			if (localImportance == null) {
-				// write the nil attribute
+				if (localRequiredSkill[i] != null) {
 
-				throw new org.apache.axis2.databinding.ADBException("Importance cannot be null!!");
+					writeStartElement(null, namespace, "requiredSkill", xmlWriter);
 
+					xmlWriter.writeCharacters(
+							org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRequiredSkill[i]));
+
+					xmlWriter.writeEndElement();
+
+				} else {
+
+					throw new org.apache.axis2.databinding.ADBException("requiredSkill cannot be null!!");
+
+				}
+
+			}
+		} else {
+
+			throw new org.apache.axis2.databinding.ADBException("requiredSkill cannot be null!!");
+
+		}
+
+		namespace = "";
+		writeStartElement(null, namespace, "expectedDuration", xmlWriter);
+
+		if (localExpectedDuration == java.lang.Integer.MIN_VALUE) {
+
+			throw new org.apache.axis2.databinding.ADBException("expectedDuration cannot be null!!");
+
+		} else {
+			xmlWriter.writeCharacters(
+					org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localExpectedDuration));
+		}
+
+		xmlWriter.writeEndElement();
+		if (localEquipmentTracker) {
+			if (localEquipment != null) {
+				namespace = "";
+				for (int i = 0; i < localEquipment.length; i++) {
+
+					if (localEquipment[i] != null) {
+
+						writeStartElement(null, namespace, "equipment", xmlWriter);
+
+						xmlWriter.writeCharacters(
+								org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localEquipment[i]));
+
+						xmlWriter.writeEndElement();
+
+					} else {
+
+						// we have to do nothing since minOccurs is zero
+
+					}
+
+				}
 			} else {
 
-				xmlWriter.writeCharacters(localImportance);
+				throw new org.apache.axis2.databinding.ADBException("equipment cannot be null!!");
 
 			}
 
-			xmlWriter.writeEndElement();
 		}
 		xmlWriter.writeEndElement();
 
 	}
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
-		if (namespace.equals("http://services.mcl.nl/PatientService/")) {
-			return "ns1";
+		if (namespace.equals("http://services.mcl.nl/")) {
+			return "ns2";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
 	}
@@ -386,29 +507,58 @@ public class SendMessage implements org.apache.axis2.databinding.ADBBean {
 		java.util.ArrayList elementList = new java.util.ArrayList();
 		java.util.ArrayList attribList = new java.util.ArrayList();
 
-		elementList.add(new javax.xml.namespace.QName("", "PatientNumber"));
+		elementList.add(new javax.xml.namespace.QName("", "id"));
 
-		if (localPatientNumber != null) {
-			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localPatientNumber));
+		if (localId != null) {
+			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localId));
 		} else {
-			throw new org.apache.axis2.databinding.ADBException("PatientNumber cannot be null!!");
+			throw new org.apache.axis2.databinding.ADBException("id cannot be null!!");
 		}
 
-		elementList.add(new javax.xml.namespace.QName("", "Message"));
+		if (localRequiredSkill != null) {
+			for (int i = 0; i < localRequiredSkill.length; i++) {
 
-		if (localMessage != null) {
-			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localMessage));
-		} else {
-			throw new org.apache.axis2.databinding.ADBException("Message cannot be null!!");
-		}
-		if (localImportanceTracker) {
-			elementList.add(new javax.xml.namespace.QName("", "Importance"));
+				if (localRequiredSkill[i] != null) {
+					elementList.add(new javax.xml.namespace.QName("", "requiredSkill"));
+					elementList.add(
+							org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRequiredSkill[i]));
+				} else {
 
-			if (localImportance != null) {
-				elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localImportance));
-			} else {
-				throw new org.apache.axis2.databinding.ADBException("Importance cannot be null!!");
+					throw new org.apache.axis2.databinding.ADBException("requiredSkill cannot be null!!");
+
+				}
+
 			}
+		} else {
+
+			throw new org.apache.axis2.databinding.ADBException("requiredSkill cannot be null!!");
+
+		}
+
+		elementList.add(new javax.xml.namespace.QName("", "expectedDuration"));
+
+		elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localExpectedDuration));
+		if (localEquipmentTracker) {
+			if (localEquipment != null) {
+				for (int i = 0; i < localEquipment.length; i++) {
+
+					if (localEquipment[i] != null) {
+						elementList.add(new javax.xml.namespace.QName("", "equipment"));
+						elementList.add(
+								org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localEquipment[i]));
+					} else {
+
+						// have to do nothing
+
+					}
+
+				}
+			} else {
+
+				throw new org.apache.axis2.databinding.ADBException("equipment cannot be null!!");
+
+			}
+
 		}
 
 		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(),
@@ -430,8 +580,8 @@ public class SendMessage implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static SendMessage parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			SendMessage object = new SendMessage();
+		public static Treatment parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
+			Treatment object = new Treatment();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -454,11 +604,10 @@ public class SendMessage implements org.apache.axis2.databinding.ADBBean {
 
 						java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":") + 1);
 
-						if (!"SendMessage".equals(type)) {
+						if (!"Treatment".equals(type)) {
 							// find namespace for the prefix
 							java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-							return (SendMessage) nl.mcl.server.ExtensionMapper.getTypeObject(nsUri,
-									type, reader);
+							return (Treatment) nl.mcl.services.ExtensionMapper.getTypeObject(nsUri, type, reader);
 						}
 
 					}
@@ -471,46 +620,24 @@ public class SendMessage implements org.apache.axis2.databinding.ADBBean {
 
 				reader.next();
 
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
+				java.util.ArrayList list2 = new java.util.ArrayList();
 
-				if (reader.isStartElement()
-						&& new javax.xml.namespace.QName("", "PatientNumber").equals(reader.getName())) {
-
-					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
-					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
-						throw new org.apache.axis2.databinding.ADBException(
-								"The element: " + "PatientNumber" + "  cannot be null");
-					}
-
-					java.lang.String content = reader.getElementText();
-
-					object.setPatientNumber(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-
-					reader.next();
-
-				} // End of if for expected property start element
-
-				else {
-					// A start element we are not expecting indicates an invalid parameter was
-					// passed
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-				}
+				java.util.ArrayList list4 = new java.util.ArrayList();
 
 				while (!reader.isStartElement() && !reader.isEndElement())
 					reader.next();
 
-				if (reader.isStartElement() && new javax.xml.namespace.QName("", "Message").equals(reader.getName())) {
+				if (reader.isStartElement() && new javax.xml.namespace.QName("", "id").equals(reader.getName())) {
 
 					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
 					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
 						throw new org.apache.axis2.databinding.ADBException(
-								"The element: " + "Message" + "  cannot be null");
+								"The element: " + "id" + "  cannot be null");
 					}
 
 					java.lang.String content = reader.getElementText();
 
-					object.setMessage(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+					object.setId(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
 
 					reader.next();
 
@@ -526,19 +653,109 @@ public class SendMessage implements org.apache.axis2.databinding.ADBBean {
 					reader.next();
 
 				if (reader.isStartElement()
-						&& new javax.xml.namespace.QName("", "Importance").equals(reader.getName())) {
+						&& new javax.xml.namespace.QName("", "requiredSkill").equals(reader.getName())) {
+
+					// Process the array and step past its final element's end.
+					list2.add(reader.getElementText());
+
+					// loop until we find a start element that is not part of this array
+					boolean loopDone2 = false;
+					while (!loopDone2) {
+						// Ensure we are at the EndElement
+						while (!reader.isEndElement()) {
+							reader.next();
+						}
+						// Step out of this element
+						reader.next();
+						// Step to next element event.
+						while (!reader.isStartElement() && !reader.isEndElement())
+							reader.next();
+						if (reader.isEndElement()) {
+							// two continuous end elements means we are exiting the xml structure
+							loopDone2 = true;
+						} else {
+							if (new javax.xml.namespace.QName("", "requiredSkill").equals(reader.getName())) {
+								list2.add(reader.getElementText());
+
+							} else {
+								loopDone2 = true;
+							}
+						}
+					}
+					// call the converter utility to convert and set the array
+
+					object.setRequiredSkill((java.lang.String[]) list2.toArray(new java.lang.String[list2.size()]));
+
+				} // End of if for expected property start element
+
+				else {
+					// A start element we are not expecting indicates an invalid parameter was
+					// passed
+					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+				}
+
+				while (!reader.isStartElement() && !reader.isEndElement())
+					reader.next();
+
+				if (reader.isStartElement()
+						&& new javax.xml.namespace.QName("", "expectedDuration").equals(reader.getName())) {
 
 					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
 					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
 						throw new org.apache.axis2.databinding.ADBException(
-								"The element: " + "Importance" + "  cannot be null");
+								"The element: " + "expectedDuration" + "  cannot be null");
 					}
 
 					java.lang.String content = reader.getElementText();
 
-					object.setImportance(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+					object.setExpectedDuration(org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
 
 					reader.next();
+
+				} // End of if for expected property start element
+
+				else {
+					// A start element we are not expecting indicates an invalid parameter was
+					// passed
+					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+				}
+
+				while (!reader.isStartElement() && !reader.isEndElement())
+					reader.next();
+
+				if (reader.isStartElement()
+						&& new javax.xml.namespace.QName("", "equipment").equals(reader.getName())) {
+
+					// Process the array and step past its final element's end.
+					list4.add(reader.getElementText());
+
+					// loop until we find a start element that is not part of this array
+					boolean loopDone4 = false;
+					while (!loopDone4) {
+						// Ensure we are at the EndElement
+						while (!reader.isEndElement()) {
+							reader.next();
+						}
+						// Step out of this element
+						reader.next();
+						// Step to next element event.
+						while (!reader.isStartElement() && !reader.isEndElement())
+							reader.next();
+						if (reader.isEndElement()) {
+							// two continuous end elements means we are exiting the xml structure
+							loopDone4 = true;
+						} else {
+							if (new javax.xml.namespace.QName("", "equipment").equals(reader.getName())) {
+								list4.add(reader.getElementText());
+
+							} else {
+								loopDone4 = true;
+							}
+						}
+					}
+					// call the converter utility to convert and set the array
+
+					object.setEquipment((java.lang.String[]) list4.toArray(new java.lang.String[list4.size()]));
 
 				} // End of if for expected property start element
 

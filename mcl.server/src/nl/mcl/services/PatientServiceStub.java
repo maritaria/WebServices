@@ -5,7 +5,7 @@
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:03:39 GMT)
  */
-package nl.mcl.server;
+package nl.mcl.services;
 
 /*
 *  PatientServiceStub java implementation
@@ -43,7 +43,7 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 
 		__operation = new org.apache.axis2.description.OutInAxisOperation();
 
-		__operation.setName(new javax.xml.namespace.QName("http://services.mcl.nl/PatientService/", "sendMessage"));
+		__operation.setName(new javax.xml.namespace.QName("http://services.mcl.nl/", "sendMessage"));
 		_service.addOperation(__operation);
 
 		_operations[0] = __operation;
@@ -53,15 +53,18 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 	// populates the faults
 	private void populateFaults() {
 
-		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
-				new javax.xml.namespace.QName("http://services.mcl.nl/PatientService/", "SendMessageFault"),
-				"SendMessage"), "nl.mcl.services.patientservice.SendMessageFaultException");
-		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
-				new javax.xml.namespace.QName("http://services.mcl.nl/PatientService/", "SendMessageFault"),
-				"SendMessage"), "nl.mcl.services.patientservice.SendMessageFaultException");
-		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
-				new javax.xml.namespace.QName("http://services.mcl.nl/PatientService/", "SendMessageFault"),
-				"SendMessage"), "nl.mcl.services.patientservice.SendMessageFault");
+		faultExceptionNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://services.mcl.nl/", "SendMessageFault"), "SendMessage"),
+				"nl.mcl.services.SendMessageFaultException");
+		faultExceptionClassNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://services.mcl.nl/", "SendMessageFault"), "SendMessage"),
+				"nl.mcl.services.SendMessageFaultException");
+		faultMessageMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://services.mcl.nl/", "SendMessageFault"), "SendMessage"),
+				"nl.mcl.services.SendMessageFault");
 
 	}
 
@@ -96,7 +99,7 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 	public PatientServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext)
 			throws org.apache.axis2.AxisFault {
 
-		this(configurationContext, "http://services.mcl.nl/");
+		this(configurationContext, "http://services.mcl.nl/patient");
 
 	}
 
@@ -105,7 +108,7 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 	 */
 	public PatientServiceStub() throws org.apache.axis2.AxisFault {
 
-		this("http://services.mcl.nl/");
+		this("http://services.mcl.nl/patient");
 
 	}
 
@@ -119,25 +122,25 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see nl.mcl.services.patientservice.PatientService#sendMessage
+	 * @see nl.mcl.services.PatientService#sendMessage
 	 * @param sendMessage14
 	 * 
-	 * @throws nl.mcl.server.SendMessageFaultException
+	 * @throws nl.mcl.services.SendMessageFaultException
 	 *             :
 	 */
 
-	public nl.mcl.server.SendMessageResponse sendMessage(
+	public nl.mcl.services.SendMessageResponse sendMessage(
 
-			nl.mcl.server.SendMessage sendMessage14)
+			nl.mcl.services.SendMessage sendMessage14)
 
 			throws java.rmi.RemoteException
 
-			, nl.mcl.server.SendMessageFaultException {
+			, nl.mcl.services.SendMessageFaultException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient = _serviceClient
 					.createClient(_operations[0].getName());
-			_operationClient.getOptions().setAction("http://services.mcl.nl/PatientService/SendMessage");
+			_operationClient.getOptions().setAction("http://services.mcl.nl/SendMessage");
 			_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
 			addPropertyToOperationClient(_operationClient,
@@ -150,9 +153,8 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope env = null;
 
 			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), sendMessage14,
-					optimizeContent(
-							new javax.xml.namespace.QName("http://services.mcl.nl/PatientService/", "sendMessage")),
-					new javax.xml.namespace.QName("http://services.mcl.nl/PatientService/", "sendMessage"));
+					optimizeContent(new javax.xml.namespace.QName("http://services.mcl.nl/", "sendMessage")),
+					new javax.xml.namespace.QName("http://services.mcl.nl/", "sendMessage"));
 
 			// adding SOAP soap_headers
 			_serviceClient.addHeadersToEnvelope(env);
@@ -170,9 +172,9 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope _returnEnv = _returnMessageContext.getEnvelope();
 
 			java.lang.Object object = fromOM(_returnEnv.getBody().getFirstElement(),
-					nl.mcl.server.SendMessageResponse.class, getEnvelopeNamespaces(_returnEnv));
+					nl.mcl.services.SendMessageResponse.class, getEnvelopeNamespaces(_returnEnv));
 
-			return (nl.mcl.server.SendMessageResponse) object;
+			return (nl.mcl.services.SendMessageResponse) object;
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -197,8 +199,8 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 								new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof nl.mcl.server.SendMessageFaultException) {
-							throw (nl.mcl.server.SendMessageFaultException) ex;
+						if (ex instanceof nl.mcl.services.SendMessageFaultException) {
+							throw (nl.mcl.services.SendMessageFaultException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -237,21 +239,21 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see nl.mcl.services.patientservice.PatientService#startsendMessage
+	 * @see nl.mcl.services.PatientService#startsendMessage
 	 * @param sendMessage14
 	 * 
 	 */
 	public void startsendMessage(
 
-			nl.mcl.server.SendMessage sendMessage14,
+			nl.mcl.services.SendMessage sendMessage14,
 
-			final nl.mcl.server.PatientServiceCallbackHandler callback)
+			final nl.mcl.services.PatientServiceCallbackHandler callback)
 
 			throws java.rmi.RemoteException {
 
 		org.apache.axis2.client.OperationClient _operationClient = _serviceClient
 				.createClient(_operations[0].getName());
-		_operationClient.getOptions().setAction("http://services.mcl.nl/PatientService/SendMessage");
+		_operationClient.getOptions().setAction("http://services.mcl.nl/SendMessage");
 		_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
 		addPropertyToOperationClient(_operationClient,
@@ -264,8 +266,8 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 		// Style is Doc.
 
 		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), sendMessage14,
-				optimizeContent(new javax.xml.namespace.QName("http://services.mcl.nl/PatientService/", "sendMessage")),
-				new javax.xml.namespace.QName("http://services.mcl.nl/PatientService/", "sendMessage"));
+				optimizeContent(new javax.xml.namespace.QName("http://services.mcl.nl/", "sendMessage")),
+				new javax.xml.namespace.QName("http://services.mcl.nl/", "sendMessage"));
 
 		// adding SOAP soap_headers
 		_serviceClient.addHeadersToEnvelope(env);
@@ -281,8 +283,8 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 					org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
 
 					java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-							nl.mcl.server.SendMessageResponse.class, getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultsendMessage((nl.mcl.server.SendMessageResponse) object);
+							nl.mcl.services.SendMessageResponse.class, getEnvelopeNamespaces(resultEnv));
+					callback.receiveResultsendMessage((nl.mcl.services.SendMessageResponse) object);
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorsendMessage(e);
@@ -313,9 +315,8 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 										new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof nl.mcl.server.SendMessageFaultException) {
-									callback.receiveErrorsendMessage(
-											(nl.mcl.server.SendMessageFaultException) ex);
+								if (ex instanceof nl.mcl.services.SendMessageFaultException) {
+									callback.receiveErrorsendMessage((nl.mcl.services.SendMessageFaultException) ex);
 									return;
 								}
 
@@ -407,12 +408,12 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 		return false;
 	}
 
-	// http://services.mcl.nl/
-	private org.apache.axiom.om.OMElement toOM(nl.mcl.server.SendMessage param,
-			boolean optimizeContent) throws org.apache.axis2.AxisFault {
+	// http://services.mcl.nl/patient
+	private org.apache.axiom.om.OMElement toOM(nl.mcl.services.SendMessage param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(nl.mcl.server.SendMessage.MY_QNAME,
+			return param.getOMElement(nl.mcl.services.SendMessage.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -420,11 +421,11 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(nl.mcl.server.SendMessageResponse param,
-			boolean optimizeContent) throws org.apache.axis2.AxisFault {
+	private org.apache.axiom.om.OMElement toOM(nl.mcl.services.SendMessageResponse param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(nl.mcl.server.SendMessageResponse.MY_QNAME,
+			return param.getOMElement(nl.mcl.services.SendMessageResponse.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -432,11 +433,11 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(nl.mcl.server.SendMessageFault param,
-			boolean optimizeContent) throws org.apache.axis2.AxisFault {
+	private org.apache.axiom.om.OMElement toOM(nl.mcl.services.SendMessageFault param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(nl.mcl.server.SendMessageFault.MY_QNAME,
+			return param.getOMElement(nl.mcl.services.SendMessageFault.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -445,14 +446,13 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 	}
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-			nl.mcl.server.SendMessage param, boolean optimizeContent,
-			javax.xml.namespace.QName methodQName) throws org.apache.axis2.AxisFault {
+			nl.mcl.services.SendMessage param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+			throws org.apache.axis2.AxisFault {
 
 		try {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-			emptyEnvelope.getBody()
-					.addChild(param.getOMElement(nl.mcl.server.SendMessage.MY_QNAME, factory));
+			emptyEnvelope.getBody().addChild(param.getOMElement(nl.mcl.services.SendMessage.MY_QNAME, factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -474,24 +474,21 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 
 		try {
 
-			if (nl.mcl.server.SendMessage.class.equals(type)) {
+			if (nl.mcl.services.SendMessage.class.equals(type)) {
 
-				return nl.mcl.server.SendMessage.Factory
-						.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (nl.mcl.server.SendMessageFault.class.equals(type)) {
-
-				return nl.mcl.server.SendMessageFault.Factory
-						.parse(param.getXMLStreamReaderWithoutCaching());
+				return nl.mcl.services.SendMessage.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (nl.mcl.server.SendMessageResponse.class.equals(type)) {
+			if (nl.mcl.services.SendMessageFault.class.equals(type)) {
 
-				return nl.mcl.server.SendMessageResponse.Factory
-						.parse(param.getXMLStreamReaderWithoutCaching());
+				return nl.mcl.services.SendMessageFault.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (nl.mcl.services.SendMessageResponse.class.equals(type)) {
+
+				return nl.mcl.services.SendMessageResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

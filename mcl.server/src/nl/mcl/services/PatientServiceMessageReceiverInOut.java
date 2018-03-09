@@ -5,7 +5,7 @@
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:03:39 GMT)
  */
-package nl.mcl.server;
+package nl.mcl.services;
 
 /**
  * PatientServiceMessageReceiverInOut message receiver
@@ -37,10 +37,9 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 
 				if ("sendMessage".equals(methodName)) {
 
-					nl.mcl.server.SendMessageResponse sendMessageResponse7 = null;
-					nl.mcl.server.SendMessage wrappedParam = (nl.mcl.server.SendMessage) fromOM(
-							msgContext.getEnvelope().getBody().getFirstElement(),
-							nl.mcl.server.SendMessage.class,
+					nl.mcl.services.SendMessageResponse sendMessageResponse7 = null;
+					nl.mcl.services.SendMessage wrappedParam = (nl.mcl.services.SendMessage) fromOM(
+							msgContext.getEnvelope().getBody().getFirstElement(), nl.mcl.services.SendMessage.class,
 							getEnvelopeNamespaces(msgContext.getEnvelope()));
 
 					sendMessageResponse7 =
@@ -48,7 +47,7 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 							skel.sendMessage(wrappedParam);
 
 					envelope = toEnvelope(getSOAPFactory(msgContext), sendMessageResponse7, false,
-							new javax.xml.namespace.QName("http://services.mcl.nl/PatientService/", "sendMessage"));
+							new javax.xml.namespace.QName("http://services.mcl.nl/", "sendMessage"));
 
 				} else {
 					throw new java.lang.RuntimeException("method not found");
@@ -72,11 +71,11 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 	}
 
 	//
-	private org.apache.axiom.om.OMElement toOM(nl.mcl.server.SendMessage param,
-			boolean optimizeContent) throws org.apache.axis2.AxisFault {
+	private org.apache.axiom.om.OMElement toOM(nl.mcl.services.SendMessage param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(nl.mcl.server.SendMessage.MY_QNAME,
+			return param.getOMElement(nl.mcl.services.SendMessage.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -84,11 +83,11 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(nl.mcl.server.SendMessageResponse param,
-			boolean optimizeContent) throws org.apache.axis2.AxisFault {
+	private org.apache.axiom.om.OMElement toOM(nl.mcl.services.SendMessageResponse param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(nl.mcl.server.SendMessageResponse.MY_QNAME,
+			return param.getOMElement(nl.mcl.services.SendMessageResponse.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -96,11 +95,11 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(nl.mcl.server.SendMessageFault param,
-			boolean optimizeContent) throws org.apache.axis2.AxisFault {
+	private org.apache.axiom.om.OMElement toOM(nl.mcl.services.SendMessageFault param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(nl.mcl.server.SendMessageFault.MY_QNAME,
+			return param.getOMElement(nl.mcl.services.SendMessageFault.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -109,13 +108,12 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 	}
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-			nl.mcl.server.SendMessageResponse param, boolean optimizeContent,
-			javax.xml.namespace.QName methodQName) throws org.apache.axis2.AxisFault {
+			nl.mcl.services.SendMessageResponse param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+			throws org.apache.axis2.AxisFault {
 		try {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
-			emptyEnvelope.getBody()
-					.addChild(param.getOMElement(nl.mcl.server.SendMessageResponse.MY_QNAME, factory));
+			emptyEnvelope.getBody().addChild(param.getOMElement(nl.mcl.services.SendMessageResponse.MY_QNAME, factory));
 
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -123,8 +121,8 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 		}
 	}
 
-	private nl.mcl.server.SendMessageResponse wrapSendMessage() {
-		nl.mcl.server.SendMessageResponse wrappedElement = new nl.mcl.server.SendMessageResponse();
+	private nl.mcl.services.SendMessageResponse wrapSendMessage() {
+		nl.mcl.services.SendMessageResponse wrappedElement = new nl.mcl.services.SendMessageResponse();
 		return wrappedElement;
 	}
 
@@ -140,24 +138,21 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 
 		try {
 
-			if (nl.mcl.server.SendMessage.class.equals(type)) {
+			if (nl.mcl.services.SendMessage.class.equals(type)) {
 
-				return nl.mcl.server.SendMessage.Factory
-						.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (nl.mcl.server.SendMessageFault.class.equals(type)) {
-
-				return nl.mcl.server.SendMessageFault.Factory
-						.parse(param.getXMLStreamReaderWithoutCaching());
+				return nl.mcl.services.SendMessage.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (nl.mcl.server.SendMessageResponse.class.equals(type)) {
+			if (nl.mcl.services.SendMessageFault.class.equals(type)) {
 
-				return nl.mcl.server.SendMessageResponse.Factory
-						.parse(param.getXMLStreamReaderWithoutCaching());
+				return nl.mcl.services.SendMessageFault.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (nl.mcl.services.SendMessageResponse.class.equals(type)) {
+
+				return nl.mcl.services.SendMessageResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
