@@ -14,6 +14,39 @@ package nl.mcl.services;
 @SuppressWarnings({ "unchecked", "unused" })
 
 public class Doctor implements org.apache.axis2.databinding.ADBBean {
+	
+	public Doctor(String id, String fullName, String[] skills)
+	{
+		setFullname(fullName);
+		setId(id);
+		for(String skill : skills)
+		{
+			addSkill(skill);
+		}
+	}
+	
+	public boolean hasSkill(String skill)
+	{
+		if (isSkillSpecified())
+		{
+			for(String doctorSkill : localSkill)
+			{
+				if (doctorSkill.equals(skill)) return true;
+			}
+		}
+		return false;
+	}
+	
+
+	public boolean hasSkills(String[] requiredSkill) {
+		// TODO Auto-generated method stub
+		for(String skill : requiredSkill)
+		{
+			if (!hasSkill(skill)) return false;
+		}
+		return true;
+	}
+	
 	/*
 	 * This type was generated from the piece of schema that had name = Doctor
 	 * Namespace URI = http://services.mcl.nl/ Namespace Prefix = ns2
@@ -633,5 +666,6 @@ public class Doctor implements org.apache.axis2.databinding.ADBBean {
 		}
 
 	}// end of factory class
+
 
 }

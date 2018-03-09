@@ -18,16 +18,19 @@ public class DoctorServiceTest extends junit.framework.TestCase {
 	 */
 	public void testfindDoctor() throws java.lang.Exception {
 
-		nl.mcl.services.DoctorServiceStub stub = new nl.mcl.services.DoctorServiceStub();// the default implementation
+		DoctorServiceStub stub = new DoctorServiceStub();// the default implementation
 																							// should point to the right
 																							// endpoint
 
-		nl.mcl.services.DoctorServiceStub.FindDoctor findDoctor2 = (nl.mcl.services.DoctorServiceStub.FindDoctor) getTestObject(
-				nl.mcl.services.DoctorServiceStub.FindDoctor.class);
-		// TODO : Fill in the findDoctor2 here
+		DoctorServiceStub.FindDoctor request = (DoctorServiceStub.FindDoctor) getTestObject(
+				DoctorServiceStub.FindDoctor.class);
 
-		assertNotNull(stub.findDoctor(findDoctor2));
-
+		request.setRequiredSkill(new String[] {"legs"});
+		DoctorServiceStub.FindDoctorResponse response =stub.findDoctor(request);
+		
+		assertNotNull(response);
+		assertNotNull(response.getCandidate());
+		assertTrue(response.getCandidate().length > 0);
 	}
 
 	// Create an ADBBean and provide it as the test object
