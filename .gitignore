@@ -13,6 +13,7 @@
 # Package Files #
 *.jar
 !**/webcontent/**/*.jar
+!**/resources/*.jar
 *.war
 *.ear
 *.zip
