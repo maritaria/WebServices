@@ -15,7 +15,7 @@ package nl.mcl.services;
 
 public class Doctor implements org.apache.axis2.databinding.ADBBean {
 	
-	public Doctor(String id, String fullName, String[] skills)
+	public Doctor(String id, String fullName, String... skills)
 	{
 		setFullname(fullName);
 		setId(id);
@@ -38,7 +38,7 @@ public class Doctor implements org.apache.axis2.databinding.ADBBean {
 	}
 	
 
-	public boolean hasSkills(String[] requiredSkill) {
+	public boolean hasSkills(String... requiredSkill) {
 		// TODO Auto-generated method stub
 		for(String skill : requiredSkill)
 		{
