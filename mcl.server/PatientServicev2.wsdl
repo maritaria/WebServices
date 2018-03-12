@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="PatientServiceV2" targetNamespace="http://medicare.com/Services/Patient"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:service="http://medicare.com/Services/Patient"
+  xmlns:medicare="http://medicare.com/Types">
+  <types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://medicare.com/Types"
+        schemaLocation="MedicalTypes.xsd" />
+    </schema>
+  </types>
+  <message name="RegisterPatientRequest">
+    <part name="parameters" element="medicare:person" />
+  </message>
+  <message name="RegisterPatientResponse">
+    <part name="parameters" element="medicare:patient" />
+  </message>
+  <message name="RegisterPatientFault">
+    <part name="error" type="xsd:string" />
+  </message>
+  <portType name="PatientServicePort">
+    <operation name="RegisterPatient">
+      <input message="service:RegisterPatientRequest" />
+      <output message="service:RegisterPatientResponse" />
+      <fault name="fault" message="service:RegisterPatientFault" />
+    </operation>
+  </portType>
+  <service name="PatientService">
+    <port name="MainPort" binding="">
+      <soap:address
+        location="http://localhost:8080/mcl.server/services/PatientService" />
+    </port>
+  </service>
+</definitions>
