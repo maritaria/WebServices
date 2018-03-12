@@ -28,7 +28,7 @@
   </xs:element>
 
   <!-- Definition of attributes -->
-  <xs:attribute name="id" type="xs:string" />
+  <xs:attribute name="id" type="xs:integer" />
 
   <!-- Definition of complex types -->
   <xs:complexType name="Person">
