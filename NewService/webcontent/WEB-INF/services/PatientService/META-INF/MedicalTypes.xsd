@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://medicare.com/Types" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://medicare.com/Types">
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="address" type="xs:string"/>
+    <xs:element name="phonenumber" type="xs:string"/>
+    <xs:element name="email" type="xs:string"/>
+    <xs:element name="skill" type="xs:string"/>
+    <xs:element name="equipment" type="xs:string"/>
+    <xs:element name="timestamp" type="xs:dateTime"/>
+    <xs:element name="duration" type="xs:duration"/>
+    <xs:element name="error" type="xs:string"/>
+    <xs:element name="person" type="Person"/>
+    <xs:element name="doctor" type="Doctor"/>
+    <xs:element name="patient" type="Patient"/>
+    <xs:element name="room" type="Room"/>
+    <xs:element name="treatment" type="Treatment"/>
+    <xs:element name="timeslot" type="Timeslot"/>
+    <xs:element name="patients">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="patient"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:attribute name="id" type="xs:string"/>
+    <xs:complexType name="Person">
+        <xs:sequence>
+            <xs:element ref="name"/>
+            <xs:element minOccurs="0" ref="address"/>
+            <xs:element minOccurs="0" ref="phonenumber"/>
+            <xs:element minOccurs="0" ref="email"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Patient">
+        <xs:complexContent>
+            <xs:extension base="Person">
+                <xs:attribute ref="id" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="Doctor">
+        <xs:complexContent>
+            <xs:extension base="Person">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" ref="skill"/>
+                </xs:sequence>
+                <xs:attribute ref="id" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="Room">
+        <xs:sequence>
+            <xs:element ref="name"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="equipment"/>
+        </xs:sequence>
+        <xs:attribute ref="id" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="Treatment">
+        <xs:sequence>
+            <xs:element ref="name"/>
+            <xs:element ref="duration"/>
+            <xs:element name="requirements">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" ref="skill"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" ref="equipment"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Timeslot">
+        <xs:sequence>
+            <xs:element ref="timestamp"/>
+            <xs:element ref="duration"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ScheduledTreatment">
+        <xs:sequence>
+            <xs:element ref="treatment"/>
+            <xs:element maxOccurs="unbounded" ref="doctor"/>
+            <xs:element maxOccurs="unbounded" ref="patient"/>
+            <xs:element ref="room"/>
+            <xs:element ref="timeslot"/>
+        </xs:sequence>
+        <xs:attribute ref="id" use="required"/>
+    </xs:complexType>
+</xs:schema>

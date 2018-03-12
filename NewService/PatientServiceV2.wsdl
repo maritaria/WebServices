@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="PatientServiceV2" targetNamespace="http://medicare.com/Services/Patient"
+  xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:service="http://medicare.com/Services/Patient"
+  xmlns:medicare="http://medicare.com/Types">
+  <types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://medicare.com/Types"
+        schemaLocation="MedicalTypes.xsd" />
+    </schema>
+  </types>
+  <message name="RegisterPatientRequest">
+    <part name="parameters" element="medicare:person" />
+  </message>
+  <message name="RegisterPatientResponse">
+    <part name="parameters" element="medicare:patient" />
+  </message>
+  <message name="RegisterPatientFault">
+    <part name="error" element="medicare:error"/>
+  </message>
+  <message name="GetAllRequest">
+  </message>
+  <message name="GetAllResponse">
+    <part name="patients" element="medicare:patients"></part>
+  </message>
+  <portType name="PatientServicePort">
+    <operation name="RegisterPatient">
+      <input message="service:RegisterPatientRequest" />
+      <output message="service:RegisterPatientResponse" />
+      <fault name="fault" message="service:RegisterPatientFault" />
+    </operation>
+    <operation name="GetAll">
+      <input message="service:GetAllRequest"></input>
+      <output message="service:GetAllResponse"></output>
+    </operation>
+  </portType>
+  <binding name="PatientServiceBinding"
+    type="service:PatientServicePort">
+
+    <soap:binding style="document"
+      transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="RegisterPatient">
+
+      <soap:operation
+        soapAction="http://medicare.com/Services/Patient/RegisterPatient" />
+      <input>
+
+        <soap:body use="literal" />
+      </input>
+      <output>
+
+        <soap:body use="literal" />
+      </output>
+      <fault name="fault">
+
+        <soap:fault use="literal" name="fault" />
+      </fault>
+    </operation>
+    <operation name="GetAll">
+
+      <soap:operation
+        soapAction="http://medicare.com/Services/Patient/GetAll" />
+      <input>
+
+        <soap:body use="literal" />
+      </input>
+      <output>
+
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="PatientService">
+    <port name="MainPort" binding="service:PatientServiceBinding">
+      <soap:address
+        location="http://localhost:8080/mcl.server/services/PatientService" />
+    </port>
+  </service>
+</definitions>
