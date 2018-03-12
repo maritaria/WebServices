@@ -73,7 +73,7 @@
   <service name="PatientService">
     <port name="MainPort" binding="service:PatientServiceBinding">
       <soap:address
-        location="http://localhost:8080/mcl.server/services/PatientService" />
+        location="http://localhost:8080/NewService/services/PatientService" />
     </port>
   </service>
 </definitions>
