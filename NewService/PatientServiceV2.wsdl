@@ -14,13 +14,6 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="NotifyFault">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="NotifyFault" type="xsd:string"></xsd:element>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
     </xsd:schema>
   </types>
   <message name="RegisterRequest">
