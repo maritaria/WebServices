@@ -1,55 +1,55 @@
 
 /**
- * Skill.java
+ * NotifyFault.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
  */
 
             
-                package com.medicare.types;
+                package com.medicare.services.patient;
             
 
             /**
-            *  Skill bean class
+            *  NotifyFault bean class
             */
             @SuppressWarnings({"unchecked","unused"})
         
-        public  class Skill
+        public  class NotifyFault
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-                "http://medicare.com/Types",
-                "skill",
-                "ns1");
+                "http://medicare.com/Services/Patient",
+                "NotifyFault",
+                "ns2");
 
             
 
                         /**
-                        * field for Skill
+                        * field for NotifyFault
                         */
 
                         
-                                    protected java.lang.String localSkill ;
+                                    protected java.lang.String localNotifyFault ;
                                 
 
                            /**
                            * Auto generated getter method
                            * @return java.lang.String
                            */
-                           public  java.lang.String getSkill(){
-                               return localSkill;
+                           public  java.lang.String getNotifyFault(){
+                               return localNotifyFault;
                            }
 
                            
                         
                             /**
                                * Auto generated setter method
-                               * @param param Skill
+                               * @param param NotifyFault
                                */
-                               public void setSkill(java.lang.String param){
+                               public void setNotifyFault(java.lang.String param){
                             
-                                            this.localSkill=param;
+                                            this.localNotifyFault=param;
                                        
 
                                }
@@ -87,45 +87,59 @@
             throws javax.xml.stream.XMLStreamException, org.apache.axis2.databinding.ADBException{
             
                 
-                //We can safely assume an element has only one type associated with it
-                
-                            java.lang.String namespace = "http://medicare.com/Types";
-                            java.lang.String _localName = "skill";
-                        
-                            writeStartElement(null, namespace, _localName, xmlWriter);
 
-                            // add the type details if this is used in a simple type
-                               if (serializeType){
-                                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://medicare.com/Types");
-                                   if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
-                                       writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                                           namespacePrefix+":skill",
-                                           xmlWriter);
-                                   } else {
-                                       writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                                           "skill",
-                                           xmlWriter);
-                                   }
-                               }
-                            
-                                          if (localSkill==null){
-                                            
-                                                     throw new org.apache.axis2.databinding.ADBException("skill cannot be null !!");
-                                                
-                                         }else{
+
+                java.lang.String prefix = null;
+                java.lang.String namespace = null;
+                
+
+                    prefix = parentQName.getPrefix();
+                    namespace = parentQName.getNamespaceURI();
+                    writeStartElement(prefix, namespace, parentQName.getLocalPart(), xmlWriter);
+                
+                  if (serializeType){
+               
+
+                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://medicare.com/Services/Patient");
+                   if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
+                       writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
+                           namespacePrefix+":NotifyFault",
+                           xmlWriter);
+                   } else {
+                       writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
+                           "NotifyFault",
+                           xmlWriter);
+                   }
+
+               
+                   }
+               
+                                    namespace = "";
+                                    writeStartElement(null, namespace, "NotifyFault", xmlWriter);
+                             
+
+                                          if (localNotifyFault==null){
+                                              // write the nil attribute
+                                              
+                                                     throw new org.apache.axis2.databinding.ADBException("NotifyFault cannot be null!!");
+                                                  
+                                          }else{
+
                                         
-                                                       xmlWriter.writeCharacters(localSkill);
+                                                   xmlWriter.writeCharacters(localNotifyFault);
                                             
-                                         }
+                                          }
                                     
-                            xmlWriter.writeEndElement();
-                    
+                                   xmlWriter.writeEndElement();
+                             
+                    xmlWriter.writeEndElement();
+               
 
         }
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
-            if(namespace.equals("http://medicare.com/Types")){
-                return "ns1";
+            if(namespace.equals("http://medicare.com/Services/Patient")){
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -299,14 +313,23 @@
 
 
         
+                 java.util.ArrayList elementList = new java.util.ArrayList();
+                 java.util.ArrayList attribList = new java.util.ArrayList();
+
                 
-                //We can safely assume an element has only one type associated with it
-                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(MY_QNAME,
-                            new java.lang.Object[]{
-                            org.apache.axis2.databinding.utils.reader.ADBXMLStreamReader.ELEMENT_TEXT,
-                            org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localSkill)
-                            },
-                            null);
+                                      elementList.add(new javax.xml.namespace.QName("",
+                                                                      "NotifyFault"));
+                                 
+                                        if (localNotifyFault != null){
+                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localNotifyFault));
+                                        } else {
+                                           throw new org.apache.axis2.databinding.ADBException("NotifyFault cannot be null!!");
+                                        }
+                                    
+
+                return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
+            
+            
 
         }
 
@@ -327,9 +350,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static Skill parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            Skill object =
-                new Skill();
+        public static NotifyFault parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            NotifyFault object =
+                new NotifyFault();
 
             int event;
             java.lang.String nillableValue = null;
@@ -341,6 +364,32 @@
                     reader.next();
 
                 
+                if (reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","type")!=null){
+                  java.lang.String fullTypeName = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+                        "type");
+                  if (fullTypeName!=null){
+                    java.lang.String nsPrefix = null;
+                    if (fullTypeName.indexOf(":") > -1){
+                        nsPrefix = fullTypeName.substring(0,fullTypeName.indexOf(":"));
+                    }
+                    nsPrefix = nsPrefix==null?"":nsPrefix;
+
+                    java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
+                    
+                            if (!"NotifyFault".equals(type)){
+                                //find namespace for the prefix
+                                java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
+                                return (NotifyFault)com.medicare.services.patient.ExtensionMapper.getTypeObject(
+                                     nsUri,type,reader);
+                              }
+                        
+
+                  }
+                
+
+                }
+
+                
 
                 
                 // Note all attributes that were handled. Used to differ normal attributes
@@ -348,35 +397,42 @@
                 java.util.Vector handledAttributes = new java.util.Vector();
                 
 
-                   
-                while(!reader.isEndElement()) {
-                    if (reader.isStartElement() ){
                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://medicare.com/Types","skill").equals(reader.getName())){
+                    
+                    reader.next();
+                
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","NotifyFault").equals(reader.getName())){
                                 
                                     nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                     if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"skill" +"  cannot be null");
+                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"NotifyFault" +"  cannot be null");
                                     }
                                     
 
                                     java.lang.String content = reader.getElementText();
                                     
-                                              object.setSkill(
+                                              object.setNotifyFault(
                                                     org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-                                            
+                                              
+                                        reader.next();
+                                    
                               }  // End of if for expected property start element
                                 
-                             else{
-                                        // A start element we are not expecting indicates an invalid parameter was passed
-                                        throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-                             }
-                          
-                             } else {
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                              
+                            while (!reader.isStartElement() && !reader.isEndElement())
                                 reader.next();
-                             }  
-                           }  // end of while loop
-                        
+                            
+                                if (reader.isStartElement())
+                                // A start element we are not expecting indicates a trailing invalid property
+                                throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                            
 
 
 
