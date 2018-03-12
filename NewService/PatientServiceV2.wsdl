@@ -8,6 +8,23 @@
       <import namespace="http://medicare.com/Types"
         schemaLocation="MedicalTypes.xsd" />
     </schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://medicare.com/Services/Patient">
+      <xsd:element name="Notify">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string"></xsd:element>
+            <xsd:element name="recipient" type="medicare:Patient"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NotifyFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="NotifyFault" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
   </types>
   <message name="RegisterRequest">
     <part name="parameters" element="medicare:person" />
@@ -23,6 +40,14 @@
   <message name="GetAllResponse">
     <part name="patients" element="medicare:patients"></part>
   </message>
+  <message name="NotifyRequest">
+    <part name="parameters" element="service:Notify"></part>
+  </message>
+  <message name="NotifyResponse">
+  </message>
+  <message name="NotifyFault">
+    <part name="error" element="medicare:error"></part>
+  </message>
   <portType name="PatientServicePort">
     <operation name="Register">
       <input message="service:RegisterRequest" />
@@ -33,6 +58,11 @@
       <input message="service:GetAllRequest"></input>
       <output message="service:GetAllResponse"></output>
     </operation>
+    <operation name="Notify">
+      <input message="service:NotifyRequest"></input>
+      <output message="service:NotifyResponse"></output>
+            <fault name="fault" message="service:NotifyFault"></fault>
+        </operation>
   </portType>
   <binding name="PatientServiceBinding"
     type="service:PatientServicePort">
