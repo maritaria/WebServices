@@ -8,36 +8,33 @@
 
 package com.medicare.services.patient;
 
-public class NotifyFaultException extends java.lang.Exception{
+public class NotifyFaultException extends java.lang.Exception {
 
-    private static final long serialVersionUID = 1520850479411L;
-    
-    private com.medicare.types.Error faultMessage;
+	private static final long serialVersionUID = 1520850479411L;
 
-    
-        public NotifyFaultException() {
-            super("NotifyFaultException");
-        }
+	private com.medicare.types.Error faultMessage;
 
-        public NotifyFaultException(java.lang.String s) {
-           super(s);
-        }
+	public NotifyFaultException() {
+		super("NotifyFaultException");
+	}
 
-        public NotifyFaultException(java.lang.String s, java.lang.Throwable ex) {
-          super(s, ex);
-        }
+	public NotifyFaultException(java.lang.String s) {
+		super(s);
+	}
 
-        public NotifyFaultException(java.lang.Throwable cause) {
-            super(cause);
-        }
-    
+	public NotifyFaultException(java.lang.String s, java.lang.Throwable ex) {
+		super(s, ex);
+	}
 
-    public void setFaultMessage(com.medicare.types.Error msg){
-       faultMessage = msg;
-    }
-    
-    public com.medicare.types.Error getFaultMessage(){
-       return faultMessage;
-    }
+	public NotifyFaultException(java.lang.Throwable cause) {
+		super(cause);
+	}
+
+	public void setFaultMessage(com.medicare.types.Error msg) {
+		faultMessage = msg;
+	}
+
+	public com.medicare.types.Error getFaultMessage() {
+		return faultMessage;
+	}
 }
-    

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:03:39 GMT) --><serviceGroup>
+    <service name="RoomService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.medicare.services.room.RoomServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.medicare.services.room.RoomServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="GetAll" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Room">
+            <actionMapping>http://medicare.com/Services/Room/GetAll</actionMapping>
+            <outputActionMapping>http://medicare.com/Services/Room/RoomServicePort/GetAllResponse</outputActionMapping>
+        </operation>
+        <operation name="Init" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Room">
+            <actionMapping>http://medicare.com/Services/Room/init</actionMapping>
+            <outputActionMapping>http://medicare.com/Services/Room/RoomServicePort/InitResponse</outputActionMapping>
+        </operation>
+        <operation name="Reservate" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Room">
+            <actionMapping>http://medicare.com/Services/Room/Reservate</actionMapping>
+            <outputActionMapping>http://medicare.com/Services/Room/RoomServicePort/ReservateResponse</outputActionMapping>
+        </operation>
+        <operation name="Find" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Room">
+            <actionMapping>http://medicare.com/Services/Room/Find</actionMapping>
+            <outputActionMapping>http://medicare.com/Services/Room/RoomServicePort/FindResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

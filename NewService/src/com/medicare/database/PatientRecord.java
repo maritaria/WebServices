@@ -11,35 +11,35 @@ public class PatientRecord {
 	private int id;
 	@DatabaseField
 	public String name;
-    @DatabaseField
-    public String address;
-    @DatabaseField
-    public String email;
-    @DatabaseField
-    public String phonenumber;
-	
+	@DatabaseField
+	public String address;
+	@DatabaseField
+	public String email;
+	@DatabaseField
+	public String phonenumber;
+
 	public PatientRecord() {
-        // ORMLite needs a no-arg constructor 
+		// ORMLite needs a no-arg constructor
 	}
-	
+
 	public PatientRecord(Person person) {
 		name = person.getName();
 		address = person.getAddress();
 		phonenumber = person.getPhonenumber();
 		email = person.getEmail();
 	}
-    
-    public int getId() {
-    	return id;
-    }
-    
-    public Patient toSoap() {
-    	Patient result = new Patient();
-    	result.setId(Integer.toString(id));
-    	result.setName(name);
-    	result.setAddress(address);
-    	result.setPhonenumber(phonenumber);
-    	result.setEmail(email);
-    	return result;
-    }
+
+	public int getId() {
+		return id;
+	}
+
+	public Patient toSoap() {
+		Patient result = new Patient();
+		result.setId(id);
+		result.setName(name);
+		result.setAddress(address);
+		result.setPhonenumber(phonenumber);
+		result.setEmail(email);
+		return result;
+	}
 }

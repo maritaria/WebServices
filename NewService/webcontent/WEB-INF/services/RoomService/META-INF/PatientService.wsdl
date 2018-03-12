@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="PatientServiceV2" targetNamespace="http://medicare.com/Services/Patient" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:service="http://medicare.com/Services/Patient" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:medicare="http://medicare.com/Types" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema targetNamespace="http://medicare.com/Services/Patient" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://medicare.com/Types" schemaLocation="MedicalTypes.xsd"/>
+      <xsd:element name="Notify">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string"/>
+            <xsd:element name="recipient" type="medicare:Patient"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NotifyFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="NotifyFault" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="RegisterRequest">
+    <part name="parameters" element="medicare:person">
+    </part>
+  </message>
+  <message name="RegisterResponse">
+    <part name="parameters" element="medicare:patient">
+    </part>
+  </message>
+  <message name="RegisterFault">
+    <part name="error" element="medicare:error">
+    </part>
+  </message>
+  <message name="NotifyResponse">
+  </message>
+  <message name="NotifyRequest">
+    <part name="parameters" element="service:Notify">
+    </part>
+  </message>
+  <message name="NotifyFault">
+    <part name="error" element="medicare:error">
+    </part>
+  </message>
+  <message name="GetAllResponse">
+    <part name="patients" element="medicare:patients">
+    </part>
+  </message>
+  <message name="GetAllRequest">
+  </message>
+  <portType name="PatientServicePort">
+    <operation name="Register">
+      <input message="service:RegisterRequest">
+    </input>
+      <output message="service:RegisterResponse">
+    </output>
+      <fault name="fault" message="service:RegisterFault">
+    </fault>
+    </operation>
+    <operation name="GetAll">
+      <input message="service:GetAllRequest">
+    </input>
+      <output message="service:GetAllResponse">
+    </output>
+    </operation>
+    <operation name="Notify">
+      <input message="service:NotifyRequest">
+    </input>
+      <output message="service:NotifyResponse">
+    </output>
+      <fault name="fault" message="service:NotifyFault">
+    </fault>
+    </operation>
+  </portType>
+  <binding name="PatientServiceBinding" type="service:PatientServicePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Register">
+      <soap:operation soapAction="http://medicare.com/Services/Patient/Register"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="GetAll">
+      <soap:operation soapAction="http://medicare.com/Services/Patient/GetAll"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Notify">
+      <soap:operation soapAction="http://medicare.com/Services/Patient/Notify"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="PatientService">
+    <port name="MainPort" binding="service:PatientServiceBinding">
+      <soap:address location="http://localhost:8080/NewService/services/PatientService"/>
+    </port>
+  </service>
+</definitions>

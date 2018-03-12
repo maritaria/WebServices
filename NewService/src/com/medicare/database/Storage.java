@@ -13,4 +13,10 @@ public class Storage {
 		TableUtils.createTableIfNotExists(source, PatientRecord.class);
 		return result;
 	}
+
+	public static Dao<RoomRecord, Integer> getRooms(ConnectionSource source) throws SQLException {
+		Dao<RoomRecord, Integer> result = DaoManager.createDao(source, RoomRecord.class);
+		TableUtils.createTableIfNotExists(source, RoomRecord.class);
+		return result;
+	}
 }

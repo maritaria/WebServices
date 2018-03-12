@@ -22,7 +22,6 @@ import com.medicare.types.Patient;
 import com.medicare.types.PatientE;
 import com.medicare.types.Patients;
 
-
 /**
  * PatientServiceSkeleton java skeleton for the axisService
  */
@@ -38,8 +37,7 @@ public class PatientServiceSkeleton implements PatientServiceSkeletonInterface {
 
 	public com.medicare.types.PatientE register(com.medicare.types.PersonE person2) throws RegisterFault {
 		PatientRecord newPatient = new PatientRecord(person2.getPerson());
-		try (ConnectionSource conn = ConnectionFactory.create())
-		{
+		try (ConnectionSource conn = ConnectionFactory.create()) {
 			Storage.getPatients(conn).create(newPatient);
 			PatientE result = new PatientE();
 			result.setPatient(newPatient.toSoap());
@@ -72,9 +70,8 @@ public class PatientServiceSkeleton implements PatientServiceSkeletonInterface {
 
 	public com.medicare.types.Patients getAll() {
 		Patients results = new Patients();
-		try (ConnectionSource conn = ConnectionFactory.create())
-		{
-			for(PatientRecord patientData : Storage.getPatients(conn).queryForAll()) {
+		try (ConnectionSource conn = ConnectionFactory.create()) {
+			for (PatientRecord patientData : Storage.getPatients(conn).queryForAll()) {
 				results.addPatient(patientData.toSoap());
 			}
 		} catch (IOException e) {
