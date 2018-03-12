@@ -11,13 +11,13 @@ import nl.mcl.services.Room;
 
 public class PatientDAO {
 	
-	private static Dao<Patient, String> roomDao;
+	private static Dao<PatientRecord, String> roomDao;
 
 	private PatientDAO() {
 	}
 	
-	public static synchronized Dao<Patient, String> get(ConnectionSource connection) throws SQLException {
-		return roomDao == null ? roomDao = DaoManager.createDao(connection, Patient.class) : roomDao;
+	public static synchronized Dao<PatientRecord, String> get(ConnectionSource connection) throws SQLException {
+		return roomDao == null ? roomDao = DaoManager.createDao(connection, PatientRecord.class) : roomDao;
 	}
 	
 }
