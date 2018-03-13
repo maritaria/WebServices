@@ -21,6 +21,7 @@ import com.medicare.database.Storage;
 import com.medicare.types.Patient;
 import com.medicare.types.PatientE;
 import com.medicare.types.Patients;
+import com.medicare.types.PersonE;
 
 /**
  * PatientServiceSkeleton java skeleton for the axisService
@@ -35,7 +36,7 @@ public class PatientServiceSkeleton implements PatientServiceSkeletonInterface {
 	 * @throws RegisterFault
 	 */
 
-	public com.medicare.types.PatientE register(com.medicare.types.PersonE person2) throws RegisterFault {
+	public PatientE register(PersonE person2) throws RegisterFault {
 		PatientRecord newPatient = new PatientRecord(person2.getPerson());
 		try (ConnectionSource conn = ConnectionFactory.create()) {
 			Storage.getPatients(conn).create(newPatient);
@@ -45,7 +46,6 @@ public class PatientServiceSkeleton implements PatientServiceSkeletonInterface {
 		} catch (SQLException e) {
 			throw new RegisterFault("SQL error", e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			throw new RegisterFault("IO error", e);
 		}
 	}
