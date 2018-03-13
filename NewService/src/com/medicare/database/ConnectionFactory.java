@@ -10,7 +10,7 @@ import com.j256.ormlite.support.ConnectionSource;
 public class ConnectionFactory {
 	static {
 		try {
-			Class.forName("org.sqlite.JDBC");
+			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
