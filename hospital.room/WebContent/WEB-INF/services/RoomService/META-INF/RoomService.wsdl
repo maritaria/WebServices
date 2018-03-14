@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://hospital/room/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:room="http://hospital/room/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema targetNamespace="http://hospital/room/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:element name="RoomID" type="xsd:string"/>
+			<xsd:element name="RoomIDs">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" ref="room:RoomID"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Item" type="xsd:string"/>
+			<xsd:element name="Items">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" ref="room:Item"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+  </types>
+  <message name="findRoomResponse">
+    <part name="roomIDs" element="room:RoomIDs">
+    </part>
+  </message>
+  <message name="findRoomRequest">
+    <part name="items" element="room:Items">
+    </part>
+  </message>
+  <portType name="room">
+    <operation name="findRoom">
+      <input message="room:findRoomRequest">
+    </input>
+      <output message="room:findRoomResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="RoomBinding" type="room:room">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="findRoom">
+      <soap:operation soapAction="http://hospital/room/findRoom"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="RoomService">
+    <port name="room" binding="room:RoomBinding">
+      <soap:address location="http://localhost:8080/hospital.room/services/RoomService"/>
+    </port>
+  </service>
+</definitions>

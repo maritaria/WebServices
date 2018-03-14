@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://hospital/patient/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:patient="http://hospital/patient/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema targetNamespace="http://hospital/patient/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:element name="PatientID" type="xsd:string"/>
+			<xsd:element name="PatientIDs">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" ref="patient:PatientID"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Notification">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Message" type="xsd:string"/>
+						<xsd:element ref="patient:PatientID"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+  </types>
+  <message name="notifyRequest">
+    <part name="notification" element="patient:Notification">
+    </part>
+  </message>
+  <portType name="patient">
+    <operation name="notify">
+      <input message="patient:notifyRequest">
+    </input>
+    </operation>
+  </portType>
+  <binding name="PatientBinding" type="patient:patient">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="notify">
+      <soap:operation soapAction="http://hospital/patient/notify"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+    </operation>
+  </binding>
+  <service name="PatientService">
+    <port name="patient" binding="patient:PatientBinding">
+      <soap:address location="http://localhost:8080/hospital.patient/services/PatientService"/>
+    </port>
+  </service>
+</definitions>

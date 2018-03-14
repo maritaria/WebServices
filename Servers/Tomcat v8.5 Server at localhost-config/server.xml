@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="mcl.server" path="/mcl.server" reloadable="true" source="org.eclipse.jst.jee.server:mcl.server"/><Context docBase="mcl.client" path="/mcl.client" reloadable="true" source="org.eclipse.jst.jee.server:mcl.client"/><Context docBase="NewService" path="/NewService" reloadable="true" source="org.eclipse.jst.jee.server:NewService"/></Host>
+      <Context docBase="mcl.server" path="/mcl.server" reloadable="true" source="org.eclipse.jst.jee.server:mcl.server"/><Context docBase="mcl.client" path="/mcl.client" reloadable="true" source="org.eclipse.jst.jee.server:mcl.client"/><Context docBase="NewService" path="/NewService" reloadable="true" source="org.eclipse.jst.jee.server:NewService"/><Context docBase="hospital.room" path="/hospital.room" reloadable="true" source="org.eclipse.jst.jee.server:hospital.room"/><Context docBase="hospital.doctor" path="/hospital.doctor" reloadable="true" source="org.eclipse.jst.jee.server:hospital.doctor"/><Context docBase="hospital.agenda" path="/hospital.agenda" reloadable="true" source="org.eclipse.jst.jee.server:hospital.agenda"/><Context docBase="hospital.patient" path="/hospital.patient" reloadable="true" source="org.eclipse.jst.jee.server:hospital.patient"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:03:39 GMT) --><serviceGroup>
+    <service name="RoomService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="hospital.room.RoomServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">hospital.room.RoomServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="findRoom" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://hospital/room/">
+            <actionMapping>http://hospital/room/findRoom</actionMapping>
+            <outputActionMapping>http://hospital/room/room/findRoomResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>
