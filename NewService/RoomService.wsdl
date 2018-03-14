@@ -19,7 +19,7 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="Reservate">
+      <xsd:element name="Reserve">
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element name="room" type="xsd:integer" />
@@ -27,48 +27,94 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+      <xsd:element name="RoomId" type="xsd:string" />
+    </xsd:schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://medicare.com/Types" schemaLocation="MedicalTypes.xsd"></xsd:import>
     </xsd:schema>
   </types>
   <message name="RoomArrayResponse">
     <part name="rooms" element="service:RoomArrayResponse"></part>
   </message>
   <message name="FindRequest">
-    <part name="filter" element="service:FindFilter"></part>
+    <part name="parameters" element="service:FindFilter"></part>
   </message>
-  <message name="ReservateRequest">
-    <part name="reservation" element="service:Reservate"></part>
+  <message name="ReserveRequest">
+    <part name="parameters" element="service:Reserve"></part>
   </message>
-  <message name="GetAllRequest">
+  <message name="GetAllRequest">
   </message>
-  <message name="ReservateResponse">
+  <message name="ReserveResponse">
   </message>
-  <message name="InitRequest">
+  <message name="InitRequest">
+  </message>
+  <message name="GetRequest">
+    <part name="parameters" element="service:RoomId"></part>
+  </message>
+  <message name="GetResponse">
+    <part name="room" element="medicare:room"></part>
+  </message>
+  <message name="RegisterRequest">
+    <part name="room" element="medicare:room"></part>
+  </message>
+  <message name="RegisterResponse">
+    <part name="room" element="medicare:room"></part>
+  </message>
+  <message name="GetFault">
+    <part name="fault" element="medicare:error"></part>
+  </message>
+  <message name="GetAllFault">
+    <part name="parameters" element="medicare:error"></part>
+  </message>
+  <message name="FindFault">
+    <part name="parameters" element="medicare:error"></part>
+  </message>
+  <message name="ReserveFault">
+    <part name="parameters" element="medicare:error"></part>
+  </message>
+  <message name="RegisterFault">
+    <part name="parameters" element="medicare:error"></part>
   </message>
   <portType name="RoomServicePort">
+    <operation name="Register">
+      <input message="service:RegisterRequest"></input>
+      <output message="service:RegisterResponse"></output>
+      <fault name="fault" message="service:RegisterFault"></fault>
+    </operation>
+    <operation name="Get">
+      <input message="service:GetRequest"></input>
+      <output message="service:GetResponse"></output>
+      <fault name="fault" message="service:GetFault"></fault>
+    </operation>
     <operation name="GetAll">
-            <input message="service:GetAllRequest"></input>
-            <output message="service:RoomArrayResponse"></output>
+      <input message="service:GetAllRequest"></input>
+      <output message="service:RoomArrayResponse"></output>
+      <fault name="fault" message="service:GetAllFault"></fault>
     </operation>
     <operation name="Find">
       <input message="service:FindRequest"></input>
       <output message="service:RoomArrayResponse"></output>
+      <fault name="fault" message="service:FindFault"></fault>
     </operation>
-    <operation name="Reservate">
-      <input message="service:ReservateRequest"></input>
-      <output message="service:ReservateResponse"></output>
-    </operation>
-    <operation name="Init">
-            <input message="service:InitRequest"></input>
-            <output message="service:RoomArrayResponse"></output>
+    <operation name="Reserve">
+      <input message="service:ReserveRequest"></input>
+      <output message="service:ReserveResponse"></output>
+      <fault name="fault" message="service:ReserveFault"></fault>
     </operation>
   </portType>
   <binding name="RoomServiceBinding" type="service:RoomServicePort">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="GetAll">
       <soap:operation soapAction="http://medicare.com/Services/Room/GetAll" />
+      <input>
+        <soap:body use="literal" />
+      </input>
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="fault">
+        <soap:fault use="literal" name="fault" />
+      </fault>
     </operation>
     <operation name="Find">
       <soap:operation soapAction="http://medicare.com/Services/Room/Find" />
@@ -78,18 +124,45 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="fault">
+        <soap:fault use="literal" name="fault" />
+      </fault>
     </operation>
-    <operation name="Reservate">
-      <soap:operation soapAction="http://medicare.com/Services/Room/Reservate" />
+    <operation name="Reserve">
+      <soap:operation soapAction="http://medicare.com/Services/Room/Reserve" />
       <input>
         <soap:body use="literal" />
       </input>
-    </operation>
-    <operation name="Init">
-      <soap:operation soapAction="http://medicare.com/Services/Room/init" />
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="fault">
+        <soap:fault use="literal" name="fault" />
+      </fault>
+    </operation>
+    <operation name="Get">
+      <soap:operation soapAction="http://medicare.com/Services/Room/Get" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="fault">
+        <soap:fault use="literal" name="fault" />
+      </fault>
+    </operation>
+    <operation name="Register">
+      <soap:operation soapAction="http://medicare.com/Services/Room/Register" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="fault">
+        <soap:fault use="literal" name="fault" />
+      </fault>
     </operation>
   </binding>
   <service name="RoomService">
