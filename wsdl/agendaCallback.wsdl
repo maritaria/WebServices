@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://hospital/agendaCallback/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:agendaCallback="http://hospital/agendaCallback/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:agenda="http://hospital/agenda/">
+	<!-- type definitions -->
+	<types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hospital/agendaCallback/">
+			<xsd:element name="TreatmentScheduling">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Duration" type="xsd:duration" />
+						<xsd:element name="DoctorID" type="xsd:string" />
+						<xsd:element name="PatientID" type="xsd:string" />
+						<xsd:element name="RoomID" type="xsd:string" />
+						<xsd:element name="When" type="xsd:dateTime" />
+						<xsd:element name="WhenOriginally" type="xsd:dateTime" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</types>
+	<message name="receiveCallbackRequest">
+		<part name="treatmentPlan" element="agendaCallback:TreatmentScheduling" />
+	</message>
+
+	<!-- portType definitions -->
+	<portType name="agendaCallback">
+		<operation name="receiveCallback">
+			<input message="agendaCallback:receiveCallbackRequest" />
+		</operation>
+	</portType>
+
+	<!-- binding definition -->
+	<binding name="AgendaCallbackBinding" type="agendaCallback:agendaCallback">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="receiveCallback">
+			<soap:operation soapAction="http://hospital/agendaCallback/receiveCallback" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+		</operation>
+	</binding>
+	<!-- Service defines the address of Web service -->
+	<service name="AgendaCallbackService">
+		<port binding="agendaCallback:AgendaCallbackBinding" name="agendaCallback">
+			<soap:address location="http://localhost:9080/bpel.bikedealer.bike/services/BikeService" />
+		</port>
+	</service>
+</definitions>

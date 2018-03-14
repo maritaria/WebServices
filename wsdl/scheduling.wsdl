@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://hospital/scheduling/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:scheduling="http://hospital/scheduling/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:agenda="http://hospital/agenda/" xmlns:agendaCallback="http://hospital/agendaCallback/"
+	xmlns:doctor="http://hospital/doctor/" xmlns:patient="http://hospital/patient/" xmlns:room="http://hospital/room/">
+	<import location="agenda.wsdl" namespace="http://hospital/agenda/" />
+	<import location="agendaCallback.wsdl" namespace="http://hospital/agendaCallback/" />
+	<import location="doctor.wsdl" namespace="http://hospital/doctor/" />
+	<import location="patient.wsdl" namespace="http://hospital/patient/" />
+	<import location="room.wsdl" namespace="http://hospital/room/" />
+	<!-- type definitions -->
+	<types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hospital/scheduling/">
+			<xsd:element name="Treatment">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PatientID" type="xsd:string" />
+						<xsd:element name="Skills">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Skill" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Items">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Item" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</types>
+	<message name="scheduleTreatmentRequest">
+		<part name="treatmentPlan" element="agenda:TreatmentPlan" />
+	</message>
+	<message name="scheduleTreatmentResponse">
+		<part name="treatmentSchedule" element="agenda:TreatmentScheduling" />
+	</message>
+
+	<!-- portType definitions -->
+	<portType name="scheduling">
+		<operation name="scheduleTreatment">
+			<input message="scheduling:scheduleTreatmentRequest" />
+			<output message="scheduling:scheduleTreatmentResponse" />
+		</operation>
+	</portType>
+
+	<!-- binding definition -->
+	<binding name="SchedulingBinding" type="scheduling:scheduling">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="scheduleTreatment">
+			<soap:operation soapAction="http://hospital/scheduling/scheduleTreatment" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+	<!-- Service defines the address of Web service -->
+	<service name="SchedulingService">
+		<port binding="scheduling:SchedulingBinding" name="scheduling">
+			<soap:address location="http://localhost:9080/bpel.bikedealer.bike/services/BikeService" />
+		</port>
+	</service>
+</definitions>

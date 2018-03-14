@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://hospital/doctor/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:doctor="http://hospital/doctor/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!-- type definitions -->
+	<types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hospital/doctor/">
+			<xsd:element name="DoctorID" type="xsd:string" />
+			<xsd:element name="DoctorIDs">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="doctor:DoctorID" minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Skill" type="xsd:string" />
+			<xsd:element name="Skills">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="doctor:Skill" minOccurs="0" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Notification">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Message" type="xsd:string" />
+						<xsd:element ref="doctor:DoctorID" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</types>
+	<message name="findDoctorRequest">
+		<part name="skills" element="doctor:Skills" />
+	</message>
+	<message name="findDoctorResponse">
+		<part name="doctorIDs" element="doctor:DoctorIDs" />
+	</message>
+	<message name="notifyRequest">
+		<part name="notification" element="doctor:Notification" />
+	</message>
+
+
+	<!-- portType definitions -->
+	<portType name="doctor">
+		<operation name="findDoctor">
+			<input message="doctor:findDoctorRequest" />
+			<output message="doctor:findDoctorResponse" />
+		</operation>
+		<operation name="notify">
+			<input message="doctor:notifyRequest" />
+		</operation>
+	</portType>
+
+	<!-- binding definition -->
+	<binding name="DoctorBinding" type="doctor:doctor">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="findDoctor">
+			<soap:operation soapAction="http://hospital/doctor/findDoctor" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="notify">
+			<soap:operation soapAction="http://hospital/doctor/notify" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+		</operation>
+	</binding>
+
+	<!-- Service defines the address of Web service -->
+	<service name="DoctorService">
+		<port binding="doctor:DoctorBinding" name="doctor">
+			<soap:address location="http://localhost:8080/hospital.doctor/services/DoctorService" />
+		</port>
+	</service>
+</definitions>
