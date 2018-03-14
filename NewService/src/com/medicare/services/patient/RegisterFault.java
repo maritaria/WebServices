@@ -10,7 +10,7 @@ package com.medicare.services.patient;
 
 public class RegisterFault extends java.lang.Exception {
 
-	private static final long serialVersionUID = 1520850479397L;
+	private static final long serialVersionUID = 1521023432185L;
 
 	private com.medicare.types.Error faultMessage;
 

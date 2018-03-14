@@ -6,21 +6,40 @@
         <parameter name="ServiceClass">com.medicare.services.room.RoomServiceSkeleton</parameter>
         <parameter name="useOriginalwsdl">true</parameter>
         <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="Get" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Room">
+            <actionMapping>http://medicare.com/Services/Room/Get</actionMapping>
+            <outputActionMapping>http://medicare.com/Services/Room/RoomServicePort/GetResponse</outputActionMapping>
+            <faultActionMapping faultName="fault">http://medicare.com/Services/Room/RoomServicePort/Get/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="GetFault">http://medicare.com/Services/Room/RoomServicePort/Get/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="GetFault_Exception">http://medicare.com/Services/Room/RoomServicePort/Get/Fault/fault</faultActionMapping>
+        </operation>
         <operation name="GetAll" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Room">
             <actionMapping>http://medicare.com/Services/Room/GetAll</actionMapping>
             <outputActionMapping>http://medicare.com/Services/Room/RoomServicePort/GetAllResponse</outputActionMapping>
+            <faultActionMapping faultName="fault">http://medicare.com/Services/Room/RoomServicePort/GetAll/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="GetAllFault">http://medicare.com/Services/Room/RoomServicePort/GetAll/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="GetAllFault_Exception">http://medicare.com/Services/Room/RoomServicePort/GetAll/Fault/fault</faultActionMapping>
         </operation>
-        <operation name="Init" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Room">
-            <actionMapping>http://medicare.com/Services/Room/init</actionMapping>
-            <outputActionMapping>http://medicare.com/Services/Room/RoomServicePort/InitResponse</outputActionMapping>
+        <operation name="Register" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Room">
+            <actionMapping>http://medicare.com/Services/Room/Register</actionMapping>
+            <outputActionMapping>http://medicare.com/Services/Room/RoomServicePort/RegisterResponse</outputActionMapping>
+            <faultActionMapping faultName="fault">http://medicare.com/Services/Room/RoomServicePort/Register/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="RegisterFault">http://medicare.com/Services/Room/RoomServicePort/Register/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="RegisterFault_Exception">http://medicare.com/Services/Room/RoomServicePort/Register/Fault/fault</faultActionMapping>
         </operation>
-        <operation name="Reservate" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Room">
-            <actionMapping>http://medicare.com/Services/Room/Reservate</actionMapping>
-            <outputActionMapping>http://medicare.com/Services/Room/RoomServicePort/ReservateResponse</outputActionMapping>
+        <operation name="Reserve" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Room">
+            <actionMapping>http://medicare.com/Services/Room/Reserve</actionMapping>
+            <outputActionMapping>http://medicare.com/Services/Room/RoomServicePort/ReserveResponse</outputActionMapping>
+            <faultActionMapping faultName="fault">http://medicare.com/Services/Room/RoomServicePort/Reserve/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="ReserveFault">http://medicare.com/Services/Room/RoomServicePort/Reserve/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="ReserveFault_Exception">http://medicare.com/Services/Room/RoomServicePort/Reserve/Fault/fault</faultActionMapping>
         </operation>
         <operation name="Find" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Room">
             <actionMapping>http://medicare.com/Services/Room/Find</actionMapping>
             <outputActionMapping>http://medicare.com/Services/Room/RoomServicePort/FindResponse</outputActionMapping>
+            <faultActionMapping faultName="fault">http://medicare.com/Services/Room/RoomServicePort/Find/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="FindFault">http://medicare.com/Services/Room/RoomServicePort/Find/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="FindFault_Exception">http://medicare.com/Services/Room/RoomServicePort/Find/Fault/fault</faultActionMapping>
         </operation>
     </service>
 </serviceGroup>

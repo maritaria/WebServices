@@ -9,13 +9,14 @@ package com.medicare.services.room;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.medicare.database.ConnectionFactory;
 import com.medicare.database.RoomRecord;
 import com.medicare.database.Storage;
+import com.medicare.types.RoomE;
 
 /**
  * RoomServiceSkeleton java skeleton for the axisService
@@ -25,92 +26,111 @@ public class RoomServiceSkeleton implements RoomServiceSkeletonInterface {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @return roomArrayResponse6
+	 * @param roomId5
+	 * @return room6
+	 * @throws GetFault
 	 */
 
-	public com.medicare.services.room.RoomArrayResponse getAll() {
-		try(ConnectionSource conn = ConnectionFactory.create()){
-			RoomArrayResponse response = new RoomArrayResponse();
-			for(RoomRecord r : Storage.getRooms(conn).queryForAll()) {
-				response.addRoom(r.toSoap());
-			}
-			return response;
+	public RoomE get(RoomId roomId5) throws GetFault {
+		try(ConnectionSource source = ConnectionFactory.create())
+		{
+			Dao<RoomRecord, Integer> rooms = Storage.getRooms(source);
+			RoomRecord room = rooms.queryForId(new Integer(roomId5.getRoomId()));
+			RoomE result = new RoomE();
+			result.setRoom(room.toSoap());
+			return result;
 		} catch (IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new Error("IO/SQL error: " + e.toString());
+			throw new GetFault(e);
 		}
 	}
 
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @return roomArrayResponse3
+	 * @return roomArrayResponse8
+	 * @throws GetAllFault
 	 */
 
-	public com.medicare.services.room.RoomArrayResponse init() {
-		try (ConnectionSource conn = ConnectionFactory.create()) {
-			ArrayList<RoomRecord> data = new ArrayList<RoomRecord>();
-			RoomRecord record = new RoomRecord();
-			record.name = "surgery-01";
-			record.equipment.add("bed");
-			record.equipment.add("table");
-			record.equipment.add("knife");
-			data.add(record);
-			record = new RoomRecord();
-			record.name = "surgery-02";
-			record.equipment.add("bed");
-			record.equipment.add("table");
-			record.equipment.add("knife");
-			data.add(record);
-			record = new RoomRecord();
-			record.name = "xray-01";
-			record.equipment.add("bed");
-			record.equipment.add("table");
-			record.equipment.add("xray-machine");
-			data.add(record);
-			record = new RoomRecord();
-			record.name = "mri-01";
-			record.equipment.add("bed");
-			record.equipment.add("table");
-			record.equipment.add("mri-machine");
-			data.add(record);
-			Dao<RoomRecord, Integer> rooms = Storage.getRooms(conn);
-			RoomArrayResponse response = new RoomArrayResponse();
-			for (RoomRecord r : data) {
-				rooms.create(r);
-				response.addRoom(r.toSoap());
+	public RoomArrayResponse getAll(
+
+	) throws GetAllFault {
+		try(ConnectionSource source = ConnectionFactory.create())
+		{
+			Dao<RoomRecord, Integer> rooms = Storage.getRooms(source);
+			RoomArrayResponse result = new RoomArrayResponse();
+			for(RoomRecord room : rooms.queryForAll()) {
+				result.addRoom(room.toSoap());
 			}
-			System.out.println("test");
-			return response;
+			return result;
 		} catch (IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new Error("IO/SQL error: " + e.toString());
+			throw new GetAllFault(e);
 		}
 	}
+
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @param reservate9
-	 * @return param10
+	 * @param room9
+	 * @return room10
+	 * @throws RegisterFault
 	 */
 
-	public void reservate(com.medicare.services.room.Reservate reservate9) {
-		// TODO : fill this with the necessary business logic
-
+	public RoomE register(RoomE room9) throws RegisterFault {
+		try(ConnectionSource source = ConnectionFactory.create())
+		{
+			Dao<RoomRecord, Integer> rooms = Storage.getRooms(source);
+			RoomE result = new RoomE();
+			RoomRecord newRecord = new RoomRecord(room9.getRoom());
+			int id = rooms.create(newRecord);
+			result.setRoom(newRecord.toSoap());
+			return result;
+		} catch (IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new RegisterFault(e);
+		}
 	}
 
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @param findFilter11
-	 * @return roomArrayResponse12
+	 * @param reserve11
+	 * @return param12
+	 * @throws ReserveFault
 	 */
 
-	public com.medicare.services.room.RoomArrayResponse find(com.medicare.services.room.FindFilter findFilter11) {
+	public void reserve(Reserve reserve11) throws ReserveFault {
 		// TODO : fill this with the necessary business logic
-		throw new java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#find");
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param findFilter13
+	 * @return roomArrayResponse14
+	 * @throws FindFault
+	 */
+
+	public RoomArrayResponse find(FindFilter findFilter13) throws FindFault {
+		try(ConnectionSource source = ConnectionFactory.create())
+		{
+			Dao<RoomRecord, Integer> rooms = Storage.getRooms(source);
+			RoomArrayResponse result = new RoomArrayResponse();
+			QueryBuilder<RoomRecord, Integer> builder = rooms.queryBuilder();
+			for(RoomRecord room : rooms.queryForAll()) {
+				findFilter13.get
+				rooms.queryForEq(", arg1)
+			}
+			return result;
+		} catch (IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new GetAllFault(e);
+		}
 	}
 
 }

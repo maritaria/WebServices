@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="PatientServiceV2" targetNamespace="http://medicare.com/Services/Doctor" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:service="http://medicare.com/Services/Doctor" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:medicare="http://medicare.com/Types" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema targetNamespace="http://medicare.com/Services/Doctor" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://medicare.com/Types" schemaLocation="MedicalTypes.xsd"/>
+      <xsd:element name="DoctorArrayResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="Doctor" type="medicare:Doctor"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="FindFilter">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="medicare:skill"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="doctorId" type="xsd:string"/>
+      <xsd:element name="GetResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RegisterResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFault" type="xsd:string"/>
+      <xsd:element name="GetAllFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetAllFault" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="FindFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FindFault" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReserveFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ReserveFault" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RegisterFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RegisterFault" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Notify">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string"/>
+            <xsd:element ref="medicare:patient"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NotifyFault" type="xsd:string"/>
+    </xsd:schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://medicare.com/Types" schemaLocation="MedicalTypes.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="FindRequest">
+    <part name="parameters" element="service:FindFilter">
+    </part>
+  </message>
+  <message name="NotifyFault">
+    <part name="fault" element="medicare:error">
+    </part>
+  </message>
+  <message name="InitRequest">
+  </message>
+  <message name="GetAllRequest">
+  </message>
+  <message name="GetAllFault">
+    <part name="parameters" element="medicare:error">
+    </part>
+  </message>
+  <message name="RegisterResponse">
+    <part name="Doctor" element="medicare:doctor">
+    </part>
+  </message>
+  <message name="DoctorArrayResponse">
+    <part name="Doctors" element="service:DoctorArrayResponse">
+    </part>
+  </message>
+  <message name="NotifyResponse">
+  </message>
+  <message name="GetRequest">
+    <part name="parameters" element="service:doctorId">
+    </part>
+  </message>
+  <message name="NotifyRequest">
+    <part name="parameters" element="service:Notify">
+    </part>
+  </message>
+  <message name="GetFault">
+    <part name="fault" element="medicare:error">
+    </part>
+  </message>
+  <message name="GetResponse">
+    <part name="Doctor" element="medicare:doctor">
+    </part>
+  </message>
+  <message name="RegisterFault">
+    <part name="parameters" element="medicare:error">
+    </part>
+  </message>
+  <message name="ReserveResponse">
+  </message>
+  <message name="ReserveFault">
+    <part name="parameters" element="medicare:error">
+    </part>
+  </message>
+  <message name="RegisterRequest">
+    <part name="Doctor" element="medicare:doctor">
+    </part>
+  </message>
+  <message name="FindFault">
+    <part name="parameters" element="medicare:error">
+    </part>
+  </message>
+  <portType name="DoctorServicePort">
+    <operation name="Register">
+      <input message="service:RegisterRequest">
+    </input>
+      <output message="service:RegisterResponse">
+    </output>
+      <fault name="fault" message="service:RegisterFault">
+    </fault>
+    </operation>
+    <operation name="Get">
+      <input message="service:GetRequest">
+    </input>
+      <output message="service:GetResponse">
+    </output>
+      <fault name="fault" message="service:GetFault">
+    </fault>
+    </operation>
+    <operation name="GetAll">
+      <input message="service:GetAllRequest">
+    </input>
+      <output message="service:DoctorArrayResponse">
+    </output>
+      <fault name="fault" message="service:GetAllFault">
+    </fault>
+    </operation>
+    <operation name="Find">
+      <input message="service:FindRequest">
+    </input>
+      <output message="service:DoctorArrayResponse">
+    </output>
+      <fault name="fault" message="service:FindFault">
+    </fault>
+    </operation>
+    <operation name="Notify">
+      <input message="service:NotifyRequest">
+    </input>
+      <output message="service:NotifyResponse">
+    </output>
+      <fault name="fault" message="service:NotifyFault">
+    </fault>
+    </operation>
+  </portType>
+  <binding name="DoctorServiceBinding" type="service:DoctorServicePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetAll">
+      <soap:operation soapAction="http://medicare.com/Services/Doctor/GetAll"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="Find">
+      <soap:operation soapAction="http://medicare.com/Services/Doctor/Find"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="Get">
+      <soap:operation soapAction="http://medicare.com/Services/Doctor/Get"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="Register">
+      <soap:operation soapAction="http://medicare.com/Services/Doctor/Register"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="Notify">
+      <soap:operation soapAction="http://medicare.com/Services/Doctor/Notify"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="DoctorService">
+    <port name="MainPort" binding="service:DoctorServiceBinding">
+      <soap:address location="http://localhost:8080/NewService/services/DoctorService"/>
+    </port>
+  </service>
+</definitions>

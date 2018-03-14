@@ -26,19 +26,41 @@ public interface PatientServiceSkeletonInterface {
 	 * Auto generated method signature
 	 * 
 	 * @param notify
-	 * @throws NotifyFaultException
+	 * @throws NotifyFault
 	 *             :
 	 */
 
-	public void notify(com.medicare.services.patient.Notify notify) throws NotifyFaultException;
+	public void notify(com.medicare.services.patient.Notify notify) throws NotifyFault;
 
 	/**
 	 * Auto generated method signature
 	 * 
+	 * @throws GetAllFault
+	 *             :
 	 */
 
 	public com.medicare.types.Patients getAll(
 
-	);
+	) throws GetAllFault;
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param patientId
+	 * @throws GetFault
+	 *             :
+	 */
+
+	public com.medicare.types.PatientE get(com.medicare.services.patient.PatientId patientId) throws GetFault;
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param patientName
+	 * @throws FindFault
+	 *             :
+	 */
+
+	public com.medicare.types.Patients find(com.medicare.services.patient.PatientName patientName) throws FindFault;
 
 }

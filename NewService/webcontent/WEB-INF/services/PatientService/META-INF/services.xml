@@ -23,6 +23,23 @@
         <operation name="GetAll" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Patient">
             <actionMapping>http://medicare.com/Services/Patient/GetAll</actionMapping>
             <outputActionMapping>http://medicare.com/Services/Patient/PatientServicePort/GetAllResponse</outputActionMapping>
+            <faultActionMapping faultName="fault">http://medicare.com/Services/Patient/PatientServicePort/GetAll/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="GetAllFault">http://medicare.com/Services/Patient/PatientServicePort/GetAll/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="GetAllFault_Exception">http://medicare.com/Services/Patient/PatientServicePort/GetAll/Fault/fault</faultActionMapping>
+        </operation>
+        <operation name="Get" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Patient">
+            <actionMapping>http://medicare.com/Services/Patient/Get</actionMapping>
+            <outputActionMapping>http://medicare.com/Services/Patient/PatientServicePort/GetResponse</outputActionMapping>
+            <faultActionMapping faultName="fault">http://medicare.com/Services/Patient/PatientServicePort/Get/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="GetFault">http://medicare.com/Services/Patient/PatientServicePort/Get/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="GetFault_Exception">http://medicare.com/Services/Patient/PatientServicePort/Get/Fault/fault</faultActionMapping>
+        </operation>
+        <operation name="Find" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://medicare.com/Services/Patient">
+            <actionMapping>http://medicare.com/Services/Patient/Find</actionMapping>
+            <outputActionMapping>http://medicare.com/Services/Patient/PatientServicePort/FindResponse</outputActionMapping>
+            <faultActionMapping faultName="fault">http://medicare.com/Services/Patient/PatientServicePort/Find/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="FindFault">http://medicare.com/Services/Patient/PatientServicePort/Find/Fault/fault</faultActionMapping>
+            <faultActionMapping faultName="FindFault_Exception">http://medicare.com/Services/Patient/PatientServicePort/Find/Fault/fault</faultActionMapping>
         </operation>
     </service>
 </serviceGroup>

@@ -45,6 +45,20 @@ public abstract class RoomServiceCallbackHandler {
 	}
 
 	/**
+	 * auto generated Axis2 call back method for get method override this method for
+	 * handling normal response from get operation
+	 */
+	public void receiveResultget(com.medicare.types.RoomE result) {
+	}
+
+	/**
+	 * auto generated Axis2 Error handler override this method for handling error
+	 * response from get operation
+	 */
+	public void receiveErrorget(java.lang.Exception e) {
+	}
+
+	/**
 	 * auto generated Axis2 call back method for getAll method override this method
 	 * for handling normal response from getAll operation
 	 */
@@ -59,31 +73,31 @@ public abstract class RoomServiceCallbackHandler {
 	}
 
 	/**
-	 * auto generated Axis2 call back method for init method override this method
-	 * for handling normal response from init operation
+	 * auto generated Axis2 call back method for register method override this
+	 * method for handling normal response from register operation
 	 */
-	public void receiveResultinit(com.medicare.services.room.RoomArrayResponse result) {
+	public void receiveResultregister(com.medicare.types.RoomE result) {
 	}
 
 	/**
 	 * auto generated Axis2 Error handler override this method for handling error
-	 * response from init operation
+	 * response from register operation
 	 */
-	public void receiveErrorinit(java.lang.Exception e) {
+	public void receiveErrorregister(java.lang.Exception e) {
 	}
 
 	/**
-	 * auto generated Axis2 call back method for reservate method override this
-	 * method for handling normal response from reservate operation
+	 * auto generated Axis2 call back method for reserve method override this method
+	 * for handling normal response from reserve operation
 	 */
-	public void receiveResultreservate() {
+	public void receiveResultreserve() {
 	}
 
 	/**
 	 * auto generated Axis2 Error handler override this method for handling error
-	 * response from reservate operation
+	 * response from reserve operation
 	 */
-	public void receiveErrorreservate(java.lang.Exception e) {
+	public void receiveErrorreserve(java.lang.Exception e) {
 	}
 
 	/**

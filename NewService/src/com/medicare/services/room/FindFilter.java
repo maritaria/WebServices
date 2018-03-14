@@ -16,7 +16,7 @@ package com.medicare.services.room;
 public class FindFilter implements org.apache.axis2.databinding.ADBBean {
 
 	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-			"http://medicare.com/Services/Room", "FindFilter", "ns2");
+			"http://medicare.com/Services/Room", "FindFilter", "ns3");
 
 	/**
 	 * field for AvailableTime
@@ -153,7 +153,7 @@ public class FindFilter implements org.apache.axis2.databinding.ADBBean {
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
 		if (namespace.equals("http://medicare.com/Services/Room")) {
-			return "ns2";
+			return "ns3";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
 	}

@@ -1,74 +1,47 @@
 
 /**
- * Reservate.java
+ * NotifyFault.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
  */
 
-package com.medicare.services.room;
+package com.medicare.services.doctor;
 
 /**
- * Reservate bean class
+ * NotifyFault bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class Reservate implements org.apache.axis2.databinding.ADBBean {
+public class NotifyFault implements org.apache.axis2.databinding.ADBBean {
 
 	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-			"http://medicare.com/Services/Room", "Reservate", "ns2");
+			"http://medicare.com/Services/Doctor", "NotifyFault", "ns2");
 
 	/**
-	 * field for Room
+	 * field for NotifyFault
 	 */
 
-	protected java.math.BigInteger localRoom;
+	protected java.lang.String localNotifyFault;
 
 	/**
 	 * Auto generated getter method
 	 * 
-	 * @return java.math.BigInteger
+	 * @return java.lang.String
 	 */
-	public java.math.BigInteger getRoom() {
-		return localRoom;
+	public java.lang.String getNotifyFault() {
+		return localNotifyFault;
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            Room
+	 *            NotifyFault
 	 */
-	public void setRoom(java.math.BigInteger param) {
+	public void setNotifyFault(java.lang.String param) {
 
-		this.localRoom = param;
-
-	}
-
-	/**
-	 * field for Timeslot
-	 */
-
-	protected com.medicare.types.Timeslot localTimeslot;
-
-	/**
-	 * Auto generated getter method
-	 * 
-	 * @return com.medicare.types.Timeslot
-	 */
-	public com.medicare.types.Timeslot getTimeslot() {
-		return localTimeslot;
-	}
-
-	/**
-	 * Auto generated setter method
-	 * 
-	 * @param param
-	 *            Timeslot
-	 */
-	public void setTimeslot(com.medicare.types.Timeslot param) {
-
-		this.localTimeslot = param;
+		this.localNotifyFault = param;
 
 	}
 
@@ -95,52 +68,40 @@ public class Reservate implements org.apache.axis2.databinding.ADBBean {
 			boolean serializeType)
 			throws javax.xml.stream.XMLStreamException, org.apache.axis2.databinding.ADBException {
 
-		java.lang.String prefix = null;
-		java.lang.String namespace = null;
+		// We can safely assume an element has only one type associated with it
 
-		prefix = parentQName.getPrefix();
-		namespace = parentQName.getNamespaceURI();
-		writeStartElement(prefix, namespace, parentQName.getLocalPart(), xmlWriter);
+		java.lang.String namespace = "http://medicare.com/Services/Doctor";
+		java.lang.String _localName = "NotifyFault";
 
+		writeStartElement(null, namespace, _localName, xmlWriter);
+
+		// add the type details if this is used in a simple type
 		if (serializeType) {
-
-			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://medicare.com/Services/Room");
+			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://medicare.com/Services/Doctor");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
 				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type",
-						namespacePrefix + ":Reservate", xmlWriter);
+						namespacePrefix + ":NotifyFault", xmlWriter);
 			} else {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "Reservate", xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "NotifyFault", xmlWriter);
 			}
-
 		}
 
-		namespace = "";
-		writeStartElement(null, namespace, "room", xmlWriter);
+		if (localNotifyFault == null) {
 
-		if (localRoom == null) {
-			// write the nil attribute
-
-			throw new org.apache.axis2.databinding.ADBException("room cannot be null!!");
+			throw new org.apache.axis2.databinding.ADBException("NotifyFault cannot be null !!");
 
 		} else {
 
-			xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRoom));
+			xmlWriter.writeCharacters(localNotifyFault);
 
 		}
-
-		xmlWriter.writeEndElement();
-
-		if (localTimeslot == null) {
-			throw new org.apache.axis2.databinding.ADBException("timeslot cannot be null!!");
-		}
-		localTimeslot.serialize(new javax.xml.namespace.QName("", "timeslot"), xmlWriter);
 
 		xmlWriter.writeEndElement();
 
 	}
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
-		if (namespace.equals("http://medicare.com/Services/Room")) {
+		if (namespace.equals("http://medicare.com/Services/Doctor")) {
 			return "ns2";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
@@ -317,26 +278,11 @@ public class Reservate implements org.apache.axis2.databinding.ADBBean {
 	public javax.xml.stream.XMLStreamReader getPullParser(javax.xml.namespace.QName qName)
 			throws org.apache.axis2.databinding.ADBException {
 
-		java.util.ArrayList elementList = new java.util.ArrayList();
-		java.util.ArrayList attribList = new java.util.ArrayList();
-
-		elementList.add(new javax.xml.namespace.QName("", "room"));
-
-		if (localRoom != null) {
-			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRoom));
-		} else {
-			throw new org.apache.axis2.databinding.ADBException("room cannot be null!!");
-		}
-
-		elementList.add(new javax.xml.namespace.QName("", "timeslot"));
-
-		if (localTimeslot == null) {
-			throw new org.apache.axis2.databinding.ADBException("timeslot cannot be null!!");
-		}
-		elementList.add(localTimeslot);
-
-		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(),
-				attribList.toArray());
+		// We can safely assume an element has only one type associated with it
+		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(MY_QNAME,
+				new java.lang.Object[] { org.apache.axis2.databinding.utils.reader.ADBXMLStreamReader.ELEMENT_TEXT,
+						org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localNotifyFault) },
+				null);
 
 	}
 
@@ -354,8 +300,8 @@ public class Reservate implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static Reservate parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			Reservate object = new Reservate();
+		public static NotifyFault parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
+			NotifyFault object = new NotifyFault();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -366,83 +312,42 @@ public class Reservate implements org.apache.axis2.databinding.ADBBean {
 				while (!reader.isStartElement() && !reader.isEndElement())
 					reader.next();
 
-				if (reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "type") != null) {
-					java.lang.String fullTypeName = reader
-							.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "type");
-					if (fullTypeName != null) {
-						java.lang.String nsPrefix = null;
-						if (fullTypeName.indexOf(":") > -1) {
-							nsPrefix = fullTypeName.substring(0, fullTypeName.indexOf(":"));
-						}
-						nsPrefix = nsPrefix == null ? "" : nsPrefix;
-
-						java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":") + 1);
-
-						if (!"Reservate".equals(type)) {
-							// find namespace for the prefix
-							java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-							return (Reservate) com.medicare.services.room.ExtensionMapper.getTypeObject(nsUri, type,
-									reader);
-						}
-
-					}
-
-				}
-
 				// Note all attributes that were handled. Used to differ normal attributes
 				// from anyAttributes.
 				java.util.Vector handledAttributes = new java.util.Vector();
 
-				reader.next();
+				while (!reader.isEndElement()) {
+					if (reader.isStartElement()) {
 
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
+						if (reader.isStartElement()
+								&& new javax.xml.namespace.QName("http://medicare.com/Services/Doctor", "NotifyFault")
+										.equals(reader.getName())) {
 
-				if (reader.isStartElement() && new javax.xml.namespace.QName("", "room").equals(reader.getName())) {
+							nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+									"nil");
+							if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
+								throw new org.apache.axis2.databinding.ADBException(
+										"The element: " + "NotifyFault" + "  cannot be null");
+							}
 
-					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
-					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
-						throw new org.apache.axis2.databinding.ADBException(
-								"The element: " + "room" + "  cannot be null");
+							java.lang.String content = reader.getElementText();
+
+							object.setNotifyFault(
+									org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+
+						} // End of if for expected property start element
+
+						else {
+							// A start element we are not expecting indicates an invalid parameter was
+							// passed
+							throw new org.apache.axis2.databinding.ADBException(
+									"Unexpected subelement " + reader.getName());
+						}
+
+					} else {
+						reader.next();
 					}
-
-					java.lang.String content = reader.getElementText();
-
-					object.setRoom(org.apache.axis2.databinding.utils.ConverterUtil.convertToInteger(content));
-
-					reader.next();
-
-				} // End of if for expected property start element
-
-				else {
-					// A start element we are not expecting indicates an invalid parameter was
-					// passed
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-				}
-
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
-
-				if (reader.isStartElement() && new javax.xml.namespace.QName("", "timeslot").equals(reader.getName())) {
-
-					object.setTimeslot(com.medicare.types.Timeslot.Factory.parse(reader));
-
-					reader.next();
-
-				} // End of if for expected property start element
-
-				else {
-					// A start element we are not expecting indicates an invalid parameter was
-					// passed
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-				}
-
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
-
-				if (reader.isStartElement())
-					// A start element we are not expecting indicates a trailing invalid property
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+				} // end of while loop
 
 			} catch (javax.xml.stream.XMLStreamException e) {
 				throw new java.lang.Exception(e);

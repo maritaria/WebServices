@@ -39,7 +39,7 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 		// creating the operations
 		org.apache.axis2.description.AxisOperation __operation;
 
-		_operations = new org.apache.axis2.description.AxisOperation[3];
+		_operations = new org.apache.axis2.description.AxisOperation[5];
 
 		__operation = new org.apache.axis2.description.OutInAxisOperation();
 
@@ -62,6 +62,20 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 
 		_operations[2] = __operation;
 
+		__operation = new org.apache.axis2.description.OutInAxisOperation();
+
+		__operation.setName(new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "get"));
+		_service.addOperation(__operation);
+
+		_operations[3] = __operation;
+
+		__operation = new org.apache.axis2.description.OutInAxisOperation();
+
+		__operation.setName(new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "find"));
+		_service.addOperation(__operation);
+
+		_operations[4] = __operation;
+
 	}
 
 	// populates the faults
@@ -83,14 +97,53 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 		faultExceptionNameMap.put(
 				new org.apache.axis2.client.FaultMapKey(
 						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Notify"),
-				"com.medicare.services.patient.NotifyFaultException");
+				"com.medicare.services.patient.NotifyFault");
 		faultExceptionClassNameMap.put(
 				new org.apache.axis2.client.FaultMapKey(
 						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Notify"),
-				"com.medicare.services.patient.NotifyFaultException");
+				"com.medicare.services.patient.NotifyFault");
 		faultMessageMap.put(
 				new org.apache.axis2.client.FaultMapKey(
 						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Notify"),
+				"com.medicare.types.Error");
+
+		faultExceptionNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "GetAll"),
+				"com.medicare.services.patient.GetAllFault");
+		faultExceptionClassNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "GetAll"),
+				"com.medicare.services.patient.GetAllFault");
+		faultMessageMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "GetAll"),
+				"com.medicare.types.Error");
+
+		faultExceptionNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Get"),
+				"com.medicare.services.patient.GetFault");
+		faultExceptionClassNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Get"),
+				"com.medicare.services.patient.GetFault");
+		faultMessageMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Get"),
+				"com.medicare.types.Error");
+
+		faultExceptionNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Find"),
+				"com.medicare.services.patient.FindFault");
+		faultExceptionClassNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Find"),
+				"com.medicare.services.patient.FindFault");
+		faultMessageMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Find"),
 				"com.medicare.types.Error");
 
 	}
@@ -150,7 +203,7 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 * @see com.medicare.services.patient.PatientService#register
-	 * @param person44
+	 * @param person74
 	 * 
 	 * @throws com.medicare.services.patient.RegisterFault
 	 *             :
@@ -158,7 +211,7 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 
 	public com.medicare.types.PatientE register(
 
-			com.medicare.types.PersonE person44)
+			com.medicare.types.PersonE person74)
 
 			throws java.rmi.RemoteException
 
@@ -179,7 +232,7 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
 
-			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), person44,
+			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), person74,
 					optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "register")),
 					new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "register"));
 
@@ -267,12 +320,12 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
 	 * @see com.medicare.services.patient.PatientService#startregister
-	 * @param person44
+	 * @param person74
 	 * 
 	 */
 	public void startregister(
 
-			com.medicare.types.PersonE person44,
+			com.medicare.types.PersonE person74,
 
 			final com.medicare.services.patient.PatientServiceCallbackHandler callback)
 
@@ -292,7 +345,7 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 
 		// Style is Doc.
 
-		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), person44,
+		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), person74,
 				optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "register")),
 				new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "register"));
 
@@ -411,19 +464,19 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 * @see com.medicare.services.patient.PatientService#notify
-	 * @param notify46
+	 * @param notify76
 	 * 
-	 * @throws com.medicare.services.patient.NotifyFaultException
+	 * @throws com.medicare.services.patient.NotifyFault
 	 *             :
 	 */
 
 	public void notify(
 
-			com.medicare.services.patient.Notify notify46)
+			com.medicare.services.patient.Notify notify76)
 
 			throws java.rmi.RemoteException
 
-			, com.medicare.services.patient.NotifyFaultException {
+			, com.medicare.services.patient.NotifyFault {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient = _serviceClient
@@ -440,7 +493,7 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
 
-			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), notify46,
+			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), notify76,
 					optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "notify")),
 					new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "notify"));
 
@@ -480,8 +533,8 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 								new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof com.medicare.services.patient.NotifyFaultException) {
-							throw (com.medicare.services.patient.NotifyFaultException) ex;
+						if (ex instanceof com.medicare.services.patient.NotifyFault) {
+							throw (com.medicare.services.patient.NotifyFault) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -521,12 +574,12 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
 	 * @see com.medicare.services.patient.PatientService#startnotify
-	 * @param notify46
+	 * @param notify76
 	 * 
 	 */
 	public void startnotify(
 
-			com.medicare.services.patient.Notify notify46,
+			com.medicare.services.patient.Notify notify76,
 
 			final com.medicare.services.patient.PatientServiceCallbackHandler callback)
 
@@ -546,7 +599,7 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 
 		// Style is Doc.
 
-		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), notify46,
+		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), notify76,
 				optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "notify")),
 				new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "notify"));
 
@@ -575,6 +628,8 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 * @see com.medicare.services.patient.PatientService#getAll
+	 * @throws com.medicare.services.patient.GetAllFault
+	 *             :
 	 */
 
 	public com.medicare.types.Patients getAll(
@@ -583,7 +638,7 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 
 			throws java.rmi.RemoteException
 
-	{
+			, com.medicare.services.patient.GetAllFault {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient = _serviceClient
@@ -648,6 +703,10 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 						java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
 								new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
+
+						if (ex instanceof com.medicare.services.patient.GetAllFault) {
+							throw (com.medicare.services.patient.GetAllFault) ex;
+						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
 					} catch (java.lang.ClassCastException e) {
@@ -757,6 +816,11 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 										new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
+								if (ex instanceof com.medicare.services.patient.GetAllFault) {
+									callback.receiveErrorgetAll((com.medicare.services.patient.GetAllFault) ex);
+									return;
+								}
+
 								callback.receiveErrorgetAll(new java.rmi.RemoteException(ex.getMessage(), ex));
 							} catch (java.lang.ClassCastException e) {
 								// we cannot intantiate the class - throw the original Axis fault
@@ -810,6 +874,528 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 		if (_operations[2].getMessageReceiver() == null && _operationClient.getOptions().isUseSeparateListener()) {
 			_callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
 			_operations[2].setMessageReceiver(_callbackReceiver);
+		}
+
+		// execute the operation client
+		_operationClient.execute(false);
+
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @see com.medicare.services.patient.PatientService#get
+	 * @param patientId80
+	 * 
+	 * @throws com.medicare.services.patient.GetFault
+	 *             :
+	 */
+
+	public com.medicare.types.PatientE get(
+
+			com.medicare.services.patient.PatientId patientId80)
+
+			throws java.rmi.RemoteException
+
+			, com.medicare.services.patient.GetFault {
+		org.apache.axis2.context.MessageContext _messageContext = null;
+		try {
+			org.apache.axis2.client.OperationClient _operationClient = _serviceClient
+					.createClient(_operations[3].getName());
+			_operationClient.getOptions().setAction("http://medicare.com/Services/Patient/Get");
+			_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+			addPropertyToOperationClient(_operationClient,
+					org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR, "&");
+
+			// create a message context
+			_messageContext = new org.apache.axis2.context.MessageContext();
+
+			// create SOAP envelope with that payload
+			org.apache.axiom.soap.SOAPEnvelope env = null;
+
+			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), patientId80,
+					optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "get")),
+					new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "get"));
+
+			// adding SOAP soap_headers
+			_serviceClient.addHeadersToEnvelope(env);
+			// set the message context with that soap envelope
+			_messageContext.setEnvelope(env);
+
+			// add the message contxt to the operation client
+			_operationClient.addMessageContext(_messageContext);
+
+			// execute the operation client
+			_operationClient.execute(true);
+
+			org.apache.axis2.context.MessageContext _returnMessageContext = _operationClient
+					.getMessageContext(org.apache.axis2.wsdl.WSDLConstants.MESSAGE_LABEL_IN_VALUE);
+			org.apache.axiom.soap.SOAPEnvelope _returnEnv = _returnMessageContext.getEnvelope();
+
+			java.lang.Object object = fromOM(_returnEnv.getBody().getFirstElement(), com.medicare.types.PatientE.class,
+					getEnvelopeNamespaces(_returnEnv));
+
+			return (com.medicare.types.PatientE) object;
+
+		} catch (org.apache.axis2.AxisFault f) {
+
+			org.apache.axiom.om.OMElement faultElt = f.getDetail();
+			if (faultElt != null) {
+				if (faultExceptionNameMap
+						.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Get"))) {
+					// make the fault by reflection
+					try {
+						java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap
+								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Get"));
+						java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+						java.lang.reflect.Constructor constructor = exceptionClass
+								.getConstructor(java.lang.String.class);
+						java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+						// message class
+						java.lang.String messageClassName = (java.lang.String) faultMessageMap
+								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Get"));
+						java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+						java.lang.Object messageObject = fromOM(faultElt, messageClass, null);
+						java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+								new java.lang.Class[] { messageClass });
+						m.invoke(ex, new java.lang.Object[] { messageObject });
+
+						if (ex instanceof com.medicare.services.patient.GetFault) {
+							throw (com.medicare.services.patient.GetFault) ex;
+						}
+
+						throw new java.rmi.RemoteException(ex.getMessage(), ex);
+					} catch (java.lang.ClassCastException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.ClassNotFoundException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.NoSuchMethodException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.reflect.InvocationTargetException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.IllegalAccessException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.InstantiationException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					}
+				} else {
+					throw f;
+				}
+			} else {
+				throw f;
+			}
+		} finally {
+			if (_messageContext.getTransportOut() != null) {
+				_messageContext.getTransportOut().getSender().cleanup(_messageContext);
+			}
+		}
+	}
+
+	/**
+	 * Auto generated method signature for Asynchronous Invocations
+	 * 
+	 * @see com.medicare.services.patient.PatientService#startget
+	 * @param patientId80
+	 * 
+	 */
+	public void startget(
+
+			com.medicare.services.patient.PatientId patientId80,
+
+			final com.medicare.services.patient.PatientServiceCallbackHandler callback)
+
+			throws java.rmi.RemoteException {
+
+		org.apache.axis2.client.OperationClient _operationClient = _serviceClient
+				.createClient(_operations[3].getName());
+		_operationClient.getOptions().setAction("http://medicare.com/Services/Patient/Get");
+		_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+		addPropertyToOperationClient(_operationClient,
+				org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR, "&");
+
+		// create SOAP envelope with that payload
+		org.apache.axiom.soap.SOAPEnvelope env = null;
+		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
+
+		// Style is Doc.
+
+		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), patientId80,
+				optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "get")),
+				new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "get"));
+
+		// adding SOAP soap_headers
+		_serviceClient.addHeadersToEnvelope(env);
+		// create message context with that soap envelope
+		_messageContext.setEnvelope(env);
+
+		// add the message context to the operation client
+		_operationClient.addMessageContext(_messageContext);
+
+		_operationClient.setCallback(new org.apache.axis2.client.async.AxisCallback() {
+			public void onMessage(org.apache.axis2.context.MessageContext resultContext) {
+				try {
+					org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
+
+					java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
+							com.medicare.types.PatientE.class, getEnvelopeNamespaces(resultEnv));
+					callback.receiveResultget((com.medicare.types.PatientE) object);
+
+				} catch (org.apache.axis2.AxisFault e) {
+					callback.receiveErrorget(e);
+				}
+			}
+
+			public void onError(java.lang.Exception error) {
+				if (error instanceof org.apache.axis2.AxisFault) {
+					org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
+					org.apache.axiom.om.OMElement faultElt = f.getDetail();
+					if (faultElt != null) {
+						if (faultExceptionNameMap
+								.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Get"))) {
+							// make the fault by reflection
+							try {
+								java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap
+										.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Get"));
+								java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+								java.lang.reflect.Constructor constructor = exceptionClass
+										.getConstructor(java.lang.String.class);
+								java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+								// message class
+								java.lang.String messageClassName = (java.lang.String) faultMessageMap
+										.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Get"));
+								java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+								java.lang.Object messageObject = fromOM(faultElt, messageClass, null);
+								java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+										new java.lang.Class[] { messageClass });
+								m.invoke(ex, new java.lang.Object[] { messageObject });
+
+								if (ex instanceof com.medicare.services.patient.GetFault) {
+									callback.receiveErrorget((com.medicare.services.patient.GetFault) ex);
+									return;
+								}
+
+								callback.receiveErrorget(new java.rmi.RemoteException(ex.getMessage(), ex));
+							} catch (java.lang.ClassCastException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							} catch (java.lang.ClassNotFoundException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							} catch (java.lang.NoSuchMethodException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							} catch (java.lang.reflect.InvocationTargetException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							} catch (java.lang.IllegalAccessException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							} catch (java.lang.InstantiationException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							} catch (org.apache.axis2.AxisFault e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							}
+						} else {
+							callback.receiveErrorget(f);
+						}
+					} else {
+						callback.receiveErrorget(f);
+					}
+				} else {
+					callback.receiveErrorget(error);
+				}
+			}
+
+			public void onFault(org.apache.axis2.context.MessageContext faultContext) {
+				org.apache.axis2.AxisFault fault = org.apache.axis2.util.Utils
+						.getInboundFaultFromMessageContext(faultContext);
+				onError(fault);
+			}
+
+			public void onComplete() {
+				try {
+					_messageContext.getTransportOut().getSender().cleanup(_messageContext);
+				} catch (org.apache.axis2.AxisFault axisFault) {
+					callback.receiveErrorget(axisFault);
+				}
+			}
+		});
+
+		org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
+		if (_operations[3].getMessageReceiver() == null && _operationClient.getOptions().isUseSeparateListener()) {
+			_callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
+			_operations[3].setMessageReceiver(_callbackReceiver);
+		}
+
+		// execute the operation client
+		_operationClient.execute(false);
+
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @see com.medicare.services.patient.PatientService#find
+	 * @param patientName82
+	 * 
+	 * @throws com.medicare.services.patient.FindFault
+	 *             :
+	 */
+
+	public com.medicare.types.Patients find(
+
+			com.medicare.services.patient.PatientName patientName82)
+
+			throws java.rmi.RemoteException
+
+			, com.medicare.services.patient.FindFault {
+		org.apache.axis2.context.MessageContext _messageContext = null;
+		try {
+			org.apache.axis2.client.OperationClient _operationClient = _serviceClient
+					.createClient(_operations[4].getName());
+			_operationClient.getOptions().setAction("http://medicare.com/Services/Patient/Find");
+			_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+			addPropertyToOperationClient(_operationClient,
+					org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR, "&");
+
+			// create a message context
+			_messageContext = new org.apache.axis2.context.MessageContext();
+
+			// create SOAP envelope with that payload
+			org.apache.axiom.soap.SOAPEnvelope env = null;
+
+			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), patientName82,
+					optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "find")),
+					new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "find"));
+
+			// adding SOAP soap_headers
+			_serviceClient.addHeadersToEnvelope(env);
+			// set the message context with that soap envelope
+			_messageContext.setEnvelope(env);
+
+			// add the message contxt to the operation client
+			_operationClient.addMessageContext(_messageContext);
+
+			// execute the operation client
+			_operationClient.execute(true);
+
+			org.apache.axis2.context.MessageContext _returnMessageContext = _operationClient
+					.getMessageContext(org.apache.axis2.wsdl.WSDLConstants.MESSAGE_LABEL_IN_VALUE);
+			org.apache.axiom.soap.SOAPEnvelope _returnEnv = _returnMessageContext.getEnvelope();
+
+			java.lang.Object object = fromOM(_returnEnv.getBody().getFirstElement(), com.medicare.types.Patients.class,
+					getEnvelopeNamespaces(_returnEnv));
+
+			return (com.medicare.types.Patients) object;
+
+		} catch (org.apache.axis2.AxisFault f) {
+
+			org.apache.axiom.om.OMElement faultElt = f.getDetail();
+			if (faultElt != null) {
+				if (faultExceptionNameMap
+						.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Find"))) {
+					// make the fault by reflection
+					try {
+						java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap
+								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Find"));
+						java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+						java.lang.reflect.Constructor constructor = exceptionClass
+								.getConstructor(java.lang.String.class);
+						java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+						// message class
+						java.lang.String messageClassName = (java.lang.String) faultMessageMap
+								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Find"));
+						java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+						java.lang.Object messageObject = fromOM(faultElt, messageClass, null);
+						java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+								new java.lang.Class[] { messageClass });
+						m.invoke(ex, new java.lang.Object[] { messageObject });
+
+						if (ex instanceof com.medicare.services.patient.FindFault) {
+							throw (com.medicare.services.patient.FindFault) ex;
+						}
+
+						throw new java.rmi.RemoteException(ex.getMessage(), ex);
+					} catch (java.lang.ClassCastException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.ClassNotFoundException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.NoSuchMethodException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.reflect.InvocationTargetException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.IllegalAccessException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.InstantiationException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					}
+				} else {
+					throw f;
+				}
+			} else {
+				throw f;
+			}
+		} finally {
+			if (_messageContext.getTransportOut() != null) {
+				_messageContext.getTransportOut().getSender().cleanup(_messageContext);
+			}
+		}
+	}
+
+	/**
+	 * Auto generated method signature for Asynchronous Invocations
+	 * 
+	 * @see com.medicare.services.patient.PatientService#startfind
+	 * @param patientName82
+	 * 
+	 */
+	public void startfind(
+
+			com.medicare.services.patient.PatientName patientName82,
+
+			final com.medicare.services.patient.PatientServiceCallbackHandler callback)
+
+			throws java.rmi.RemoteException {
+
+		org.apache.axis2.client.OperationClient _operationClient = _serviceClient
+				.createClient(_operations[4].getName());
+		_operationClient.getOptions().setAction("http://medicare.com/Services/Patient/Find");
+		_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+		addPropertyToOperationClient(_operationClient,
+				org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR, "&");
+
+		// create SOAP envelope with that payload
+		org.apache.axiom.soap.SOAPEnvelope env = null;
+		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
+
+		// Style is Doc.
+
+		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), patientName82,
+				optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "find")),
+				new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "find"));
+
+		// adding SOAP soap_headers
+		_serviceClient.addHeadersToEnvelope(env);
+		// create message context with that soap envelope
+		_messageContext.setEnvelope(env);
+
+		// add the message context to the operation client
+		_operationClient.addMessageContext(_messageContext);
+
+		_operationClient.setCallback(new org.apache.axis2.client.async.AxisCallback() {
+			public void onMessage(org.apache.axis2.context.MessageContext resultContext) {
+				try {
+					org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
+
+					java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
+							com.medicare.types.Patients.class, getEnvelopeNamespaces(resultEnv));
+					callback.receiveResultfind((com.medicare.types.Patients) object);
+
+				} catch (org.apache.axis2.AxisFault e) {
+					callback.receiveErrorfind(e);
+				}
+			}
+
+			public void onError(java.lang.Exception error) {
+				if (error instanceof org.apache.axis2.AxisFault) {
+					org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
+					org.apache.axiom.om.OMElement faultElt = f.getDetail();
+					if (faultElt != null) {
+						if (faultExceptionNameMap
+								.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Find"))) {
+							// make the fault by reflection
+							try {
+								java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap
+										.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Find"));
+								java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+								java.lang.reflect.Constructor constructor = exceptionClass
+										.getConstructor(java.lang.String.class);
+								java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+								// message class
+								java.lang.String messageClassName = (java.lang.String) faultMessageMap
+										.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Find"));
+								java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+								java.lang.Object messageObject = fromOM(faultElt, messageClass, null);
+								java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+										new java.lang.Class[] { messageClass });
+								m.invoke(ex, new java.lang.Object[] { messageObject });
+
+								if (ex instanceof com.medicare.services.patient.FindFault) {
+									callback.receiveErrorfind((com.medicare.services.patient.FindFault) ex);
+									return;
+								}
+
+								callback.receiveErrorfind(new java.rmi.RemoteException(ex.getMessage(), ex));
+							} catch (java.lang.ClassCastException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorfind(f);
+							} catch (java.lang.ClassNotFoundException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorfind(f);
+							} catch (java.lang.NoSuchMethodException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorfind(f);
+							} catch (java.lang.reflect.InvocationTargetException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorfind(f);
+							} catch (java.lang.IllegalAccessException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorfind(f);
+							} catch (java.lang.InstantiationException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorfind(f);
+							} catch (org.apache.axis2.AxisFault e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorfind(f);
+							}
+						} else {
+							callback.receiveErrorfind(f);
+						}
+					} else {
+						callback.receiveErrorfind(f);
+					}
+				} else {
+					callback.receiveErrorfind(error);
+				}
+			}
+
+			public void onFault(org.apache.axis2.context.MessageContext faultContext) {
+				org.apache.axis2.AxisFault fault = org.apache.axis2.util.Utils
+						.getInboundFaultFromMessageContext(faultContext);
+				onError(fault);
+			}
+
+			public void onComplete() {
+				try {
+					_messageContext.getTransportOut().getSender().cleanup(_messageContext);
+				} catch (org.apache.axis2.AxisFault axisFault) {
+					callback.receiveErrorfind(axisFault);
+				}
+			}
+		});
+
+		org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
+		if (_operations[4].getMessageReceiver() == null && _operationClient.getOptions().isUseSeparateListener()) {
+			_callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
+			_operations[4].setMessageReceiver(_callbackReceiver);
 		}
 
 		// execute the operation client
@@ -906,6 +1492,30 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
+	private org.apache.axiom.om.OMElement toOM(com.medicare.services.patient.PatientId param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+			return param.getOMElement(com.medicare.services.patient.PatientId.MY_QNAME,
+					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
+	private org.apache.axiom.om.OMElement toOM(com.medicare.services.patient.PatientName param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+			return param.getOMElement(com.medicare.services.patient.PatientName.MY_QNAME,
+					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 			com.medicare.types.PersonE param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
 			throws org.apache.axis2.AxisFault {
@@ -941,6 +1551,42 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
+	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
+			com.medicare.services.patient.PatientId param, boolean optimizeContent,
+			javax.xml.namespace.QName methodQName) throws org.apache.axis2.AxisFault {
+
+		try {
+
+			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
+			emptyEnvelope.getBody()
+					.addChild(param.getOMElement(com.medicare.services.patient.PatientId.MY_QNAME, factory));
+			return emptyEnvelope;
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
+	/* methods to provide back word compatibility */
+
+	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
+			com.medicare.services.patient.PatientName param, boolean optimizeContent,
+			javax.xml.namespace.QName methodQName) throws org.apache.axis2.AxisFault {
+
+		try {
+
+			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
+			emptyEnvelope.getBody()
+					.addChild(param.getOMElement(com.medicare.services.patient.PatientName.MY_QNAME, factory));
+			return emptyEnvelope;
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
+	/* methods to provide back word compatibility */
+
 	/**
 	 * get the default envelope
 	 */
@@ -956,6 +1602,19 @@ public class PatientServiceStub extends org.apache.axis2.client.Stub {
 			if (com.medicare.services.patient.Notify.class.equals(type)) {
 
 				return com.medicare.services.patient.Notify.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (com.medicare.services.patient.PatientId.class.equals(type)) {
+
+				return com.medicare.services.patient.PatientId.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (com.medicare.services.patient.PatientName.class.equals(type)) {
+
+				return com.medicare.services.patient.PatientName.Factory
+						.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

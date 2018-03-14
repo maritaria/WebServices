@@ -7,22 +7,6 @@
  */
 package com.medicare.services.patient;
 
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.sql.SQLException;
-
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.support.ConnectionSource;
-import com.j256.ormlite.table.TableUtils;
-import com.medicare.database.ConnectionFactory;
-import com.medicare.database.PatientRecord;
-import com.medicare.database.Storage;
-import com.medicare.types.Patient;
-import com.medicare.types.PatientE;
-import com.medicare.types.Patients;
-import com.medicare.types.PersonE;
-
 /**
  * PatientServiceSkeleton java skeleton for the axisService
  */
@@ -31,59 +15,68 @@ public class PatientServiceSkeleton implements PatientServiceSkeletonInterface {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @param person2
-	 * @return patient3
+	 * @param person4
+	 * @return patient5
 	 * @throws RegisterFault
 	 */
 
-	public PatientE register(PersonE person2) throws RegisterFault {
-		PatientRecord newPatient = new PatientRecord(person2.getPerson());
-		try (ConnectionSource conn = ConnectionFactory.create()) {
-			Storage.getPatients(conn).create(newPatient);
-			PatientE result = new PatientE();
-			result.setPatient(newPatient.toSoap());
-			return result;
-		} catch (SQLException e) {
-			throw new RegisterFault("SQL error", e);
-		} catch (IOException e) {
-			throw new RegisterFault("IO error", e);
-		}
-	}
-
-	/**
-	 * Auto generated method signature
-	 * 
-	 * @param notify4
-	 * @return param5
-	 * @throws NotifyFaultException
-	 */
-
-	public void notify(com.medicare.services.patient.Notify notify4) throws NotifyFaultException {
+	public com.medicare.types.PatientE register(com.medicare.types.PersonE person4) throws RegisterFault {
 		// TODO : fill this with the necessary business logic
+		throw new java.lang.UnsupportedOperationException(
+				"Please implement " + this.getClass().getName() + "#register");
 	}
 
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @return patients7
+	 * @param notify6
+	 * @return param7
+	 * @throws NotifyFault
 	 */
 
-	public com.medicare.types.Patients getAll() {
-		Patients results = new Patients();
-		try (ConnectionSource conn = ConnectionFactory.create()) {
-			for (PatientRecord patientData : Storage.getPatients(conn).queryForAll()) {
-				results.addPatient(patientData.toSoap());
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new Error("IO error: " + e.toString());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new Error("SQL error: " + e.toString());
-		}
-		return results;
+	public void notify(com.medicare.services.patient.Notify notify6) throws NotifyFault {
+		// TODO : fill this with the necessary business logic
+
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @return patients9
+	 * @throws GetAllFault
+	 */
+
+	public com.medicare.types.Patients getAll(
+
+	) throws GetAllFault {
+		// TODO : fill this with the necessary business logic
+		throw new java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#getAll");
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param patientId10
+	 * @return patient11
+	 * @throws GetFault
+	 */
+
+	public com.medicare.types.PatientE get(com.medicare.services.patient.PatientId patientId10) throws GetFault {
+		// TODO : fill this with the necessary business logic
+		throw new java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#get");
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param patientName12
+	 * @return patients13
+	 * @throws FindFault
+	 */
+
+	public com.medicare.types.Patients find(com.medicare.services.patient.PatientName patientName12) throws FindFault {
+		// TODO : fill this with the necessary business logic
+		throw new java.lang.UnsupportedOperationException("Please implement " + this.getClass().getName() + "#find");
 	}
 
 }

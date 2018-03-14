@@ -11,35 +11,29 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="NotifyFault">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="NotifyFault" type="xsd:string"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
+      <xsd:element name="PatientId" type="xsd:string"/>
+      <xsd:element name="PatientName" type="xsd:string"/>
+    </xsd:schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://medicare.com/Types" schemaLocation="MedicalTypes.xsd"/>
     </xsd:schema>
   </types>
-  <message name="RegisterRequest">
-    <part name="parameters" element="medicare:person">
-    </part>
-  </message>
   <message name="RegisterResponse">
     <part name="parameters" element="medicare:patient">
     </part>
   </message>
-  <message name="RegisterFault">
-    <part name="error" element="medicare:error">
-    </part>
-  </message>
   <message name="NotifyResponse">
   </message>
-  <message name="NotifyRequest">
-    <part name="parameters" element="service:Notify">
+  <message name="GetRequest">
+    <part name="parameters" element="service:PatientId">
     </part>
   </message>
   <message name="NotifyFault">
     <part name="error" element="medicare:error">
+    </part>
+  </message>
+  <message name="FindRequest">
+    <part name="parameters" element="service:PatientName">
     </part>
   </message>
   <message name="GetAllResponse">
@@ -47,6 +41,38 @@
     </part>
   </message>
   <message name="GetAllRequest">
+  </message>
+  <message name="GetAllFault">
+    <part name="error" element="medicare:error">
+    </part>
+  </message>
+  <message name="RegisterRequest">
+    <part name="parameters" element="medicare:person">
+    </part>
+  </message>
+  <message name="FindResponse">
+    <part name="patients" element="medicare:patients">
+    </part>
+  </message>
+  <message name="RegisterFault">
+    <part name="error" element="medicare:error">
+    </part>
+  </message>
+  <message name="FindFault">
+    <part name="error" element="medicare:error">
+    </part>
+  </message>
+  <message name="NotifyRequest">
+    <part name="parameters" element="service:Notify">
+    </part>
+  </message>
+  <message name="GetResponse">
+    <part name="patient" element="medicare:patient">
+    </part>
+  </message>
+  <message name="GetFault">
+    <part name="error" element="medicare:error">
+    </part>
   </message>
   <portType name="PatientServicePort">
     <operation name="Register">
@@ -57,11 +83,29 @@
       <fault name="fault" message="service:RegisterFault">
     </fault>
     </operation>
+    <operation name="Get">
+      <input message="service:GetRequest">
+    </input>
+      <output message="service:GetResponse">
+    </output>
+      <fault name="fault" message="service:GetFault">
+    </fault>
+    </operation>
     <operation name="GetAll">
       <input message="service:GetAllRequest">
     </input>
       <output message="service:GetAllResponse">
     </output>
+      <fault name="fault" message="service:GetAllFault">
+    </fault>
+    </operation>
+    <operation name="Find">
+      <input message="service:FindRequest">
+    </input>
+      <output message="service:FindResponse">
+    </output>
+      <fault name="fault" message="service:FindFault">
+    </fault>
     </operation>
     <operation name="Notify">
       <input message="service:NotifyRequest">
@@ -94,9 +138,36 @@
       <output>
         <soap:body use="literal"/>
       </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </fault>
     </operation>
     <operation name="Notify">
       <soap:operation soapAction="http://medicare.com/Services/Patient/Notify"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="Get">
+      <soap:operation soapAction="http://medicare.com/Services/Patient/Get"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="Find">
+      <soap:operation soapAction="http://medicare.com/Services/Patient/Find"/>
       <input>
         <soap:body use="literal"/>
       </input>

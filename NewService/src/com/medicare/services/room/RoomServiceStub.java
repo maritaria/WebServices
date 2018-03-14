@@ -39,40 +39,112 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 		// creating the operations
 		org.apache.axis2.description.AxisOperation __operation;
 
-		_operations = new org.apache.axis2.description.AxisOperation[4];
+		_operations = new org.apache.axis2.description.AxisOperation[5];
 
 		__operation = new org.apache.axis2.description.OutInAxisOperation();
 
-		__operation.setName(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "getAll"));
+		__operation.setName(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "get"));
 		_service.addOperation(__operation);
 
 		_operations[0] = __operation;
 
 		__operation = new org.apache.axis2.description.OutInAxisOperation();
 
-		__operation.setName(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "init"));
+		__operation.setName(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "getAll"));
 		_service.addOperation(__operation);
 
 		_operations[1] = __operation;
 
 		__operation = new org.apache.axis2.description.OutInAxisOperation();
 
-		__operation.setName(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "reservate"));
+		__operation.setName(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "register"));
 		_service.addOperation(__operation);
 
 		_operations[2] = __operation;
 
 		__operation = new org.apache.axis2.description.OutInAxisOperation();
 
-		__operation.setName(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "find"));
+		__operation.setName(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "reserve"));
 		_service.addOperation(__operation);
 
 		_operations[3] = __operation;
+
+		__operation = new org.apache.axis2.description.OutInAxisOperation();
+
+		__operation.setName(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "find"));
+		_service.addOperation(__operation);
+
+		_operations[4] = __operation;
 
 	}
 
 	// populates the faults
 	private void populateFaults() {
+
+		faultExceptionNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Get"),
+				"com.medicare.services.room.GetFault");
+		faultExceptionClassNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Get"),
+				"com.medicare.services.room.GetFault");
+		faultMessageMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Get"),
+				"com.medicare.types.Error");
+
+		faultExceptionNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "GetAll"),
+				"com.medicare.services.room.GetAllFault");
+		faultExceptionClassNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "GetAll"),
+				"com.medicare.services.room.GetAllFault");
+		faultMessageMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "GetAll"),
+				"com.medicare.types.Error");
+
+		faultExceptionNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Register"),
+				"com.medicare.services.room.RegisterFault");
+		faultExceptionClassNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Register"),
+				"com.medicare.services.room.RegisterFault");
+		faultMessageMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Register"),
+				"com.medicare.types.Error");
+
+		faultExceptionNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Reserve"),
+				"com.medicare.services.room.ReserveFault");
+		faultExceptionClassNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Reserve"),
+				"com.medicare.services.room.ReserveFault");
+		faultMessageMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Reserve"),
+				"com.medicare.types.Error");
+
+		faultExceptionNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Find"),
+				"com.medicare.services.room.FindFault");
+		faultExceptionClassNameMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Find"),
+				"com.medicare.services.room.FindFault");
+		faultMessageMap.put(
+				new org.apache.axis2.client.FaultMapKey(
+						new javax.xml.namespace.QName("http://medicare.com/Types", "error"), "Find"),
+				"com.medicare.types.Error");
 
 	}
 
@@ -130,7 +202,270 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
+	 * @see com.medicare.services.room.RoomService#get
+	 * @param roomId75
+	 * 
+	 * @throws com.medicare.services.room.GetFault
+	 *             :
+	 */
+
+	public com.medicare.types.RoomE get(
+
+			com.medicare.services.room.RoomId roomId75)
+
+			throws java.rmi.RemoteException
+
+			, com.medicare.services.room.GetFault {
+		org.apache.axis2.context.MessageContext _messageContext = null;
+		try {
+			org.apache.axis2.client.OperationClient _operationClient = _serviceClient
+					.createClient(_operations[0].getName());
+			_operationClient.getOptions().setAction("http://medicare.com/Services/Room/Get");
+			_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+			addPropertyToOperationClient(_operationClient,
+					org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR, "&");
+
+			// create a message context
+			_messageContext = new org.apache.axis2.context.MessageContext();
+
+			// create SOAP envelope with that payload
+			org.apache.axiom.soap.SOAPEnvelope env = null;
+
+			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), roomId75,
+					optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "get")),
+					new javax.xml.namespace.QName("http://medicare.com/Services/Room", "get"));
+
+			// adding SOAP soap_headers
+			_serviceClient.addHeadersToEnvelope(env);
+			// set the message context with that soap envelope
+			_messageContext.setEnvelope(env);
+
+			// add the message contxt to the operation client
+			_operationClient.addMessageContext(_messageContext);
+
+			// execute the operation client
+			_operationClient.execute(true);
+
+			org.apache.axis2.context.MessageContext _returnMessageContext = _operationClient
+					.getMessageContext(org.apache.axis2.wsdl.WSDLConstants.MESSAGE_LABEL_IN_VALUE);
+			org.apache.axiom.soap.SOAPEnvelope _returnEnv = _returnMessageContext.getEnvelope();
+
+			java.lang.Object object = fromOM(_returnEnv.getBody().getFirstElement(), com.medicare.types.RoomE.class,
+					getEnvelopeNamespaces(_returnEnv));
+
+			return (com.medicare.types.RoomE) object;
+
+		} catch (org.apache.axis2.AxisFault f) {
+
+			org.apache.axiom.om.OMElement faultElt = f.getDetail();
+			if (faultElt != null) {
+				if (faultExceptionNameMap
+						.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Get"))) {
+					// make the fault by reflection
+					try {
+						java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap
+								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Get"));
+						java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+						java.lang.reflect.Constructor constructor = exceptionClass
+								.getConstructor(java.lang.String.class);
+						java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+						// message class
+						java.lang.String messageClassName = (java.lang.String) faultMessageMap
+								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Get"));
+						java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+						java.lang.Object messageObject = fromOM(faultElt, messageClass, null);
+						java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+								new java.lang.Class[] { messageClass });
+						m.invoke(ex, new java.lang.Object[] { messageObject });
+
+						if (ex instanceof com.medicare.services.room.GetFault) {
+							throw (com.medicare.services.room.GetFault) ex;
+						}
+
+						throw new java.rmi.RemoteException(ex.getMessage(), ex);
+					} catch (java.lang.ClassCastException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.ClassNotFoundException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.NoSuchMethodException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.reflect.InvocationTargetException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.IllegalAccessException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					} catch (java.lang.InstantiationException e) {
+						// we cannot intantiate the class - throw the original Axis fault
+						throw f;
+					}
+				} else {
+					throw f;
+				}
+			} else {
+				throw f;
+			}
+		} finally {
+			if (_messageContext.getTransportOut() != null) {
+				_messageContext.getTransportOut().getSender().cleanup(_messageContext);
+			}
+		}
+	}
+
+	/**
+	 * Auto generated method signature for Asynchronous Invocations
+	 * 
+	 * @see com.medicare.services.room.RoomService#startget
+	 * @param roomId75
+	 * 
+	 */
+	public void startget(
+
+			com.medicare.services.room.RoomId roomId75,
+
+			final com.medicare.services.room.RoomServiceCallbackHandler callback)
+
+			throws java.rmi.RemoteException {
+
+		org.apache.axis2.client.OperationClient _operationClient = _serviceClient
+				.createClient(_operations[0].getName());
+		_operationClient.getOptions().setAction("http://medicare.com/Services/Room/Get");
+		_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+		addPropertyToOperationClient(_operationClient,
+				org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR, "&");
+
+		// create SOAP envelope with that payload
+		org.apache.axiom.soap.SOAPEnvelope env = null;
+		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
+
+		// Style is Doc.
+
+		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), roomId75,
+				optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "get")),
+				new javax.xml.namespace.QName("http://medicare.com/Services/Room", "get"));
+
+		// adding SOAP soap_headers
+		_serviceClient.addHeadersToEnvelope(env);
+		// create message context with that soap envelope
+		_messageContext.setEnvelope(env);
+
+		// add the message context to the operation client
+		_operationClient.addMessageContext(_messageContext);
+
+		_operationClient.setCallback(new org.apache.axis2.client.async.AxisCallback() {
+			public void onMessage(org.apache.axis2.context.MessageContext resultContext) {
+				try {
+					org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
+
+					java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
+							com.medicare.types.RoomE.class, getEnvelopeNamespaces(resultEnv));
+					callback.receiveResultget((com.medicare.types.RoomE) object);
+
+				} catch (org.apache.axis2.AxisFault e) {
+					callback.receiveErrorget(e);
+				}
+			}
+
+			public void onError(java.lang.Exception error) {
+				if (error instanceof org.apache.axis2.AxisFault) {
+					org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
+					org.apache.axiom.om.OMElement faultElt = f.getDetail();
+					if (faultElt != null) {
+						if (faultExceptionNameMap
+								.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Get"))) {
+							// make the fault by reflection
+							try {
+								java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap
+										.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Get"));
+								java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+								java.lang.reflect.Constructor constructor = exceptionClass
+										.getConstructor(java.lang.String.class);
+								java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+								// message class
+								java.lang.String messageClassName = (java.lang.String) faultMessageMap
+										.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Get"));
+								java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+								java.lang.Object messageObject = fromOM(faultElt, messageClass, null);
+								java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+										new java.lang.Class[] { messageClass });
+								m.invoke(ex, new java.lang.Object[] { messageObject });
+
+								if (ex instanceof com.medicare.services.room.GetFault) {
+									callback.receiveErrorget((com.medicare.services.room.GetFault) ex);
+									return;
+								}
+
+								callback.receiveErrorget(new java.rmi.RemoteException(ex.getMessage(), ex));
+							} catch (java.lang.ClassCastException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							} catch (java.lang.ClassNotFoundException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							} catch (java.lang.NoSuchMethodException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							} catch (java.lang.reflect.InvocationTargetException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							} catch (java.lang.IllegalAccessException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							} catch (java.lang.InstantiationException e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							} catch (org.apache.axis2.AxisFault e) {
+								// we cannot intantiate the class - throw the original Axis fault
+								callback.receiveErrorget(f);
+							}
+						} else {
+							callback.receiveErrorget(f);
+						}
+					} else {
+						callback.receiveErrorget(f);
+					}
+				} else {
+					callback.receiveErrorget(error);
+				}
+			}
+
+			public void onFault(org.apache.axis2.context.MessageContext faultContext) {
+				org.apache.axis2.AxisFault fault = org.apache.axis2.util.Utils
+						.getInboundFaultFromMessageContext(faultContext);
+				onError(fault);
+			}
+
+			public void onComplete() {
+				try {
+					_messageContext.getTransportOut().getSender().cleanup(_messageContext);
+				} catch (org.apache.axis2.AxisFault axisFault) {
+					callback.receiveErrorget(axisFault);
+				}
+			}
+		});
+
+		org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
+		if (_operations[0].getMessageReceiver() == null && _operationClient.getOptions().isUseSeparateListener()) {
+			_callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
+			_operations[0].setMessageReceiver(_callbackReceiver);
+		}
+
+		// execute the operation client
+		_operationClient.execute(false);
+
+	}
+
+	/**
+	 * Auto generated method signature
+	 * 
 	 * @see com.medicare.services.room.RoomService#getAll
+	 * @throws com.medicare.services.room.GetAllFault
+	 *             :
 	 */
 
 	public com.medicare.services.room.RoomArrayResponse getAll(
@@ -139,11 +474,11 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 
 			throws java.rmi.RemoteException
 
-	{
+			, com.medicare.services.room.GetAllFault {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient = _serviceClient
-					.createClient(_operations[0].getName());
+					.createClient(_operations[1].getName());
 			_operationClient.getOptions().setAction("http://medicare.com/Services/Room/GetAll");
 			_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -205,6 +540,10 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 								new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
+						if (ex instanceof com.medicare.services.room.GetAllFault) {
+							throw (com.medicare.services.room.GetAllFault) ex;
+						}
+
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
 					} catch (java.lang.ClassCastException e) {
 						// we cannot intantiate the class - throw the original Axis fault
@@ -250,7 +589,7 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 			throws java.rmi.RemoteException {
 
 		org.apache.axis2.client.OperationClient _operationClient = _serviceClient
-				.createClient(_operations[0].getName());
+				.createClient(_operations[1].getName());
 		_operationClient.getOptions().setAction("http://medicare.com/Services/Room/GetAll");
 		_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -313,6 +652,11 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 										new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
+								if (ex instanceof com.medicare.services.room.GetAllFault) {
+									callback.receiveErrorgetAll((com.medicare.services.room.GetAllFault) ex);
+									return;
+								}
+
 								callback.receiveErrorgetAll(new java.rmi.RemoteException(ex.getMessage(), ex));
 							} catch (java.lang.ClassCastException e) {
 								// we cannot intantiate the class - throw the original Axis fault
@@ -363,9 +707,9 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 		});
 
 		org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-		if (_operations[0].getMessageReceiver() == null && _operationClient.getOptions().isUseSeparateListener()) {
+		if (_operations[1].getMessageReceiver() == null && _operationClient.getOptions().isUseSeparateListener()) {
 			_callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-			_operations[0].setMessageReceiver(_callbackReceiver);
+			_operations[1].setMessageReceiver(_callbackReceiver);
 		}
 
 		// execute the operation client
@@ -376,21 +720,25 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see com.medicare.services.room.RoomService#init
+	 * @see com.medicare.services.room.RoomService#register
+	 * @param room79
+	 * 
+	 * @throws com.medicare.services.room.RegisterFault
+	 *             :
 	 */
 
-	public com.medicare.services.room.RoomArrayResponse init(
+	public com.medicare.types.RoomE register(
 
-	)
+			com.medicare.types.RoomE room79)
 
 			throws java.rmi.RemoteException
 
-	{
+			, com.medicare.services.room.RegisterFault {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient = _serviceClient
-					.createClient(_operations[1].getName());
-			_operationClient.getOptions().setAction("http://medicare.com/Services/Room/init");
+					.createClient(_operations[2].getName());
+			_operationClient.getOptions().setAction("http://medicare.com/Services/Room/Register");
 			_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
 			addPropertyToOperationClient(_operationClient,
@@ -402,11 +750,9 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
 
-			// Style is taken to be "document". No input parameters
-			// according to the WS-Basic profile in this case we have to send an empty soap
-			// message
-			org.apache.axiom.soap.SOAPFactory factory = getFactory(_operationClient.getOptions().getSoapVersionURI());
-			env = factory.getDefaultEnvelope();
+			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), room79,
+					optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "register")),
+					new javax.xml.namespace.QName("http://medicare.com/Services/Room", "register"));
 
 			// adding SOAP soap_headers
 			_serviceClient.addHeadersToEnvelope(env);
@@ -423,33 +769,37 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 					.getMessageContext(org.apache.axis2.wsdl.WSDLConstants.MESSAGE_LABEL_IN_VALUE);
 			org.apache.axiom.soap.SOAPEnvelope _returnEnv = _returnMessageContext.getEnvelope();
 
-			java.lang.Object object = fromOM(_returnEnv.getBody().getFirstElement(),
-					com.medicare.services.room.RoomArrayResponse.class, getEnvelopeNamespaces(_returnEnv));
+			java.lang.Object object = fromOM(_returnEnv.getBody().getFirstElement(), com.medicare.types.RoomE.class,
+					getEnvelopeNamespaces(_returnEnv));
 
-			return (com.medicare.services.room.RoomArrayResponse) object;
+			return (com.medicare.types.RoomE) object;
 
 		} catch (org.apache.axis2.AxisFault f) {
 
 			org.apache.axiom.om.OMElement faultElt = f.getDetail();
 			if (faultElt != null) {
 				if (faultExceptionNameMap
-						.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Init"))) {
+						.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Register"))) {
 					// make the fault by reflection
 					try {
 						java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap
-								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Init"));
+								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Register"));
 						java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
 						java.lang.reflect.Constructor constructor = exceptionClass
 								.getConstructor(java.lang.String.class);
 						java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
 						// message class
 						java.lang.String messageClassName = (java.lang.String) faultMessageMap
-								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Init"));
+								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Register"));
 						java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
 						java.lang.Object messageObject = fromOM(faultElt, messageClass, null);
 						java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
 								new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
+
+						if (ex instanceof com.medicare.services.room.RegisterFault) {
+							throw (com.medicare.services.room.RegisterFault) ex;
+						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
 					} catch (java.lang.ClassCastException e) {
@@ -487,17 +837,21 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see com.medicare.services.room.RoomService#startinit
+	 * @see com.medicare.services.room.RoomService#startregister
+	 * @param room79
+	 * 
 	 */
-	public void startinit(
+	public void startregister(
+
+			com.medicare.types.RoomE room79,
 
 			final com.medicare.services.room.RoomServiceCallbackHandler callback)
 
 			throws java.rmi.RemoteException {
 
 		org.apache.axis2.client.OperationClient _operationClient = _serviceClient
-				.createClient(_operations[1].getName());
-		_operationClient.getOptions().setAction("http://medicare.com/Services/Room/init");
+				.createClient(_operations[2].getName());
+		_operationClient.getOptions().setAction("http://medicare.com/Services/Room/Register");
 		_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
 		addPropertyToOperationClient(_operationClient,
@@ -507,11 +861,11 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 		org.apache.axiom.soap.SOAPEnvelope env = null;
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
-		// Style is taken to be "document". No input parameters
-		// according to the WS-Basic profile in this case we have to send an empty soap
-		// message
-		org.apache.axiom.soap.SOAPFactory factory = getFactory(_operationClient.getOptions().getSoapVersionURI());
-		env = factory.getDefaultEnvelope();
+		// Style is Doc.
+
+		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), room79,
+				optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "register")),
+				new javax.xml.namespace.QName("http://medicare.com/Services/Room", "register"));
 
 		// adding SOAP soap_headers
 		_serviceClient.addHeadersToEnvelope(env);
@@ -527,11 +881,11 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 					org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
 
 					java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-							com.medicare.services.room.RoomArrayResponse.class, getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultinit((com.medicare.services.room.RoomArrayResponse) object);
+							com.medicare.types.RoomE.class, getEnvelopeNamespaces(resultEnv));
+					callback.receiveResultregister((com.medicare.types.RoomE) object);
 
 				} catch (org.apache.axis2.AxisFault e) {
-					callback.receiveErrorinit(e);
+					callback.receiveErrorregister(e);
 				}
 			}
 
@@ -540,56 +894,61 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 					org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
 					org.apache.axiom.om.OMElement faultElt = f.getDetail();
 					if (faultElt != null) {
-						if (faultExceptionNameMap
-								.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Init"))) {
+						if (faultExceptionNameMap.containsKey(
+								new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Register"))) {
 							// make the fault by reflection
 							try {
 								java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap
-										.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Init"));
+										.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Register"));
 								java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
 								java.lang.reflect.Constructor constructor = exceptionClass
 										.getConstructor(java.lang.String.class);
 								java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
 								// message class
 								java.lang.String messageClassName = (java.lang.String) faultMessageMap
-										.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Init"));
+										.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Register"));
 								java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
 								java.lang.Object messageObject = fromOM(faultElt, messageClass, null);
 								java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
 										new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								callback.receiveErrorinit(new java.rmi.RemoteException(ex.getMessage(), ex));
+								if (ex instanceof com.medicare.services.room.RegisterFault) {
+									callback.receiveErrorregister((com.medicare.services.room.RegisterFault) ex);
+									return;
+								}
+
+								callback.receiveErrorregister(new java.rmi.RemoteException(ex.getMessage(), ex));
 							} catch (java.lang.ClassCastException e) {
 								// we cannot intantiate the class - throw the original Axis fault
-								callback.receiveErrorinit(f);
+								callback.receiveErrorregister(f);
 							} catch (java.lang.ClassNotFoundException e) {
 								// we cannot intantiate the class - throw the original Axis fault
-								callback.receiveErrorinit(f);
+								callback.receiveErrorregister(f);
 							} catch (java.lang.NoSuchMethodException e) {
 								// we cannot intantiate the class - throw the original Axis fault
-								callback.receiveErrorinit(f);
+								callback.receiveErrorregister(f);
 							} catch (java.lang.reflect.InvocationTargetException e) {
 								// we cannot intantiate the class - throw the original Axis fault
-								callback.receiveErrorinit(f);
+								callback.receiveErrorregister(f);
 							} catch (java.lang.IllegalAccessException e) {
 								// we cannot intantiate the class - throw the original Axis fault
-								callback.receiveErrorinit(f);
+								callback.receiveErrorregister(f);
 							} catch (java.lang.InstantiationException e) {
 								// we cannot intantiate the class - throw the original Axis fault
-								callback.receiveErrorinit(f);
+								callback.receiveErrorregister(f);
 							} catch (org.apache.axis2.AxisFault e) {
 								// we cannot intantiate the class - throw the original Axis fault
-								callback.receiveErrorinit(f);
+								callback.receiveErrorregister(f);
 							}
 						} else {
-							callback.receiveErrorinit(f);
+							callback.receiveErrorregister(f);
 						}
 					} else {
-						callback.receiveErrorinit(f);
+						callback.receiveErrorregister(f);
 					}
 				} else {
-					callback.receiveErrorinit(error);
+					callback.receiveErrorregister(error);
 				}
 			}
 
@@ -603,15 +962,15 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 				try {
 					_messageContext.getTransportOut().getSender().cleanup(_messageContext);
 				} catch (org.apache.axis2.AxisFault axisFault) {
-					callback.receiveErrorinit(axisFault);
+					callback.receiveErrorregister(axisFault);
 				}
 			}
 		});
 
 		org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-		if (_operations[1].getMessageReceiver() == null && _operationClient.getOptions().isUseSeparateListener()) {
+		if (_operations[2].getMessageReceiver() == null && _operationClient.getOptions().isUseSeparateListener()) {
 			_callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-			_operations[1].setMessageReceiver(_callbackReceiver);
+			_operations[2].setMessageReceiver(_callbackReceiver);
 		}
 
 		// execute the operation client
@@ -622,23 +981,25 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see com.medicare.services.room.RoomService#reservate
-	 * @param reservate65
+	 * @see com.medicare.services.room.RoomService#reserve
+	 * @param reserve81
 	 * 
+	 * @throws com.medicare.services.room.ReserveFault
+	 *             :
 	 */
 
-	public void reservate(
+	public void reserve(
 
-			com.medicare.services.room.Reservate reservate65)
+			com.medicare.services.room.Reserve reserve81)
 
 			throws java.rmi.RemoteException
 
-	{
+			, com.medicare.services.room.ReserveFault {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient = _serviceClient
-					.createClient(_operations[2].getName());
-			_operationClient.getOptions().setAction("http://medicare.com/Services/Room/Reservate");
+					.createClient(_operations[3].getName());
+			_operationClient.getOptions().setAction("http://medicare.com/Services/Room/Reserve");
 			_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
 			addPropertyToOperationClient(_operationClient,
@@ -650,9 +1011,9 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
 
-			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), reservate65,
-					optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "reservate")),
-					new javax.xml.namespace.QName("http://medicare.com/Services/Room", "reservate"));
+			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), reserve81,
+					optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "reserve")),
+					new javax.xml.namespace.QName("http://medicare.com/Services/Room", "reserve"));
 
 			// adding SOAP soap_headers
 			_serviceClient.addHeadersToEnvelope(env);
@@ -672,23 +1033,27 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.om.OMElement faultElt = f.getDetail();
 			if (faultElt != null) {
 				if (faultExceptionNameMap
-						.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Reservate"))) {
+						.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Reserve"))) {
 					// make the fault by reflection
 					try {
 						java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap
-								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Reservate"));
+								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Reserve"));
 						java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
 						java.lang.reflect.Constructor constructor = exceptionClass
 								.getConstructor(java.lang.String.class);
 						java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
 						// message class
 						java.lang.String messageClassName = (java.lang.String) faultMessageMap
-								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Reservate"));
+								.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(), "Reserve"));
 						java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
 						java.lang.Object messageObject = fromOM(faultElt, messageClass, null);
 						java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
 								new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
+
+						if (ex instanceof com.medicare.services.room.ReserveFault) {
+							throw (com.medicare.services.room.ReserveFault) ex;
+						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
 					} catch (java.lang.ClassCastException e) {
@@ -726,21 +1091,21 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see com.medicare.services.room.RoomService#startreservate
-	 * @param reservate65
+	 * @see com.medicare.services.room.RoomService#startreserve
+	 * @param reserve81
 	 * 
 	 */
-	public void startreservate(
+	public void startreserve(
 
-			com.medicare.services.room.Reservate reservate65,
+			com.medicare.services.room.Reserve reserve81,
 
 			final com.medicare.services.room.RoomServiceCallbackHandler callback)
 
 			throws java.rmi.RemoteException {
 
 		org.apache.axis2.client.OperationClient _operationClient = _serviceClient
-				.createClient(_operations[2].getName());
-		_operationClient.getOptions().setAction("http://medicare.com/Services/Room/Reservate");
+				.createClient(_operations[3].getName());
+		_operationClient.getOptions().setAction("http://medicare.com/Services/Room/Reserve");
 		_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
 		addPropertyToOperationClient(_operationClient,
@@ -752,9 +1117,9 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 
 		// Style is Doc.
 
-		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), reservate65,
-				optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "reservate")),
-				new javax.xml.namespace.QName("http://medicare.com/Services/Room", "reservate"));
+		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), reserve81,
+				optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "reserve")),
+				new javax.xml.namespace.QName("http://medicare.com/Services/Room", "reserve"));
 
 		// adding SOAP soap_headers
 		_serviceClient.addHeadersToEnvelope(env);
@@ -767,9 +1132,9 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 		// Nothing to pass as the callback!!!
 
 		org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-		if (_operations[2].getMessageReceiver() == null && _operationClient.getOptions().isUseSeparateListener()) {
+		if (_operations[3].getMessageReceiver() == null && _operationClient.getOptions().isUseSeparateListener()) {
 			_callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-			_operations[2].setMessageReceiver(_callbackReceiver);
+			_operations[3].setMessageReceiver(_callbackReceiver);
 		}
 
 		// execute the operation client
@@ -781,21 +1146,23 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 * @see com.medicare.services.room.RoomService#find
-	 * @param findFilter67
+	 * @param findFilter83
 	 * 
+	 * @throws com.medicare.services.room.FindFault
+	 *             :
 	 */
 
 	public com.medicare.services.room.RoomArrayResponse find(
 
-			com.medicare.services.room.FindFilter findFilter67)
+			com.medicare.services.room.FindFilter findFilter83)
 
 			throws java.rmi.RemoteException
 
-	{
+			, com.medicare.services.room.FindFault {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient = _serviceClient
-					.createClient(_operations[3].getName());
+					.createClient(_operations[4].getName());
 			_operationClient.getOptions().setAction("http://medicare.com/Services/Room/Find");
 			_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -808,7 +1175,7 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
 
-			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), findFilter67,
+			env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), findFilter83,
 					optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "find")),
 					new javax.xml.namespace.QName("http://medicare.com/Services/Room", "find"));
 
@@ -855,6 +1222,10 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 								new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
+						if (ex instanceof com.medicare.services.room.FindFault) {
+							throw (com.medicare.services.room.FindFault) ex;
+						}
+
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
 					} catch (java.lang.ClassCastException e) {
 						// we cannot intantiate the class - throw the original Axis fault
@@ -892,19 +1263,19 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
 	 * @see com.medicare.services.room.RoomService#startfind
-	 * @param findFilter67
+	 * @param findFilter83
 	 * 
 	 */
 	public void startfind(
 
-			com.medicare.services.room.FindFilter findFilter67,
+			com.medicare.services.room.FindFilter findFilter83,
 
 			final com.medicare.services.room.RoomServiceCallbackHandler callback)
 
 			throws java.rmi.RemoteException {
 
 		org.apache.axis2.client.OperationClient _operationClient = _serviceClient
-				.createClient(_operations[3].getName());
+				.createClient(_operations[4].getName());
 		_operationClient.getOptions().setAction("http://medicare.com/Services/Room/Find");
 		_operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -917,7 +1288,7 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 
 		// Style is Doc.
 
-		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), findFilter67,
+		env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), findFilter83,
 				optimizeContent(new javax.xml.namespace.QName("http://medicare.com/Services/Room", "find")),
 				new javax.xml.namespace.QName("http://medicare.com/Services/Room", "find"));
 
@@ -966,6 +1337,11 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 								java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
 										new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
+
+								if (ex instanceof com.medicare.services.room.FindFault) {
+									callback.receiveErrorfind((com.medicare.services.room.FindFault) ex);
+									return;
+								}
 
 								callback.receiveErrorfind(new java.rmi.RemoteException(ex.getMessage(), ex));
 							} catch (java.lang.ClassCastException e) {
@@ -1017,9 +1393,9 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 		});
 
 		org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-		if (_operations[3].getMessageReceiver() == null && _operationClient.getOptions().isUseSeparateListener()) {
+		if (_operations[4].getMessageReceiver() == null && _operationClient.getOptions().isUseSeparateListener()) {
 			_callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-			_operations[3].setMessageReceiver(_callbackReceiver);
+			_operations[4].setMessageReceiver(_callbackReceiver);
 		}
 
 		// execute the operation client
@@ -1056,6 +1432,42 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 	}
 
 	// http://localhost:8080/NewService/services/RoomService
+	private org.apache.axiom.om.OMElement toOM(com.medicare.services.room.RoomId param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+			return param.getOMElement(com.medicare.services.room.RoomId.MY_QNAME,
+					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
+	private org.apache.axiom.om.OMElement toOM(com.medicare.types.RoomE param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+			return param.getOMElement(com.medicare.types.RoomE.MY_QNAME,
+					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
+	private org.apache.axiom.om.OMElement toOM(com.medicare.types.Error param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+			return param.getOMElement(com.medicare.types.Error.MY_QNAME,
+					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
 	private org.apache.axiom.om.OMElement toOM(com.medicare.services.room.RoomArrayResponse param,
 			boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
@@ -1068,11 +1480,11 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(com.medicare.services.room.Reservate param, boolean optimizeContent)
+	private org.apache.axiom.om.OMElement toOM(com.medicare.services.room.Reserve param, boolean optimizeContent)
 			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(com.medicare.services.room.Reservate.MY_QNAME,
+			return param.getOMElement(com.medicare.services.room.Reserve.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -1093,14 +1505,47 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 	}
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-			com.medicare.services.room.Reservate param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+			com.medicare.services.room.RoomId param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
 			throws org.apache.axis2.AxisFault {
 
 		try {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-			emptyEnvelope.getBody()
-					.addChild(param.getOMElement(com.medicare.services.room.Reservate.MY_QNAME, factory));
+			emptyEnvelope.getBody().addChild(param.getOMElement(com.medicare.services.room.RoomId.MY_QNAME, factory));
+			return emptyEnvelope;
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
+	/* methods to provide back word compatibility */
+
+	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
+			com.medicare.types.RoomE param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+
+			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
+			emptyEnvelope.getBody().addChild(param.getOMElement(com.medicare.types.RoomE.MY_QNAME, factory));
+			return emptyEnvelope;
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
+	/* methods to provide back word compatibility */
+
+	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
+			com.medicare.services.room.Reserve param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+
+			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
+			emptyEnvelope.getBody().addChild(param.getOMElement(com.medicare.services.room.Reserve.MY_QNAME, factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -1146,9 +1591,9 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 
 			}
 
-			if (com.medicare.services.room.Reservate.class.equals(type)) {
+			if (com.medicare.services.room.Reserve.class.equals(type)) {
 
-				return com.medicare.services.room.Reservate.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return com.medicare.services.room.Reserve.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
@@ -1156,6 +1601,24 @@ public class RoomServiceStub extends org.apache.axis2.client.Stub {
 
 				return com.medicare.services.room.RoomArrayResponse.Factory
 						.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (com.medicare.services.room.RoomId.class.equals(type)) {
+
+				return com.medicare.services.room.RoomId.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (com.medicare.types.Error.class.equals(type)) {
+
+				return com.medicare.types.Error.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (com.medicare.types.RoomE.class.equals(type)) {
+
+				return com.medicare.types.RoomE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

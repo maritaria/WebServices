@@ -35,53 +35,71 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 			if ((op.getName() != null) && ((methodName = org.apache.axis2.util.JavaUtils
 					.xmlNameToJavaIdentifier(op.getName().getLocalPart())) != null)) {
 
+				if ("get".equals(methodName)) {
+
+					com.medicare.types.RoomE room36 = null;
+					com.medicare.services.room.RoomId wrappedParam = (com.medicare.services.room.RoomId) fromOM(
+							msgContext.getEnvelope().getBody().getFirstElement(),
+							com.medicare.services.room.RoomId.class, getEnvelopeNamespaces(msgContext.getEnvelope()));
+
+					room36 =
+
+							skel.get(wrappedParam);
+
+					envelope = toEnvelope(getSOAPFactory(msgContext), room36, false,
+							new javax.xml.namespace.QName("http://medicare.com/Services/Room", "get"));
+				} else
+
 				if ("getAll".equals(methodName)) {
 
-					com.medicare.services.room.RoomArrayResponse roomArrayResponse30 = null;
-					roomArrayResponse30 =
+					com.medicare.services.room.RoomArrayResponse roomArrayResponse38 = null;
+					roomArrayResponse38 =
 
 							skel.getAll();
 
-					envelope = toEnvelope(getSOAPFactory(msgContext), roomArrayResponse30, false,
+					envelope = toEnvelope(getSOAPFactory(msgContext), roomArrayResponse38, false,
 							new javax.xml.namespace.QName("http://medicare.com/Services/Room", "getAll"));
 				} else
 
-				if ("init".equals(methodName)) {
+				if ("register".equals(methodName)) {
 
-					com.medicare.services.room.RoomArrayResponse roomArrayResponse32 = null;
-					roomArrayResponse32 =
-
-							skel.init();
-
-					envelope = toEnvelope(getSOAPFactory(msgContext), roomArrayResponse32, false,
-							new javax.xml.namespace.QName("http://medicare.com/Services/Room", "init"));
-				} else
-
-				if ("reservate".equals(methodName)) {
-
-					com.medicare.services.room.Reservate wrappedParam = (com.medicare.services.room.Reservate) fromOM(
-							msgContext.getEnvelope().getBody().getFirstElement(),
-							com.medicare.services.room.Reservate.class,
+					com.medicare.types.RoomE room40 = null;
+					com.medicare.types.RoomE wrappedParam = (com.medicare.types.RoomE) fromOM(
+							msgContext.getEnvelope().getBody().getFirstElement(), com.medicare.types.RoomE.class,
 							getEnvelopeNamespaces(msgContext.getEnvelope()));
 
-					skel.reservate(wrappedParam);
+					room40 =
+
+							skel.register(wrappedParam);
+
+					envelope = toEnvelope(getSOAPFactory(msgContext), room40, false,
+							new javax.xml.namespace.QName("http://medicare.com/Services/Room", "register"));
+				} else
+
+				if ("reserve".equals(methodName)) {
+
+					com.medicare.services.room.Reserve wrappedParam = (com.medicare.services.room.Reserve) fromOM(
+							msgContext.getEnvelope().getBody().getFirstElement(),
+							com.medicare.services.room.Reserve.class, getEnvelopeNamespaces(msgContext.getEnvelope()));
+
+					skel.reserve(wrappedParam);
 
 					envelope = getSOAPFactory(msgContext).getDefaultEnvelope();
 				} else
 
 				if ("find".equals(methodName)) {
 
-					com.medicare.services.room.RoomArrayResponse roomArrayResponse36 = null;
+					com.medicare.services.room.RoomArrayResponse roomArrayResponse44 = null;
 					com.medicare.services.room.FindFilter wrappedParam = (com.medicare.services.room.FindFilter) fromOM(
 							msgContext.getEnvelope().getBody().getFirstElement(),
 							com.medicare.services.room.FindFilter.class,
 							getEnvelopeNamespaces(msgContext.getEnvelope()));
 
-					roomArrayResponse36 =
+					roomArrayResponse44 =
 
 							skel.find(wrappedParam);
 
-					envelope = toEnvelope(getSOAPFactory(msgContext), roomArrayResponse36, false,
+					envelope = toEnvelope(getSOAPFactory(msgContext), roomArrayResponse44, false,
 							new javax.xml.namespace.QName("http://medicare.com/Services/Room", "find"));
 
 				} else {
@@ -90,12 +108,90 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 
 				newMsgContext.setEnvelope(envelope);
 			}
-		} catch (java.lang.Exception e) {
+		} catch (ReserveFault e) {
+
+			msgContext.setProperty(org.apache.axis2.Constants.FAULT_NAME, "error");
+			org.apache.axis2.AxisFault f = createAxisFault(e);
+			if (e.getFaultMessage() != null) {
+				f.setDetail(toOM(e.getFaultMessage(), false));
+			}
+			throw f;
+		} catch (RegisterFault e) {
+
+			msgContext.setProperty(org.apache.axis2.Constants.FAULT_NAME, "error");
+			org.apache.axis2.AxisFault f = createAxisFault(e);
+			if (e.getFaultMessage() != null) {
+				f.setDetail(toOM(e.getFaultMessage(), false));
+			}
+			throw f;
+		} catch (FindFault e) {
+
+			msgContext.setProperty(org.apache.axis2.Constants.FAULT_NAME, "error");
+			org.apache.axis2.AxisFault f = createAxisFault(e);
+			if (e.getFaultMessage() != null) {
+				f.setDetail(toOM(e.getFaultMessage(), false));
+			}
+			throw f;
+		} catch (GetAllFault e) {
+
+			msgContext.setProperty(org.apache.axis2.Constants.FAULT_NAME, "error");
+			org.apache.axis2.AxisFault f = createAxisFault(e);
+			if (e.getFaultMessage() != null) {
+				f.setDetail(toOM(e.getFaultMessage(), false));
+			}
+			throw f;
+		} catch (GetFault e) {
+
+			msgContext.setProperty(org.apache.axis2.Constants.FAULT_NAME, "error");
+			org.apache.axis2.AxisFault f = createAxisFault(e);
+			if (e.getFaultMessage() != null) {
+				f.setDetail(toOM(e.getFaultMessage(), false));
+			}
+			throw f;
+		}
+
+		catch (java.lang.Exception e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
 		}
 	}
 
 	//
+	private org.apache.axiom.om.OMElement toOM(com.medicare.services.room.RoomId param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+			return param.getOMElement(com.medicare.services.room.RoomId.MY_QNAME,
+					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
+	private org.apache.axiom.om.OMElement toOM(com.medicare.types.RoomE param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+			return param.getOMElement(com.medicare.types.RoomE.MY_QNAME,
+					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
+	private org.apache.axiom.om.OMElement toOM(com.medicare.types.Error param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+			return param.getOMElement(com.medicare.types.Error.MY_QNAME,
+					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
 	private org.apache.axiom.om.OMElement toOM(com.medicare.services.room.RoomArrayResponse param,
 			boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
@@ -108,11 +204,11 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(com.medicare.services.room.Reservate param, boolean optimizeContent)
+	private org.apache.axiom.om.OMElement toOM(com.medicare.services.room.Reserve param, boolean optimizeContent)
 			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(com.medicare.services.room.Reservate.MY_QNAME,
+			return param.getOMElement(com.medicare.services.room.Reserve.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -130,6 +226,25 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 			throw org.apache.axis2.AxisFault.makeFault(e);
 		}
 
+	}
+
+	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
+			com.medicare.types.RoomE param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+			throws org.apache.axis2.AxisFault {
+		try {
+			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
+
+			emptyEnvelope.getBody().addChild(param.getOMElement(com.medicare.types.RoomE.MY_QNAME, factory));
+
+			return emptyEnvelope;
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+	}
+
+	private com.medicare.types.RoomE wrapGet() {
+		com.medicare.types.RoomE wrappedElement = new com.medicare.types.RoomE();
+		return wrappedElement;
 	}
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
@@ -152,8 +267,8 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 		return wrappedElement;
 	}
 
-	private com.medicare.services.room.RoomArrayResponse wrapInit() {
-		com.medicare.services.room.RoomArrayResponse wrappedElement = new com.medicare.services.room.RoomArrayResponse();
+	private com.medicare.types.RoomE wrapRegister() {
+		com.medicare.types.RoomE wrappedElement = new com.medicare.types.RoomE();
 		return wrappedElement;
 	}
 
@@ -180,9 +295,9 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 
 			}
 
-			if (com.medicare.services.room.Reservate.class.equals(type)) {
+			if (com.medicare.services.room.Reserve.class.equals(type)) {
 
-				return com.medicare.services.room.Reservate.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return com.medicare.services.room.Reserve.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
@@ -190,6 +305,24 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 
 				return com.medicare.services.room.RoomArrayResponse.Factory
 						.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (com.medicare.services.room.RoomId.class.equals(type)) {
+
+				return com.medicare.services.room.RoomId.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (com.medicare.types.Error.class.equals(type)) {
+
+				return com.medicare.types.Error.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (com.medicare.types.RoomE.class.equals(type)) {
+
+				return com.medicare.types.RoomE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

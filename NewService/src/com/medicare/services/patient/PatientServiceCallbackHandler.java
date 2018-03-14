@@ -86,4 +86,32 @@ public abstract class PatientServiceCallbackHandler {
 	public void receiveErrorgetAll(java.lang.Exception e) {
 	}
 
+	/**
+	 * auto generated Axis2 call back method for get method override this method for
+	 * handling normal response from get operation
+	 */
+	public void receiveResultget(com.medicare.types.PatientE result) {
+	}
+
+	/**
+	 * auto generated Axis2 Error handler override this method for handling error
+	 * response from get operation
+	 */
+	public void receiveErrorget(java.lang.Exception e) {
+	}
+
+	/**
+	 * auto generated Axis2 call back method for find method override this method
+	 * for handling normal response from find operation
+	 */
+	public void receiveResultfind(com.medicare.types.Patients result) {
+	}
+
+	/**
+	 * auto generated Axis2 Error handler override this method for handling error
+	 * response from find operation
+	 */
+	public void receiveErrorfind(java.lang.Exception e) {
+	}
+
 }

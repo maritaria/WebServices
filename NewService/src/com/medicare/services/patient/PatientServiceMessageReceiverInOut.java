@@ -37,16 +37,16 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 
 				if ("register".equals(methodName)) {
 
-					com.medicare.types.PatientE patient21 = null;
+					com.medicare.types.PatientE patient35 = null;
 					com.medicare.types.PersonE wrappedParam = (com.medicare.types.PersonE) fromOM(
 							msgContext.getEnvelope().getBody().getFirstElement(), com.medicare.types.PersonE.class,
 							getEnvelopeNamespaces(msgContext.getEnvelope()));
 
-					patient21 =
+					patient35 =
 
 							skel.register(wrappedParam);
 
-					envelope = toEnvelope(getSOAPFactory(msgContext), patient21, false,
+					envelope = toEnvelope(getSOAPFactory(msgContext), patient35, false,
 							new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "register"));
 				} else
 
@@ -64,13 +64,45 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 
 				if ("getAll".equals(methodName)) {
 
-					com.medicare.types.Patients patients25 = null;
-					patients25 =
+					com.medicare.types.Patients patients39 = null;
+					patients39 =
 
 							skel.getAll();
 
-					envelope = toEnvelope(getSOAPFactory(msgContext), patients25, false,
+					envelope = toEnvelope(getSOAPFactory(msgContext), patients39, false,
 							new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "getAll"));
+				} else
+
+				if ("get".equals(methodName)) {
+
+					com.medicare.types.PatientE patient41 = null;
+					com.medicare.services.patient.PatientId wrappedParam = (com.medicare.services.patient.PatientId) fromOM(
+							msgContext.getEnvelope().getBody().getFirstElement(),
+							com.medicare.services.patient.PatientId.class,
+							getEnvelopeNamespaces(msgContext.getEnvelope()));
+
+					patient41 =
+
+							skel.get(wrappedParam);
+
+					envelope = toEnvelope(getSOAPFactory(msgContext), patient41, false,
+							new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "get"));
+				} else
+
+				if ("find".equals(methodName)) {
+
+					com.medicare.types.Patients patients43 = null;
+					com.medicare.services.patient.PatientName wrappedParam = (com.medicare.services.patient.PatientName) fromOM(
+							msgContext.getEnvelope().getBody().getFirstElement(),
+							com.medicare.services.patient.PatientName.class,
+							getEnvelopeNamespaces(msgContext.getEnvelope()));
+
+					patients43 =
+
+							skel.find(wrappedParam);
+
+					envelope = toEnvelope(getSOAPFactory(msgContext), patients43, false,
+							new javax.xml.namespace.QName("http://medicare.com/Services/Patient", "find"));
 
 				} else {
 					throw new java.lang.RuntimeException("method not found");
@@ -86,7 +118,31 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 				f.setDetail(toOM(e.getFaultMessage(), false));
 			}
 			throw f;
-		} catch (NotifyFaultException e) {
+		} catch (FindFault e) {
+
+			msgContext.setProperty(org.apache.axis2.Constants.FAULT_NAME, "error");
+			org.apache.axis2.AxisFault f = createAxisFault(e);
+			if (e.getFaultMessage() != null) {
+				f.setDetail(toOM(e.getFaultMessage(), false));
+			}
+			throw f;
+		} catch (NotifyFault e) {
+
+			msgContext.setProperty(org.apache.axis2.Constants.FAULT_NAME, "error");
+			org.apache.axis2.AxisFault f = createAxisFault(e);
+			if (e.getFaultMessage() != null) {
+				f.setDetail(toOM(e.getFaultMessage(), false));
+			}
+			throw f;
+		} catch (GetAllFault e) {
+
+			msgContext.setProperty(org.apache.axis2.Constants.FAULT_NAME, "error");
+			org.apache.axis2.AxisFault f = createAxisFault(e);
+			if (e.getFaultMessage() != null) {
+				f.setDetail(toOM(e.getFaultMessage(), false));
+			}
+			throw f;
+		} catch (GetFault e) {
 
 			msgContext.setProperty(org.apache.axis2.Constants.FAULT_NAME, "error");
 			org.apache.axis2.AxisFault f = createAxisFault(e);
@@ -162,6 +218,30 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 
 	}
 
+	private org.apache.axiom.om.OMElement toOM(com.medicare.services.patient.PatientId param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+			return param.getOMElement(com.medicare.services.patient.PatientId.MY_QNAME,
+					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
+	private org.apache.axiom.om.OMElement toOM(com.medicare.services.patient.PatientName param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+			return param.getOMElement(com.medicare.services.patient.PatientName.MY_QNAME,
+					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 			com.medicare.types.PatientE param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
 			throws org.apache.axis2.AxisFault {
@@ -200,6 +280,16 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 		return wrappedElement;
 	}
 
+	private com.medicare.types.PatientE wrapGet() {
+		com.medicare.types.PatientE wrappedElement = new com.medicare.types.PatientE();
+		return wrappedElement;
+	}
+
+	private com.medicare.types.Patients wrapFind() {
+		com.medicare.types.Patients wrappedElement = new com.medicare.types.Patients();
+		return wrappedElement;
+	}
+
 	/**
 	 * get the default envelope
 	 */
@@ -215,6 +305,19 @@ public class PatientServiceMessageReceiverInOut extends org.apache.axis2.receive
 			if (com.medicare.services.patient.Notify.class.equals(type)) {
 
 				return com.medicare.services.patient.Notify.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (com.medicare.services.patient.PatientId.class.equals(type)) {
+
+				return com.medicare.services.patient.PatientId.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (com.medicare.services.patient.PatientName.class.equals(type)) {
+
+				return com.medicare.services.patient.PatientName.Factory
+						.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

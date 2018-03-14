@@ -15,7 +15,7 @@
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element name="availableTime" type="xsd:duration" />
-            <xsd:element ref="medicare:equipment" />
+            <xsd:element ref="medicare:equipment" minOccurs="0" maxOccurs="unbounded"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>

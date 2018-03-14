@@ -16,7 +16,7 @@ package com.medicare.services.patient;
 public class Notify implements org.apache.axis2.databinding.ADBBean {
 
 	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-			"http://medicare.com/Services/Patient", "Notify", "ns2");
+			"http://medicare.com/Services/Patient", "Notify", "ns4");
 
 	/**
 	 * field for Message
@@ -141,7 +141,7 @@ public class Notify implements org.apache.axis2.databinding.ADBBean {
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
 		if (namespace.equals("http://medicare.com/Services/Patient")) {
-			return "ns2";
+			return "ns4";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
 	}
