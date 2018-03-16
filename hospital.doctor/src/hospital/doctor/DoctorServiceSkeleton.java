@@ -7,10 +7,28 @@
  */
 package hospital.doctor;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
+
+import hospital.doctor.DoctorIDs;
+import hospital.doctor.DoctorServiceSkeleton.Doctor;
+
 /**
  * DoctorServiceSkeleton java skeleton for the axisService
  */
 public class DoctorServiceSkeleton implements DoctorServiceSkeletonInterface {
+	public static final int DEFAULT_DOCTOR_COUNT = 2;
+	// TODO DAO as field.
+	private final List<Doctor> doctors = new ArrayList<>();
+	
+	public DoctorServiceSkeleton() {
+		this.doctors.add(new Doctor("patrick star", Arrays.asList("heart-surgery")));
+		this.doctors.add(new Doctor("quidward tentacles", Arrays.asList("brain-surgery")));
+	}
 
 	/**
 	 * Auto generated method signature
@@ -19,7 +37,7 @@ public class DoctorServiceSkeleton implements DoctorServiceSkeletonInterface {
 	 * @return
 	 */
 
-	public void notify(hospital.doctor.Notification notification0) {
+	public void notify(Notification notification0) {
 		// TODO : fill this with the necessary business logic
 
 	}
@@ -31,10 +49,36 @@ public class DoctorServiceSkeleton implements DoctorServiceSkeletonInterface {
 	 * @return doctorIDs2
 	 */
 
-	public hospital.doctor.DoctorIDs findDoctor(hospital.doctor.Skills skills1) {
-		// TODO : fill this with the necessary business logic
-		throw new java.lang.UnsupportedOperationException(
-				"Please implement " + this.getClass().getName() + "#findDoctor");
+	public DoctorIDs findDoctor(Skills skills) {
+		DoctorIDs doctorIds = new DoctorIDs();
+		Stream<Doctor> doctorStream = doctors.stream();
+		if (Objects.requireNonNull(skills).isSkillSpecified()) {
+			doctorStream = doctorStream.filter(doctor -> doctor.getSkills().containsAll(Arrays.asList(skills.getSkill())));
+		}
+		doctorStream.map(Doctor::getId).forEach(doctorIds::addDoctorID);
+		return doctorIds;
+	}
+
+	public void addDoctor(Doctor doctor) {
+		this.doctors.add(Objects.requireNonNull(doctor));
+	}
+
+	public static class Doctor {
+		private final String id;
+		private final List<String> skills;
+
+		public Doctor(String id, List<String> items) {
+			this.id = Objects.requireNonNull(id);
+			this.skills = new ArrayList<>(Objects.requireNonNull(items));
+		}
+
+		public String getId() {
+			return id;
+		}
+
+		public List<String> getSkills() {
+			return Collections.unmodifiableList(skills);
+		}
 	}
 
 }

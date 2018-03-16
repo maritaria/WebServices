@@ -31,6 +31,12 @@ public class Skills implements org.apache.axis2.databinding.ADBBean {
 	 */
 	protected boolean localSkillTracker = false;
 
+	public Skills(String... skills) {
+		for(String s : skills) {
+			addSkill(s);
+		}
+	}
+
 	public boolean isSkillSpecified() {
 		return localSkillTracker;
 	}
