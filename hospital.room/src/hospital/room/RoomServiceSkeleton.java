@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 /**
  * RoomServiceSkeleton java skeleton for the axisService
@@ -35,10 +36,11 @@ public class RoomServiceSkeleton implements RoomServiceSkeletonInterface {
 
 	public hospital.room.RoomIDs findRoom(hospital.room.Items items) {
 		RoomIDs roomIds = new RoomIDs();
-		rooms.stream()
-				.filter(room -> room.getItems().containsAll(Arrays.asList(items.getItem())))
-				.map(Room::getId)
-				.forEach(roomIds::addRoomID);
+		Stream<Room> rooms = this.rooms.stream();
+		if (items.isItemSpecified()) {
+			rooms = rooms.filter(room -> room.getItems().containsAll(Arrays.asList(items.getItem())));
+		}
+		rooms.map(Room::getId).forEach(roomIds::addRoomID);
 		return roomIds;
 	}
 	

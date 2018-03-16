@@ -23,6 +23,16 @@ public class Notification implements org.apache.axis2.databinding.ADBBean {
 	 */
 
 	protected java.lang.String localMessage;
+	
+	
+	public Notification() {
+	}
+	
+	public Notification(String patientId, String message) {
+		setPatientID(patientId);
+		setMessage(message);
+	}
+	
 
 	/**
 	 * Auto generated getter method
