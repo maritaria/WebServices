@@ -30,6 +30,19 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 	 * this field in the serialized XML
 	 */
 	protected boolean localItemTracker = false;
+	
+	public Items() {
+	}
+	
+	public Items(String... items) {
+		for (String item : items) {
+			addItem(item);
+		}
+	}
+	
+	public Items(Iterable<? extends String> items) {
+		items.forEach(this::addItem);
+	}
 
 	public boolean isItemSpecified() {
 		return localItemTracker;
