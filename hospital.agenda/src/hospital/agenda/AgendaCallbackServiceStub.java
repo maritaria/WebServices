@@ -11,7 +11,7 @@ package hospital.agenda;
 *  AgendaCallbackServiceStub java implementation
 */
 
-public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
+public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub implements IAgendaCallbackService {
 	protected org.apache.axis2.description.AxisOperation[] _operations;
 
 	// hashmaps to keep the fault mapping
@@ -110,7 +110,7 @@ public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void receiveCallback(hospital.agendacallback.TreatmentScheduling treatmentScheduling7
+	public void receiveCallback(hospital.agenda.TreatmentScheduling treatmentScheduling7
 
 	) throws java.rmi.RemoteException
 
@@ -181,11 +181,11 @@ public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
 	}
 
 	// http://localhost:9080/bpel.bikedealer.bike/services/BikeService
-	private org.apache.axiom.om.OMElement toOM(hospital.agendacallback.TreatmentScheduling param,
+	private org.apache.axiom.om.OMElement toOM(hospital.agenda.TreatmentScheduling param,
 			boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(hospital.agendacallback.TreatmentScheduling.MY_QNAME,
+			return param.getOMElement(hospital.agenda.TreatmentScheduling.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -194,14 +194,14 @@ public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
 	}
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-			hospital.agendacallback.TreatmentScheduling param, boolean optimizeContent,
+			hospital.agenda.TreatmentScheduling param, boolean optimizeContent,
 			javax.xml.namespace.QName methodQName) throws org.apache.axis2.AxisFault {
 
 		try {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-					.addChild(param.getOMElement(hospital.agendacallback.TreatmentScheduling.MY_QNAME, factory));
+					.addChild(param.getOMElement(hospital.agenda.TreatmentScheduling.MY_QNAME, factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -223,9 +223,9 @@ public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
 
 		try {
 
-			if (hospital.agendacallback.TreatmentScheduling.class.equals(type)) {
+			if (hospital.agenda.TreatmentScheduling.class.equals(type)) {
 
-				return hospital.agendacallback.TreatmentScheduling.Factory
+				return hospital.agenda.TreatmentScheduling.Factory
 						.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}

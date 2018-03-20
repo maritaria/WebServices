@@ -24,6 +24,16 @@ public class TreatmentScheduling implements org.apache.axis2.databinding.ADBBean
 
 	protected org.apache.axis2.databinding.types.Duration localDuration;
 
+	public TreatmentScheduling() {
+	}
+	
+	public TreatmentScheduling(TreatmentPlan treatmentPlan) {
+		setDoctorID(treatmentPlan.getDoctorID());
+		setDuration(treatmentPlan.getDuration());
+		setPatientID(treatmentPlan.getPatientID());
+		setRoomID(treatmentPlan.getRoomID());
+	}
+
 	/**
 	 * Auto generated getter method
 	 * 
