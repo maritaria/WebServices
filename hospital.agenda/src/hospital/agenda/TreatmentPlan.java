@@ -24,6 +24,24 @@ public class TreatmentPlan implements org.apache.axis2.databinding.ADBBean {
 
 	protected org.apache.axis2.databinding.types.Duration localDuration;
 
+	public TreatmentPlan() {
+		
+	}
+	
+	public TreatmentPlan(String roomID, String doctorID, String patientID, org.apache.axis2.databinding.types.Duration duration) {
+		setRoomID(roomID);
+		setDoctorID(doctorID);
+		setPatientID(patientID);
+		setDuration(duration);
+	}
+	
+	public TreatmentPlan(String roomID, String doctorID, String patientID, org.apache.axis2.databinding.types.Duration duration, boolean force)
+	{
+		this(roomID, doctorID, patientID, duration);
+		setHighPriority(force);
+		
+	}
+	
 	/**
 	 * Auto generated getter method
 	 * 

@@ -11,7 +11,7 @@ package hospital.agenda;
 *  AgendaCallbackServiceStub java implementation
 */
 
-public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
+public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub implements IAgendaCallbackService {
 	protected org.apache.axis2.description.AxisOperation[] _operations;
 
 	// hashmaps to keep the fault mapping
