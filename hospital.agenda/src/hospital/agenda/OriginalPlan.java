@@ -1,6 +1,6 @@
 
 /**
- * TreatmentPlan.java
+ * OriginalPlan_type0.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
@@ -9,14 +9,16 @@
 package hospital.agenda;
 
 /**
- * TreatmentPlan bean class
+ * OriginalPlan_type0 bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class TreatmentPlan implements org.apache.axis2.databinding.ADBBean {
-
-	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/agenda/",
-			"TreatmentPlan", "ns1");
+public class OriginalPlan implements org.apache.axis2.databinding.ADBBean {
+	/*
+	 * This type was generated from the piece of schema that had name =
+	 * OriginalPlan_type0 Namespace URI = http://hospital/agenda/ Namespace Prefix =
+	 * ns1
+	 */
 
 	/**
 	 * field for Duration
@@ -220,8 +222,8 @@ public class TreatmentPlan implements org.apache.axis2.databinding.ADBBean {
 	public org.apache.axiom.om.OMElement getOMElement(final javax.xml.namespace.QName parentQName,
 			final org.apache.axiom.om.OMFactory factory) throws org.apache.axis2.databinding.ADBException {
 
-		org.apache.axiom.om.OMDataSource dataSource = new org.apache.axis2.databinding.ADBDataSource(this, MY_QNAME);
-		return factory.createOMElement(dataSource, MY_QNAME);
+		org.apache.axiom.om.OMDataSource dataSource = new org.apache.axis2.databinding.ADBDataSource(this, parentQName);
+		return factory.createOMElement(dataSource, parentQName);
 
 	}
 
@@ -246,9 +248,10 @@ public class TreatmentPlan implements org.apache.axis2.databinding.ADBBean {
 			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/agenda/");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
 				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type",
-						namespacePrefix + ":TreatmentPlan", xmlWriter);
+						namespacePrefix + ":OriginalPlan_type0", xmlWriter);
 			} else {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "TreatmentPlan", xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "OriginalPlan_type0",
+						xmlWriter);
 			}
 
 		}
@@ -613,8 +616,8 @@ public class TreatmentPlan implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static TreatmentPlan parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			TreatmentPlan object = new TreatmentPlan();
+		public static OriginalPlan parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
+			OriginalPlan object = new OriginalPlan();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -637,10 +640,10 @@ public class TreatmentPlan implements org.apache.axis2.databinding.ADBBean {
 
 						java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":") + 1);
 
-						if (!"TreatmentPlan".equals(type)) {
+						if (!"OriginalPlan_type0".equals(type)) {
 							// find namespace for the prefix
 							java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-							return (TreatmentPlan) hospital.agenda.ExtensionMapper.getTypeObject(nsUri, type, reader);
+							return (OriginalPlan) hospital.agenda.ExtensionMapper.getTypeObject(nsUri, type, reader);
 						}
 
 					}

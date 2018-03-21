@@ -16,23 +16,13 @@ package hospital.agenda;
 public class TreatmentScheduling implements org.apache.axis2.databinding.ADBBean {
 
 	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/agenda/",
-			"TreatmentScheduling", "ns3");
+			"TreatmentScheduling", "ns1");
 
 	/**
 	 * field for Duration
 	 */
 
 	protected org.apache.axis2.databinding.types.Duration localDuration;
-
-	public TreatmentScheduling() {
-	}
-	
-	public TreatmentScheduling(TreatmentPlan treatmentPlan) {
-		setDoctorID(treatmentPlan.getDoctorID());
-		setDuration(treatmentPlan.getDuration());
-		setPatientID(treatmentPlan.getPatientID());
-		setRoomID(treatmentPlan.getRoomID());
-	}
 
 	/**
 	 * Auto generated getter method
@@ -203,6 +193,33 @@ public class TreatmentScheduling implements org.apache.axis2.databinding.ADBBean
 	}
 
 	/**
+	 * field for OriginalPlan
+	 */
+
+	protected hospital.agenda.OriginalPlan localOriginalPlan;
+
+	/**
+	 * Auto generated getter method
+	 * 
+	 * @return hospital.agenda.OriginalPlan_type0
+	 */
+	public hospital.agenda.OriginalPlan getOriginalPlan() {
+		return localOriginalPlan;
+	}
+
+	/**
+	 * Auto generated setter method
+	 * 
+	 * @param param
+	 *            OriginalPlan
+	 */
+	public void setOriginalPlan(hospital.agenda.OriginalPlan param) {
+
+		this.localOriginalPlan = param;
+
+	}
+
+	/**
 	 *
 	 * @param parentQName
 	 * @param factory
@@ -342,13 +359,18 @@ public class TreatmentScheduling implements org.apache.axis2.databinding.ADBBean
 
 			xmlWriter.writeEndElement();
 		}
+		if (localOriginalPlan == null) {
+			throw new org.apache.axis2.databinding.ADBException("OriginalPlan cannot be null!!");
+		}
+		localOriginalPlan.serialize(new javax.xml.namespace.QName("", "OriginalPlan"), xmlWriter);
+
 		xmlWriter.writeEndElement();
 
 	}
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
 		if (namespace.equals("http://hospital/agenda/")) {
-			return "ns3";
+			return "ns1";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
 	}
@@ -575,6 +597,12 @@ public class TreatmentScheduling implements org.apache.axis2.databinding.ADBBean
 				throw new org.apache.axis2.databinding.ADBException("WhenOriginally cannot be null!!");
 			}
 		}
+		elementList.add(new javax.xml.namespace.QName("", "OriginalPlan"));
+
+		if (localOriginalPlan == null) {
+			throw new org.apache.axis2.databinding.ADBException("OriginalPlan cannot be null!!");
+		}
+		elementList.add(localOriginalPlan);
 
 		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(),
 				attribList.toArray());
@@ -787,6 +815,24 @@ public class TreatmentScheduling implements org.apache.axis2.databinding.ADBBean
 
 				else {
 
+				}
+
+				while (!reader.isStartElement() && !reader.isEndElement())
+					reader.next();
+
+				if (reader.isStartElement()
+						&& new javax.xml.namespace.QName("", "OriginalPlan").equals(reader.getName())) {
+
+					object.setOriginalPlan(hospital.agenda.OriginalPlan.Factory.parse(reader));
+
+					reader.next();
+
+				} // End of if for expected property start element
+
+				else {
+					// A start element we are not expecting indicates an invalid parameter was
+					// passed
+					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
 				}
 
 				while (!reader.isStartElement() && !reader.isEndElement())

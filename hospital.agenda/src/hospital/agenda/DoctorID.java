@@ -16,7 +16,7 @@ package hospital.agenda;
 public class DoctorID implements org.apache.axis2.databinding.ADBBean {
 
 	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/agenda/",
-			"DoctorID", "ns3");
+			"DoctorID", "ns1");
 
 	/**
 	 * field for DoctorID
@@ -102,7 +102,7 @@ public class DoctorID implements org.apache.axis2.databinding.ADBBean {
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
 		if (namespace.equals("http://hospital/agenda/")) {
-			return "ns3";
+			return "ns1";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
 	}

@@ -11,9 +11,9 @@
 				<xsd:complexType>
 					<xsd:sequence>
 						<xsd:element name="Duration" type="xsd:duration" />
-						<xsd:element ref="agenda:DoctorID" />
+						<xsd:element ref="agenda:DoctorID" maxOccurs="unbounded"/>
 						<xsd:element ref="agenda:PatientID" />
-						<xsd:element ref="agenda:RoomID" />
+						<xsd:element ref="agenda:RoomID" maxOccurs="unbounded"/>
 						<xsd:element name="HighPriority" type="xsd:boolean" />
 					</xsd:sequence>
 				</xsd:complexType>
@@ -27,6 +27,17 @@
 						<xsd:element ref="agenda:RoomID" />
 						<xsd:element name="When" type="xsd:dateTime" />
 						<xsd:element name="WhenOriginally" type="xsd:dateTime" minOccurs="0"/>
+                        <xsd:element name="OriginalPlan">
+            				<xsd:complexType>
+            					<xsd:sequence>
+            						<xsd:element name="Duration" type="xsd:duration" />
+            						<xsd:element ref="agenda:DoctorID" maxOccurs="unbounded"/>
+            						<xsd:element ref="agenda:PatientID" />
+            						<xsd:element ref="agenda:RoomID" maxOccurs="unbounded"/>
+            						<xsd:element name="HighPriority" type="xsd:boolean" />
+            					</xsd:sequence>
+            				</xsd:complexType>
+            			</xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
