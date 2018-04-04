@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.axis2.AxisFault;
 import org.apache.axis2.databinding.types.Duration;
 
 /**
@@ -28,6 +29,13 @@ public class AgendaServiceSkeleton implements AgendaServiceSkeletonInterface {
 	public IDateProvider dateProvider = new DefaultDateProvider();
 
 	public AgendaServiceSkeleton() {
+		try {
+			callbackService = new AgendaCallbackServiceStub();
+		} catch (AxisFault e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			e.printStackTrace(System.err);
+		}
 	}
 
 	/**
