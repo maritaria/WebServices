@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xs:schema targetNamespace="http://hospital/schema" xmlns:tns="http://hospital/schema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema targetNamespace="http://hospital/schema/" xmlns:tns="http://hospital/schema/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<!-- Patient types -->
 	<xs:element name="PatientID" type="xs:string" />

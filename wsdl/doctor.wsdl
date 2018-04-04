@@ -1,43 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions targetNamespace="http://hospital/doctor/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:doctor="http://hospital/doctor/"
-	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<definitions targetNamespace="http://hospital/doctor/" xmlns:hos="http://hospital/schema/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:doctor="http://hospital/doctor/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<!-- type definitions -->
 	<types>
 		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hospital/doctor/">
-			<xsd:element name="DoctorID" type="xsd:string" />
-			<xsd:element name="DoctorIDs">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element ref="doctor:DoctorID" minOccurs="0" maxOccurs="unbounded" />
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="Skill" type="xsd:string" />
-			<xsd:element name="Skills">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element ref="doctor:Skill" minOccurs="0" maxOccurs="unbounded" />
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="Notification">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="Message" type="xsd:string" />
-						<xsd:element ref="doctor:DoctorID" />
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
+			<xsd:import schemaLocation="./hospital.xsd" namespace="http://hospital/schema/" />
 		</xsd:schema>
 	</types>
 	<message name="findDoctorRequest">
-		<part name="skills" element="doctor:Skills" />
+		<part name="skills" element="hos:Skills" />
 	</message>
 	<message name="findDoctorResponse">
-		<part name="doctorIDs" element="doctor:DoctorIDs" />
+		<part name="doctorIDs" element="hos:DoctorIDs" />
 	</message>
 	<message name="notifyRequest">
-		<part name="notification" element="doctor:Notification" />
+		<part name="notification" element="hos:NotificationRequest" />
+	</message>
+	<message name="notifyRescheduleRequest">
+		<part name="notification" element="hos:AgendaCallback" />
 	</message>
 
 
@@ -49,6 +29,9 @@
 		</operation>
 		<operation name="notify">
 			<input message="doctor:notifyRequest" />
+		</operation>
+		<operation name="notifyReschedule">
+			<input message="doctor:notifyRescheduleRequest"></input>
 		</operation>
 	</portType>
 
@@ -70,12 +53,18 @@
 				<soap:body use="literal" />
 			</input>
 		</operation>
+		<operation name="notifyReschedule">
+			<soap:operation soapAction="http://hospital/doctor/notifyReschedule" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+		</operation>
 	</binding>
 
 	<!-- Service defines the address of Web service -->
 	<service name="DoctorService">
 		<port binding="doctor:DoctorBinding" name="doctor">
-			<soap:address location="http://localhost:8080/hospital.doctor/services/DoctorService" />
+			<soap:address location="http://localhost:9080/hospital.doctor/services/DoctorService" />
 		</port>
 	</service>
 </definitions>

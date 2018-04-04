@@ -1,35 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions targetNamespace="http://hospital/patient/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:patient="http://hospital/patient/"
-	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:hos="http://hospital/schema/">
 	<!-- type definitions -->
 	<types>
 		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hospital/patient/">
-			<xsd:element name="PatientID" type="xsd:string" />
-			<xsd:element name="PatientIDs">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element ref="patient:PatientID" minOccurs="0" maxOccurs="unbounded" />
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="Notification">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="Message" type="xsd:string" />
-						<xsd:element ref="patient:PatientID" />
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
+			<xsd:import schemaLocation="./hospital.xsd" namespace="http://hospital/schema/" />
 		</xsd:schema>
 	</types>
 	<message name="notifyRequest">
-		<part name="notification" element="patient:Notification" />
+		<part name="notification" element="hos:NotificationRequest" />
+	</message>
+	<message name="notifyRescheduledRequest">
+		<part name="notification" element="hos:AgendaCallback" />
 	</message>
 
 	<!-- portType definitions -->
 	<portType name="patient">
 		<operation name="notify">
 			<input message="patient:notifyRequest" />
+		</operation>
+		<operation name="notifyRescheduled">
+			<input message="patient:notifyRescheduledRequest"></input>
 		</operation>
 	</portType>
 
@@ -42,12 +33,18 @@
 				<soap:body use="literal" />
 			</input>
 		</operation>
+		<operation name="notifyRescheduled">
+			<soap:operation soapAction="http://hospital/patient/notifyRescheduled" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+		</operation>
 	</binding>
 
 	<!-- Service defines the address of Web service -->
 	<service name="PatientService">
 		<port binding="patient:PatientBinding" name="patient">
-			<soap:address location="http://localhost:8080/hospital.patient/services/PatientService" />
+			<soap:address location="http://localhost:9080/hospital.patient/services/PatientService" />
 		</port>
 	</service>
 </definitions>

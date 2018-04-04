@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions targetNamespace="http://hospital/room/"
+<definitions targetNamespace="http://hospital/room/" xmlns:hos="http://hospital/schema/"
 	xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
 	xmlns:room="http://hospital/room/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -7,30 +7,16 @@
 	<types>
 		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 			targetNamespace="http://hospital/room/">
-			<xsd:element name="RoomID" type="xsd:string" />
-			<xsd:element name="RoomIDs">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element ref="room:RoomID" minOccurs="0" maxOccurs="unbounded" />
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="Item" type="xsd:string" />
-			<xsd:element name="Items">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element ref="room:Item" minOccurs="0" maxOccurs="unbounded" />
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
+			<xsd:import schemaLocation="./hospital.xsd" namespace="http://hospital/schema/" />
+			
 		</xsd:schema>
 	</types>
 	
 	<message name="findRoomRequest">
-		<part name="items" element="room:Items"/>
+		<part name="items" element="hos:Items"/>
 	</message>
 	<message name="findRoomResponse">
-		<part name="roomIDs" element="room:RoomIDs"/>
+		<part name="roomIDs" element="hos:RoomIDs"/>
 	</message>
 
 
@@ -64,7 +50,7 @@
 	<service name="RoomService">
 		<port binding="room:RoomBinding" name="room">
 			<soap:address
-				location="http://localhost:8080/hospital.room/services/RoomService" />
+				location="http://localhost:9080/hospital.room/services/RoomService" />
 		</port>
 	</service>
 </definitions>

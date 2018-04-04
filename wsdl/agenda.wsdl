@@ -1,42 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions targetNamespace="http://hospital/agenda/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:agenda="http://hospital/agenda/"
-	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:hos="http://hospital/schema/">
 	<!-- type definitions -->
 	<types>
 		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hospital/agenda/">
-			<xsd:element name="PatientID" type="xsd:string" />
-			<xsd:element name="DoctorID" type="xsd:string" />
-			<xsd:element name="RoomID" type="xsd:string" />
-			<xsd:element name="TreatmentPlan">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="Duration" type="xsd:duration" />
-						<xsd:element ref="agenda:DoctorID" />
-						<xsd:element ref="agenda:PatientID" />
-						<xsd:element ref="agenda:RoomID" />
-						<xsd:element name="HighPriority" type="xsd:boolean" />
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="TreatmentScheduling">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="Duration" type="xsd:duration" />
-						<xsd:element ref="agenda:DoctorID" />
-						<xsd:element ref="agenda:PatientID" />
-						<xsd:element ref="agenda:RoomID" />
-						<xsd:element name="When" type="xsd:dateTime" />
-						<xsd:element name="WhenOriginally" type="xsd:dateTime" minOccurs="0"/>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
+			<xsd:import schemaLocation="./hospital.xsd" namespace="http://hospital/schema/" />
 		</xsd:schema>
 	</types>
 	<message name="scheduleTreatmentRequest">
-		<part name="treatmentPlan" element="agenda:TreatmentPlan" />
+		<part name="treatmentPlan" element="hos:AgendaRequest" />
 	</message>
 	<message name="scheduleTreatmentResponse">
-	<part name="treatmentScheduling" element="agenda:TreatmentScheduling"/>
+		<part name="treatmentScheduling" element="hos:AgendaResponse" />
 	</message>
 
 	<!-- portType definitions -->
@@ -63,7 +38,7 @@
 	<!-- Service defines the address of Web service -->
 	<service name="AgendaService">
 		<port binding="agenda:AgendaBinding" name="agenda">
-			<soap:address location="http://localhost:8080/hospital.agenda/services/AgendaService" />
+			<soap:address location="http://localhost:9080/hospital.agenda/services/AgendaService" />
 		</port>
 	</service>
 </definitions>
