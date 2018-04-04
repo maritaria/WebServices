@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions targetNamespace="http://hospital/agenda/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:agenda="http://hospital/agenda/"
-	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:hos="http://hospital/schema/">
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:hos="http://hospital/schema/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
 	<!-- type definitions -->
 	<types>
 		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hospital/agenda/">
@@ -13,6 +13,9 @@
 	<message name="scheduleTreatmentResponse">
 		<part name="treatmentScheduling" element="hos:AgendaResponse" />
 	</message>
+	<message name="receiveCallbackRequest">
+		<part name="treatmentPlan" element="hos:AgendaCallback" />
+	</message>
 
 	<!-- portType definitions -->
 	<portType name="agenda">
@@ -21,6 +24,16 @@
 			<output message="agenda:scheduleTreatmentResponse" />
 		</operation>
 	</portType>
+	<portType name="agendaCallback">
+		<operation name="receiveCallback">
+			<input message="agenda:receiveCallbackRequest" />
+		</operation>
+	</portType>
+	
+	<plnk:partnerLinkType name="agendaLinkType">
+		<plnk:role name="agenda" portType="agenda:agenda" />
+		<plnk:role name="agendaCallback" portType="agenda:agendaCallback" />
+	</plnk:partnerLinkType>
 
 	<!-- binding definition -->
 	<binding name="AgendaBinding" type="agenda:agenda">

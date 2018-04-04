@@ -2,7 +2,7 @@
 <definitions targetNamespace="http://hospital/room/" xmlns:hos="http://hospital/schema/"
 	xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
 	xmlns:room="http://hospital/room/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
 	<!-- type definitions -->
 	<types>
 		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions targetNamespace="http://hospital/scheduling/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:scheduling="http://hospital/scheduling/"
-	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:agenda="http://hospital/agenda/" xmlns:agendaCallback="http://hospital/agendaCallback/"
-	xmlns:doctor="http://hospital/doctor/" xmlns:patient="http://hospital/patient/" xmlns:room="http://hospital/room/" xmlns:hos="http://hospital/schema/">
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:agenda="http://hospital/agenda/"
+	xmlns:doctor="http://hospital/doctor/" xmlns:patient="http://hospital/patient/" xmlns:room="http://hospital/room/" xmlns:hos="http://hospital/schema/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
 
 	<!-- type definitions -->
 	<types>
