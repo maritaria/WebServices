@@ -23,6 +23,9 @@
 			<output message="scheduling:scheduleTreatmentResponse" />
 		</operation>
 	</portType>
+	<plnk:partnerLinkType name="schedulingPartnerLinkType">
+		<plnk:role name="schedulingService" portType="scheduling:scheduling" />
+	</plnk:partnerLinkType>
 
 	<!-- binding definition -->
 	<binding name="SchedulingBinding" type="scheduling:scheduling">
