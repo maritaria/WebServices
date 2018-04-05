@@ -27,6 +27,10 @@
 			<output message="room:findRoomResponse" />
 		</operation>
 	</portType>
+	
+	<plnk:partnerLinkType name="roomLinkType">
+		<plnk:role name="room" portType="room:room" />
+	</plnk:partnerLinkType>
 
 	<!-- binding definition -->
 	<binding name="RoomBinding" type="room:room">
