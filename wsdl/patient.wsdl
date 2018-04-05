@@ -23,6 +23,10 @@
 			<input message="patient:notifyRescheduledRequest"></input>
 		</operation>
 	</portType>
+	
+	<plnk:parterLinkType>
+		<plnk:role name="patient" portType="patient:patient" />
+	</plnk:parterLinkType>
 
 	<!-- binding definition -->
 	<binding name="PatientBinding" type="patient:patient">
