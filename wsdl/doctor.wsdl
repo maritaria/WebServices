@@ -34,6 +34,11 @@
 			<input message="doctor:notifyRescheduleRequest"></input>
 		</operation>
 	</portType>
+	
+	<!-- partnerLinkType definition -->
+	<plnk:partnerLinkType name="doctorLinkType">
+		<plnk:role name="doctor" portType="doctor:doctor" />
+	</plnk:partnerLinkType>
 
 	<!-- binding definition -->
 	<binding name="DoctorBinding" type="doctor:doctor">
