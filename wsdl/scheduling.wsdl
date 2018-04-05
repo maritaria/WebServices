@@ -43,7 +43,7 @@
 	<!-- Service defines the address of Web service -->
 	<service name="SchedulingService">
 		<port binding="scheduling:SchedulingBinding" name="scheduling">
-			<soap:address location="http://localhost:9080/hospital.scheduling/services/BikeService" />
+			<soap:address location="http://localhost:8080/ode/processes/SchedulingService" />
 		</port>
 	</service>
 </definitions>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:scheduling="http://hospital/scheduling/">
+  <process name="scheduling:scheduling">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="link_scheduler">
+      <service name="scheduling:SchedulingService" port="scheduling"/>
+    </provide>
+  </process>
+</deploy>
