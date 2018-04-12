@@ -21,7 +21,6 @@
 	<bpel:variables>
 		<bpel:variable name="originalRequest" messageType="sched:scheduleTreatmentRequest" />
 		<bpel:variable name="finalAnswer" messageType="sched:scheduleTreatmentResponse" />
-		
 		<bpel:variable name="findRoomRequest" messageType="room:findRoomRequest" />
 		<bpel:variable name="findRoomResponse" messageType="room:findRoomResponse" />
 		
@@ -43,64 +42,46 @@
 		<bpel:receive partnerLink="link_scheduler" portType="sched:scheduling" operation="scheduleTreatment" variable="originalRequest" createInstance="yes">
 			<bpel:sources>
 				<bpel:source linkName="receive-to-response">
-					<!-- 
-					<bpel:transitionCondition>
-						$request1.request/amount >= 10000
-					</bpel:transitionCondition>
-					 -->
 				</bpel:source>
 			</bpel:sources>
 		</bpel:receive>
-		<!-- Build and send response -->
-		
 		<bpel:sequence>
 			<bpel:targets>
 				<bpel:target linkName="receive-to-response" />
 			</bpel:targets>
-			
-			<!-- assign empty items array to the find-room request variable -->
-			<bpel:assign>
+			<bpel:assign validate="no" name="Assign">
 				<bpel:copy>
 					<bpel:from>
 						<bpel:literal>
-							<hos:Items>
-							</hos:Items>
+							<tns:Items xmlns:tns="http://hospital/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+								<tns:Item>tns:Item</tns:Item>
+							</tns:Items>
 						</bpel:literal>
 					</bpel:from>
-					</bpel:to variable="findRoomRequest" part="items"/>
+					<bpel:to variable="findRoomRequest" part="items"></bpel:to>
 				</bpel:copy>
-			</bpel:assign>
-			
-			<!-- TODO copy the items array from the original request to the findRoomRequest
-			<bpel:assign>
 				<bpel:copy>
-					<bpel:from variable="originalRequest" part="treatmentPlan"
-						query="/hos:SchedulingRequest/hos:Items" />
-					<bpel:to variable="findRoomRequest"/>
-				</bpel:copy>
-			</bpel:assign> -->
-			
-			<!-- invoke the room service to find a room with our findRoomRequest variable -->
-			<bpel:invoke partnerLink="link_room" portType="room:room"
-				operation="findRoom" inputVariable="findRoomRequest" outputVariable="findRoomResponse" />
-			
-			
-			<bpel:assign>
-				<bpel:copy>
-					<bpel:from>
-						<bpel:literal>
-							<hos:SchedulingResponse>
-								<hos:PatientID>1</hos:PatientID>
-								<hos:RoomID>2</hos:RoomID>
-								<hos:DoctorID>3</hos:DoctorID>
-								<hos:Duration>PT2H</hos:Duration>
-								<hos:When>1995-05-03T08:00:00</hos:When>
-							</hos:SchedulingResponse>
-						</bpel:literal>
+					<bpel:from part="treatmentPlan" variable="originalRequest">
+						<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[hos:Items]]></bpel:query>
 					</bpel:from>
-					<bpel:to>$finalAnswer.treatmentSchedule</bpel:to>
+					<bpel:to part="items" variable="findRoomRequest"></bpel:to>
 				</bpel:copy>
 			</bpel:assign>
+			<bpel:invoke partnerLink="link_room" portType="room:room" operation="findRoom" inputVariable="findRoomRequest" outputVariable="findRoomResponse" />
+			<bpel:assign>
+				
+                <bpel:copy>
+                    <bpel:from><bpel:literal><tns:RoomIDs xmlns:tns="http://hospital/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <tns:RoomID>tns:RoomID</tns:RoomID>
+</tns:RoomIDs>
+</bpel:literal></bpel:from>
+                    <bpel:to variable="finalAnswer" part="treatmentSchedule"></bpel:to>
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from part="roomIDs" variable="findRoomResponse"></bpel:from>
+                    <bpel:to part="treatmentSchedule" variable="finalAnswer"></bpel:to>
+                </bpel:copy>
+            </bpel:assign>
 			<bpel:reply partnerLink="link_scheduler" portType="sched:scheduling" operation="scheduleTreatment" variable="finalAnswer" />
 		</bpel:sequence>
 	</bpel:flow>

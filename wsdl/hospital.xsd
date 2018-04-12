@@ -65,6 +65,7 @@
 				<xs:element ref="tns:PatientID" />
 				<xs:element ref="tns:RoomID" />
 				<xs:element ref="tns:DoctorID" />
+				<xs:element ref="tns:RoomIDs" />
 
 				<xs:element name="Duration" type="xs:duration" />
 				<xs:element name="When" type="xs:dateTime" />
@@ -112,6 +113,6 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
 </xs:schema>
 

@@ -37,9 +37,9 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 
 				if ("findRoom".equals(methodName)) {
 
-					hospital.room.RoomIDs roomIDs7 = null;
-					hospital.room.Items wrappedParam = (hospital.room.Items) fromOM(
-							msgContext.getEnvelope().getBody().getFirstElement(), hospital.room.Items.class,
+					hospital.schema.RoomIDs roomIDs7 = null;
+					hospital.schema.Items wrappedParam = (hospital.schema.Items) fromOM(
+							msgContext.getEnvelope().getBody().getFirstElement(), hospital.schema.Items.class,
 							getEnvelopeNamespaces(msgContext.getEnvelope()));
 
 					roomIDs7 =
@@ -61,11 +61,11 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 	}
 
 	//
-	private org.apache.axiom.om.OMElement toOM(hospital.room.Items param, boolean optimizeContent)
+	private org.apache.axiom.om.OMElement toOM(hospital.schema.Items param, boolean optimizeContent)
 			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(hospital.room.Items.MY_QNAME,
+			return param.getOMElement(hospital.schema.Items.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -73,11 +73,11 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(hospital.room.RoomIDs param, boolean optimizeContent)
+	private org.apache.axiom.om.OMElement toOM(hospital.schema.RoomIDs param, boolean optimizeContent)
 			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(hospital.room.RoomIDs.MY_QNAME,
+			return param.getOMElement(hospital.schema.RoomIDs.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -86,12 +86,12 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 	}
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-			hospital.room.RoomIDs param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+			hospital.schema.RoomIDs param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
 			throws org.apache.axis2.AxisFault {
 		try {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
-			emptyEnvelope.getBody().addChild(param.getOMElement(hospital.room.RoomIDs.MY_QNAME, factory));
+			emptyEnvelope.getBody().addChild(param.getOMElement(hospital.schema.RoomIDs.MY_QNAME, factory));
 
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -99,8 +99,8 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 		}
 	}
 
-	private hospital.room.RoomIDs wrapfindRoom() {
-		hospital.room.RoomIDs wrappedElement = new hospital.room.RoomIDs();
+	private hospital.schema.RoomIDs wrapfindRoom() {
+		hospital.schema.RoomIDs wrappedElement = new hospital.schema.RoomIDs();
 		return wrappedElement;
 	}
 
@@ -116,15 +116,15 @@ public class RoomServiceMessageReceiverInOut extends org.apache.axis2.receivers.
 
 		try {
 
-			if (hospital.room.Items.class.equals(type)) {
+			if (hospital.schema.Items.class.equals(type)) {
 
-				return hospital.room.Items.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return hospital.schema.Items.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (hospital.room.RoomIDs.class.equals(type)) {
+			if (hospital.schema.RoomIDs.class.equals(type)) {
 
-				return hospital.room.RoomIDs.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return hospital.schema.RoomIDs.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

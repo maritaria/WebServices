@@ -6,7 +6,7 @@
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
  */
 
-package hospital.room;
+package hospital.schema;
 
 /**
  * Item bean class
@@ -15,7 +15,7 @@ package hospital.room;
 
 public class Item implements org.apache.axis2.databinding.ADBBean {
 
-	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/room/",
+	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/schema/",
 			"Item", "ns1");
 
 	/**
@@ -70,14 +70,14 @@ public class Item implements org.apache.axis2.databinding.ADBBean {
 
 		// We can safely assume an element has only one type associated with it
 
-		java.lang.String namespace = "http://hospital/room/";
+		java.lang.String namespace = "http://hospital/schema/";
 		java.lang.String _localName = "Item";
 
 		writeStartElement(null, namespace, _localName, xmlWriter);
 
 		// add the type details if this is used in a simple type
 		if (serializeType) {
-			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/room/");
+			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/schema/");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
 				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", namespacePrefix + ":Item",
 						xmlWriter);
@@ -101,7 +101,7 @@ public class Item implements org.apache.axis2.databinding.ADBBean {
 	}
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
-		if (namespace.equals("http://hospital/room/")) {
+		if (namespace.equals("http://hospital/schema/")) {
 			return "ns1";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
@@ -319,7 +319,7 @@ public class Item implements org.apache.axis2.databinding.ADBBean {
 				while (!reader.isEndElement()) {
 					if (reader.isStartElement()) {
 
-						if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/room/", "Item")
+						if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "Item")
 								.equals(reader.getName())) {
 
 							nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",

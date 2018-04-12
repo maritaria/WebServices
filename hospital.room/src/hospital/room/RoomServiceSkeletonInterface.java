@@ -18,6 +18,6 @@ public interface RoomServiceSkeletonInterface {
 	 * @param items
 	 */
 
-	public hospital.room.RoomIDs findRoom(hospital.room.Items items);
+	public hospital.schema.RoomIDs findRoom(hospital.schema.Items items);
 
 }
