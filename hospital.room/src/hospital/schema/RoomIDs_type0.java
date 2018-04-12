@@ -1,51 +1,39 @@
 
 /**
- * Items.java
+ * RoomIDs_type0.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
  */
 
-package hospital.room;
+package hospital.schema;
 
 /**
- * Items bean class
+ * RoomIDs_type0 bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class Items implements org.apache.axis2.databinding.ADBBean {
-
-	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/room/",
-			"Items", "ns1");
-
-	/**
-	 * field for Item This was an Array!
+public class RoomIDs_type0 implements org.apache.axis2.databinding.ADBBean {
+	/*
+	 * This type was generated from the piece of schema that had name =
+	 * RoomIDs_type0 Namespace URI = http://hospital/schema/ Namespace Prefix = ns1
 	 */
 
-	protected java.lang.String[] localItem;
+	/**
+	 * field for RoomID This was an Array!
+	 */
+
+	protected java.lang.String[] localRoomID;
 
 	/*
 	 * This tracker boolean wil be used to detect whether the user called the set
 	 * method for this attribute. It will be used to determine whether to include
 	 * this field in the serialized XML
 	 */
-	protected boolean localItemTracker = false;
-	
-	public Items() {
-	}
-	
-	public Items(String... items) {
-		for (String item : items) {
-			addItem(item);
-		}
-	}
-	
-	public Items(Iterable<? extends String> items) {
-		items.forEach(this::addItem);
-	}
+	protected boolean localRoomIDTracker = false;
 
-	public boolean isItemSpecified() {
-		return localItemTracker;
+	public boolean isRoomIDSpecified() {
+		return localRoomIDTracker;
 	}
 
 	/**
@@ -53,14 +41,14 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 	 * 
 	 * @return java.lang.String[]
 	 */
-	public java.lang.String[] getItem() {
-		return localItem;
+	public java.lang.String[] getRoomID() {
+		return localRoomID;
 	}
 
 	/**
-	 * validate the array for Item
+	 * validate the array for RoomID
 	 */
-	protected void validateItem(java.lang.String[] param) {
+	protected void validateRoomID(java.lang.String[] param) {
 
 	}
 
@@ -68,15 +56,15 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            Item
+	 *            RoomID
 	 */
-	public void setItem(java.lang.String[] param) {
+	public void setRoomID(java.lang.String[] param) {
 
-		validateItem(param);
+		validateRoomID(param);
 
-		localItemTracker = param != null;
+		localRoomIDTracker = param != null;
 
-		this.localItem = param;
+		this.localRoomID = param;
 	}
 
 	/**
@@ -85,17 +73,17 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 	 * @param param
 	 *            java.lang.String
 	 */
-	public void addItem(java.lang.String param) {
-		if (localItem == null) {
-			localItem = new java.lang.String[] {};
+	public void addRoomID(java.lang.String param) {
+		if (localRoomID == null) {
+			localRoomID = new java.lang.String[] {};
 		}
 
 		// update the setting tracker
-		localItemTracker = true;
+		localRoomIDTracker = true;
 
-		java.util.List list = org.apache.axis2.databinding.utils.ConverterUtil.toList(localItem);
+		java.util.List list = org.apache.axis2.databinding.utils.ConverterUtil.toList(localRoomID);
 		list.add(param);
-		this.localItem = (java.lang.String[]) list.toArray(new java.lang.String[list.size()]);
+		this.localRoomID = (java.lang.String[]) list.toArray(new java.lang.String[list.size()]);
 
 	}
 
@@ -108,8 +96,8 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 	public org.apache.axiom.om.OMElement getOMElement(final javax.xml.namespace.QName parentQName,
 			final org.apache.axiom.om.OMFactory factory) throws org.apache.axis2.databinding.ADBException {
 
-		org.apache.axiom.om.OMDataSource dataSource = new org.apache.axis2.databinding.ADBDataSource(this, MY_QNAME);
-		return factory.createOMElement(dataSource, MY_QNAME);
+		org.apache.axiom.om.OMDataSource dataSource = new org.apache.axis2.databinding.ADBDataSource(this, parentQName);
+		return factory.createOMElement(dataSource, parentQName);
 
 	}
 
@@ -131,26 +119,26 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 
 		if (serializeType) {
 
-			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/room/");
+			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/schema/");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", namespacePrefix + ":Items",
-						xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type",
+						namespacePrefix + ":RoomIDs_type0", xmlWriter);
 			} else {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "Items", xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "RoomIDs_type0", xmlWriter);
 			}
 
 		}
-		if (localItemTracker) {
-			if (localItem != null) {
-				namespace = "http://hospital/room/";
-				for (int i = 0; i < localItem.length; i++) {
+		if (localRoomIDTracker) {
+			if (localRoomID != null) {
+				namespace = "http://hospital/schema/";
+				for (int i = 0; i < localRoomID.length; i++) {
 
-					if (localItem[i] != null) {
+					if (localRoomID[i] != null) {
 
-						writeStartElement(null, namespace, "Item", xmlWriter);
+						writeStartElement(null, namespace, "RoomID", xmlWriter);
 
 						xmlWriter.writeCharacters(
-								org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localItem[i]));
+								org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRoomID[i]));
 
 						xmlWriter.writeEndElement();
 
@@ -163,7 +151,7 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 				}
 			} else {
 
-				throw new org.apache.axis2.databinding.ADBException("Item cannot be null!!");
+				throw new org.apache.axis2.databinding.ADBException("RoomID cannot be null!!");
 
 			}
 
@@ -173,7 +161,7 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 	}
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
-		if (namespace.equals("http://hospital/room/")) {
+		if (namespace.equals("http://hospital/schema/")) {
 			return "ns1";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
@@ -353,13 +341,14 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 		java.util.ArrayList elementList = new java.util.ArrayList();
 		java.util.ArrayList attribList = new java.util.ArrayList();
 
-		if (localItemTracker) {
-			if (localItem != null) {
-				for (int i = 0; i < localItem.length; i++) {
+		if (localRoomIDTracker) {
+			if (localRoomID != null) {
+				for (int i = 0; i < localRoomID.length; i++) {
 
-					if (localItem[i] != null) {
-						elementList.add(new javax.xml.namespace.QName("http://hospital/room/", "Item"));
-						elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localItem[i]));
+					if (localRoomID[i] != null) {
+						elementList.add(new javax.xml.namespace.QName("http://hospital/schema/", "RoomID"));
+						elementList
+								.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRoomID[i]));
 					} else {
 
 						// have to do nothing
@@ -369,7 +358,7 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 				}
 			} else {
 
-				throw new org.apache.axis2.databinding.ADBException("Item cannot be null!!");
+				throw new org.apache.axis2.databinding.ADBException("RoomID cannot be null!!");
 
 			}
 
@@ -394,8 +383,8 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static Items parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			Items object = new Items();
+		public static RoomIDs_type0 parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
+			RoomIDs_type0 object = new RoomIDs_type0();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -418,10 +407,10 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 
 						java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":") + 1);
 
-						if (!"Items".equals(type)) {
+						if (!"RoomIDs_type0".equals(type)) {
 							// find namespace for the prefix
 							java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-							return (Items) hospital.room.ExtensionMapper.getTypeObject(nsUri, type, reader);
+							return (RoomIDs_type0) hospital.room.ExtensionMapper.getTypeObject(nsUri, type, reader);
 						}
 
 					}
@@ -439,8 +428,8 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 				while (!reader.isStartElement() && !reader.isEndElement())
 					reader.next();
 
-				if (reader.isStartElement()
-						&& new javax.xml.namespace.QName("http://hospital/room/", "Item").equals(reader.getName())) {
+				if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "RoomID")
+						.equals(reader.getName())) {
 
 					// Process the array and step past its final element's end.
 					list1.add(reader.getElementText());
@@ -461,7 +450,7 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 							// two continuous end elements means we are exiting the xml structure
 							loopDone1 = true;
 						} else {
-							if (new javax.xml.namespace.QName("http://hospital/room/", "Item")
+							if (new javax.xml.namespace.QName("http://hospital/schema/", "RoomID")
 									.equals(reader.getName())) {
 								list1.add(reader.getElementText());
 
@@ -472,7 +461,7 @@ public class Items implements org.apache.axis2.databinding.ADBBean {
 					}
 					// call the converter utility to convert and set the array
 
-					object.setItem((java.lang.String[]) list1.toArray(new java.lang.String[list1.size()]));
+					object.setRoomID((java.lang.String[]) list1.toArray(new java.lang.String[list1.size()]));
 
 				} // End of if for expected property start element
 

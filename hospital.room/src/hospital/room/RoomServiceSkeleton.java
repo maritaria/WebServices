@@ -13,15 +13,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
+import hospital.schema.*;
 
 /**
  * RoomServiceSkeleton java skeleton for the axisService
  */
 public class RoomServiceSkeleton implements RoomServiceSkeletonInterface {
-	
-	//TODO DAO as field.
+
+	// TODO DAO as field.
 	private final List<Room> rooms = new ArrayList<>();
-	
+
 	public RoomServiceSkeleton() {
 		this.rooms.add(new Room("1", Arrays.asList("hammer", "saw")));
 		this.rooms.add(new Room("2", Arrays.asList("mri", "hammer")));
@@ -33,35 +34,38 @@ public class RoomServiceSkeleton implements RoomServiceSkeletonInterface {
 	 * @param items0
 	 * @return roomIDs1
 	 */
-
-	public hospital.room.RoomIDs findRoom(hospital.room.Items items) {
+	@Override
+	public RoomIDs findRoom(Items items) {
+		Items_type0 itemArray = items.getItems();
 		RoomIDs roomIds = new RoomIDs();
+		RoomIDs_type0 roomArray = new RoomIDs_type0();
+		roomIds.setRoomIDs(roomArray);
+
 		Stream<Room> rooms = this.rooms.stream();
-		if (items.isItemSpecified()) {
-			rooms = rooms.filter(room -> room.getItems().containsAll(Arrays.asList(items.getItem())));
+		if (itemArray.isItemSpecified()) {
+			rooms = rooms.filter(room -> room.getItems().containsAll(Arrays.asList(itemArray.getItem())));
 		}
-		rooms.map(Room::getId).forEach(roomIds::addRoomID);
+		rooms.map(Room::getId).forEach(roomArray::addRoomID);
 		return roomIds;
 	}
-	
+
 	public void addRoom(Room room) {
 		this.rooms.add(Objects.requireNonNull(room));
 	}
-	
-	
+
 	public static class Room {
 		private final String id;
 		private final List<String> items;
-		
+
 		public Room(String id, List<String> items) {
 			this.id = Objects.requireNonNull(id);
 			this.items = new ArrayList<>(Objects.requireNonNull(items));
 		}
-	
+
 		public String getId() {
 			return id;
 		}
-		
+
 		public List<String> getItems() {
 			return Collections.unmodifiableList(items);
 		}
