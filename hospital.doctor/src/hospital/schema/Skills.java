@@ -1,47 +1,47 @@
 
 /**
- * DoctorID.java
+ * Skills.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
  */
 
-package hospital.doctor;
+package hospital.schema;
 
 /**
- * DoctorID bean class
+ * Skills bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class DoctorID implements org.apache.axis2.databinding.ADBBean {
+public class Skills implements org.apache.axis2.databinding.ADBBean {
 
-	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/doctor/",
-			"DoctorID", "ns2");
+	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/schema/",
+			"Skills", "ns1");
 
 	/**
-	 * field for DoctorID
+	 * field for Skills
 	 */
 
-	protected java.lang.String localDoctorID;
+	protected hospital.schema.Skills_type0 localSkills;
 
 	/**
 	 * Auto generated getter method
 	 * 
-	 * @return java.lang.String
+	 * @return hospital.schema.Skills_type0
 	 */
-	public java.lang.String getDoctorID() {
-		return localDoctorID;
+	public hospital.schema.Skills_type0 getSkills() {
+		return localSkills;
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            DoctorID
+	 *            Skills
 	 */
-	public void setDoctorID(java.lang.String param) {
+	public void setSkills(hospital.schema.Skills_type0 param) {
 
-		this.localDoctorID = param;
+		this.localSkills = param;
 
 	}
 
@@ -70,39 +70,16 @@ public class DoctorID implements org.apache.axis2.databinding.ADBBean {
 
 		// We can safely assume an element has only one type associated with it
 
-		java.lang.String namespace = "http://hospital/doctor/";
-		java.lang.String _localName = "DoctorID";
-
-		writeStartElement(null, namespace, _localName, xmlWriter);
-
-		// add the type details if this is used in a simple type
-		if (serializeType) {
-			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/doctor/");
-			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type",
-						namespacePrefix + ":DoctorID", xmlWriter);
-			} else {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "DoctorID", xmlWriter);
-			}
+		if (localSkills == null) {
+			throw new org.apache.axis2.databinding.ADBException("Skills cannot be null!");
 		}
-
-		if (localDoctorID == null) {
-
-			throw new org.apache.axis2.databinding.ADBException("DoctorID cannot be null !!");
-
-		} else {
-
-			xmlWriter.writeCharacters(localDoctorID);
-
-		}
-
-		xmlWriter.writeEndElement();
+		localSkills.serialize(MY_QNAME, xmlWriter);
 
 	}
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
-		if (namespace.equals("http://hospital/doctor/")) {
-			return "ns2";
+		if (namespace.equals("http://hospital/schema/")) {
+			return "ns1";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
 	}
@@ -279,10 +256,7 @@ public class DoctorID implements org.apache.axis2.databinding.ADBBean {
 			throws org.apache.axis2.databinding.ADBException {
 
 		// We can safely assume an element has only one type associated with it
-		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(MY_QNAME,
-				new java.lang.Object[] { org.apache.axis2.databinding.utils.reader.ADBXMLStreamReader.ELEMENT_TEXT,
-						org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDoctorID) },
-				null);
+		return localSkills.getPullParser(MY_QNAME);
 
 	}
 
@@ -300,8 +274,8 @@ public class DoctorID implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static DoctorID parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			DoctorID object = new DoctorID();
+		public static Skills parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
+			Skills object = new Skills();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -320,20 +294,10 @@ public class DoctorID implements org.apache.axis2.databinding.ADBBean {
 					if (reader.isStartElement()) {
 
 						if (reader.isStartElement()
-								&& new javax.xml.namespace.QName("http://hospital/doctor/", "DoctorID")
+								&& new javax.xml.namespace.QName("http://hospital/schema/", "Skills")
 										.equals(reader.getName())) {
 
-							nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
-									"nil");
-							if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
-								throw new org.apache.axis2.databinding.ADBException(
-										"The element: " + "DoctorID" + "  cannot be null");
-							}
-
-							java.lang.String content = reader.getElementText();
-
-							object.setDoctorID(
-									org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+							object.setSkills(hospital.schema.Skills_type0.Factory.parse(reader));
 
 						} // End of if for expected property start element
 

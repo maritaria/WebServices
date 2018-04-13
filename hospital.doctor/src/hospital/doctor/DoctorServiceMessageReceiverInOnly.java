@@ -37,11 +37,18 @@ public class DoctorServiceMessageReceiverInOnly extends org.apache.axis2.receive
 
 				if ("notify".equals(methodName)) {
 
-					hospital.doctor.Notification wrappedParam = (hospital.doctor.Notification) fromOM(
-							inMessage.getEnvelope().getBody().getFirstElement(), hospital.doctor.Notification.class,
-							getEnvelopeNamespaces(inMessage.getEnvelope()));
+					hospital.schema.NotificationRequest wrappedParam = (hospital.schema.NotificationRequest) fromOM(
+							inMessage.getEnvelope().getBody().getFirstElement(),
+							hospital.schema.NotificationRequest.class, getEnvelopeNamespaces(inMessage.getEnvelope()));
 
 					skel.notify(wrappedParam);
+				} else if ("notifyReschedule".equals(methodName)) {
+
+					hospital.schema.AgendaCallback wrappedParam = (hospital.schema.AgendaCallback) fromOM(
+							inMessage.getEnvelope().getBody().getFirstElement(), hospital.schema.AgendaCallback.class,
+							getEnvelopeNamespaces(inMessage.getEnvelope()));
+
+					skel.notifyReschedule(wrappedParam);
 
 				} else {
 					throw new java.lang.RuntimeException("method not found");
@@ -54,11 +61,11 @@ public class DoctorServiceMessageReceiverInOnly extends org.apache.axis2.receive
 	}
 
 	//
-	private org.apache.axiom.om.OMElement toOM(hospital.doctor.Notification param, boolean optimizeContent)
+	private org.apache.axiom.om.OMElement toOM(hospital.schema.NotificationRequest param, boolean optimizeContent)
 			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(hospital.doctor.Notification.MY_QNAME,
+			return param.getOMElement(hospital.schema.NotificationRequest.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -66,11 +73,11 @@ public class DoctorServiceMessageReceiverInOnly extends org.apache.axis2.receive
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(hospital.doctor.Skills param, boolean optimizeContent)
+	private org.apache.axiom.om.OMElement toOM(hospital.schema.AgendaCallback param, boolean optimizeContent)
 			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(hospital.doctor.Skills.MY_QNAME,
+			return param.getOMElement(hospital.schema.AgendaCallback.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -78,11 +85,23 @@ public class DoctorServiceMessageReceiverInOnly extends org.apache.axis2.receive
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(hospital.doctor.DoctorIDs param, boolean optimizeContent)
+	private org.apache.axiom.om.OMElement toOM(hospital.schema.Skills param, boolean optimizeContent)
 			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(hospital.doctor.DoctorIDs.MY_QNAME,
+			return param.getOMElement(hospital.schema.Skills.MY_QNAME,
+					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+		} catch (org.apache.axis2.databinding.ADBException e) {
+			throw org.apache.axis2.AxisFault.makeFault(e);
+		}
+
+	}
+
+	private org.apache.axiom.om.OMElement toOM(hospital.schema.DoctorIDs param, boolean optimizeContent)
+			throws org.apache.axis2.AxisFault {
+
+		try {
+			return param.getOMElement(hospital.schema.DoctorIDs.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -91,12 +110,12 @@ public class DoctorServiceMessageReceiverInOnly extends org.apache.axis2.receive
 	}
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-			hospital.doctor.DoctorIDs param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+			hospital.schema.DoctorIDs param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
 			throws org.apache.axis2.AxisFault {
 		try {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
-			emptyEnvelope.getBody().addChild(param.getOMElement(hospital.doctor.DoctorIDs.MY_QNAME, factory));
+			emptyEnvelope.getBody().addChild(param.getOMElement(hospital.schema.DoctorIDs.MY_QNAME, factory));
 
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -104,8 +123,8 @@ public class DoctorServiceMessageReceiverInOnly extends org.apache.axis2.receive
 		}
 	}
 
-	private hospital.doctor.DoctorIDs wrapfindDoctor() {
-		hospital.doctor.DoctorIDs wrappedElement = new hospital.doctor.DoctorIDs();
+	private hospital.schema.DoctorIDs wrapfindDoctor() {
+		hospital.schema.DoctorIDs wrappedElement = new hospital.schema.DoctorIDs();
 		return wrappedElement;
 	}
 
@@ -121,21 +140,27 @@ public class DoctorServiceMessageReceiverInOnly extends org.apache.axis2.receive
 
 		try {
 
-			if (hospital.doctor.DoctorIDs.class.equals(type)) {
+			if (hospital.schema.AgendaCallback.class.equals(type)) {
 
-				return hospital.doctor.DoctorIDs.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (hospital.doctor.Notification.class.equals(type)) {
-
-				return hospital.doctor.Notification.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return hospital.schema.AgendaCallback.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (hospital.doctor.Skills.class.equals(type)) {
+			if (hospital.schema.DoctorIDs.class.equals(type)) {
 
-				return hospital.doctor.Skills.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return hospital.schema.DoctorIDs.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (hospital.schema.NotificationRequest.class.equals(type)) {
+
+				return hospital.schema.NotificationRequest.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (hospital.schema.Skills.class.equals(type)) {
+
+				return hospital.schema.Skills.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

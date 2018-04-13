@@ -94,13 +94,42 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="AgendaCallback">
+	<xs:element name="RescheduleInfo">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:PatientID" />
 				<xs:element ref="tns:DoctorID" />
+				<xs:element ref="tns:RoomID" />
 				<xs:element name="When" type="xs:dateTime" />
 				<xs:element name="WhenOriginally" type="xs:dateTime" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="AgendaCallback">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ScheduleInfo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="tns:PatientID" />
+							<xs:element ref="tns:DoctorID" />
+							<xs:element ref="tns:RoomID" />
+							<xs:element name="When" type="xs:dateTime" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RescheduledTreatment" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="tns:PatientID" />
+							<xs:element ref="tns:DoctorID" />
+							<xs:element ref="tns:RoomID" />
+							<xs:element name="When" type="xs:dateTime" />
+							<xs:element name="WhenOriginally" type="xs:dateTime" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

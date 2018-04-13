@@ -1,43 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions targetNamespace="http://hospital/doctor/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:doctor="http://hospital/doctor/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<definitions targetNamespace="http://hospital/doctor/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:doctor="http://hospital/doctor/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:hos="http://hospital/schema/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <types>
     <xsd:schema targetNamespace="http://hospital/doctor/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-			<xsd:element name="DoctorID" type="xsd:string"/>
-			<xsd:element name="DoctorIDs">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element maxOccurs="unbounded" minOccurs="0" ref="doctor:DoctorID"/>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="Skill" type="xsd:string"/>
-			<xsd:element name="Skills">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element maxOccurs="unbounded" minOccurs="0" ref="doctor:Skill"/>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="Notification">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="Message" type="xsd:string"/>
-						<xsd:element ref="doctor:DoctorID"/>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
+			<xsd:import namespace="http://hospital/schema/" schemaLocation="hospital.xsd"/>
 		</xsd:schema>
   </types>
+  <message name="notifyRescheduleRequest">
+    <part name="notification" element="hos:AgendaCallback">
+    </part>
+  </message>
   <message name="notifyRequest">
-    <part name="notification" element="doctor:Notification">
+    <part name="notification" element="hos:NotificationRequest">
     </part>
   </message>
   <message name="findDoctorResponse">
-    <part name="doctorIDs" element="doctor:DoctorIDs">
+    <part name="doctorIDs" element="hos:DoctorIDs">
     </part>
   </message>
   <message name="findDoctorRequest">
-    <part name="skills" element="doctor:Skills">
+    <part name="skills" element="hos:Skills">
     </part>
   </message>
   <portType name="doctor">
@@ -49,6 +30,10 @@
     </operation>
     <operation name="notify">
       <input message="doctor:notifyRequest">
+    </input>
+    </operation>
+    <operation name="notifyReschedule">
+      <input message="doctor:notifyRescheduleRequest">
     </input>
     </operation>
   </portType>
@@ -69,10 +54,19 @@
         <soap:body use="literal"/>
       </input>
     </operation>
+    <operation name="notifyReschedule">
+      <soap:operation soapAction="http://hospital/doctor/notifyReschedule"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+    </operation>
   </binding>
   <service name="DoctorService">
     <port name="doctor" binding="doctor:DoctorBinding">
-      <soap:address location="http://localhost:8080/hospital.doctor/services/DoctorService"/>
+      <soap:address location="http://localhost:9080/hospital.doctor/services/DoctorService"/>
     </port>
   </service>
+    <plnk:partnerLinkType name="doctorLinkType">
+		<plnk:role name="doctor" portType="doctor:doctor"/>
+	</plnk:partnerLinkType>
 </definitions>

@@ -1,94 +1,47 @@
 
 /**
- * Skills.java
+ * Item.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
  */
 
-package hospital.doctor;
+package hospital.schema;
 
 /**
- * Skills bean class
+ * Item bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class Skills implements org.apache.axis2.databinding.ADBBean {
+public class Item implements org.apache.axis2.databinding.ADBBean {
 
-	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/doctor/",
-			"Skills", "ns2");
+	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/schema/",
+			"Item", "ns1");
 
 	/**
-	 * field for Skill This was an Array!
+	 * field for Item
 	 */
 
-	protected java.lang.String[] localSkill;
-
-	/*
-	 * This tracker boolean wil be used to detect whether the user called the set
-	 * method for this attribute. It will be used to determine whether to include
-	 * this field in the serialized XML
-	 */
-	protected boolean localSkillTracker = false;
-
-	public Skills(String... skills) {
-		for(String s : skills) {
-			addSkill(s);
-		}
-	}
-
-	public boolean isSkillSpecified() {
-		return localSkillTracker;
-	}
+	protected java.lang.String localItem;
 
 	/**
 	 * Auto generated getter method
 	 * 
-	 * @return java.lang.String[]
+	 * @return java.lang.String
 	 */
-	public java.lang.String[] getSkill() {
-		return localSkill;
-	}
-
-	/**
-	 * validate the array for Skill
-	 */
-	protected void validateSkill(java.lang.String[] param) {
-
+	public java.lang.String getItem() {
+		return localItem;
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            Skill
+	 *            Item
 	 */
-	public void setSkill(java.lang.String[] param) {
+	public void setItem(java.lang.String param) {
 
-		validateSkill(param);
-
-		localSkillTracker = param != null;
-
-		this.localSkill = param;
-	}
-
-	/**
-	 * Auto generated add method for the array for convenience
-	 * 
-	 * @param param
-	 *            java.lang.String
-	 */
-	public void addSkill(java.lang.String param) {
-		if (localSkill == null) {
-			localSkill = new java.lang.String[] {};
-		}
-
-		// update the setting tracker
-		localSkillTracker = true;
-
-		java.util.List list = org.apache.axis2.databinding.utils.ConverterUtil.toList(localSkill);
-		list.add(param);
-		this.localSkill = (java.lang.String[]) list.toArray(new java.lang.String[list.size()]);
+		this.localItem = param;
 
 	}
 
@@ -115,59 +68,41 @@ public class Skills implements org.apache.axis2.databinding.ADBBean {
 			boolean serializeType)
 			throws javax.xml.stream.XMLStreamException, org.apache.axis2.databinding.ADBException {
 
-		java.lang.String prefix = null;
-		java.lang.String namespace = null;
+		// We can safely assume an element has only one type associated with it
 
-		prefix = parentQName.getPrefix();
-		namespace = parentQName.getNamespaceURI();
-		writeStartElement(prefix, namespace, parentQName.getLocalPart(), xmlWriter);
+		java.lang.String namespace = "http://hospital/schema/";
+		java.lang.String _localName = "Item";
 
+		writeStartElement(null, namespace, _localName, xmlWriter);
+
+		// add the type details if this is used in a simple type
 		if (serializeType) {
-
-			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/doctor/");
+			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/schema/");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", namespacePrefix + ":Skills",
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", namespacePrefix + ":Item",
 						xmlWriter);
 			} else {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "Skills", xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "Item", xmlWriter);
 			}
+		}
+
+		if (localItem == null) {
+
+			throw new org.apache.axis2.databinding.ADBException("Item cannot be null !!");
+
+		} else {
+
+			xmlWriter.writeCharacters(localItem);
 
 		}
-		if (localSkillTracker) {
-			if (localSkill != null) {
-				namespace = "http://hospital/doctor/";
-				for (int i = 0; i < localSkill.length; i++) {
 
-					if (localSkill[i] != null) {
-
-						writeStartElement(null, namespace, "Skill", xmlWriter);
-
-						xmlWriter.writeCharacters(
-								org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localSkill[i]));
-
-						xmlWriter.writeEndElement();
-
-					} else {
-
-						// we have to do nothing since minOccurs is zero
-
-					}
-
-				}
-			} else {
-
-				throw new org.apache.axis2.databinding.ADBException("Skill cannot be null!!");
-
-			}
-
-		}
 		xmlWriter.writeEndElement();
 
 	}
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
-		if (namespace.equals("http://hospital/doctor/")) {
-			return "ns2";
+		if (namespace.equals("http://hospital/schema/")) {
+			return "ns1";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
 	}
@@ -343,34 +278,11 @@ public class Skills implements org.apache.axis2.databinding.ADBBean {
 	public javax.xml.stream.XMLStreamReader getPullParser(javax.xml.namespace.QName qName)
 			throws org.apache.axis2.databinding.ADBException {
 
-		java.util.ArrayList elementList = new java.util.ArrayList();
-		java.util.ArrayList attribList = new java.util.ArrayList();
-
-		if (localSkillTracker) {
-			if (localSkill != null) {
-				for (int i = 0; i < localSkill.length; i++) {
-
-					if (localSkill[i] != null) {
-						elementList.add(new javax.xml.namespace.QName("http://hospital/doctor/", "Skill"));
-						elementList
-								.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localSkill[i]));
-					} else {
-
-						// have to do nothing
-
-					}
-
-				}
-			} else {
-
-				throw new org.apache.axis2.databinding.ADBException("Skill cannot be null!!");
-
-			}
-
-		}
-
-		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(),
-				attribList.toArray());
+		// We can safely assume an element has only one type associated with it
+		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(MY_QNAME,
+				new java.lang.Object[] { org.apache.axis2.databinding.utils.reader.ADBXMLStreamReader.ELEMENT_TEXT,
+						org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localItem) },
+				null);
 
 	}
 
@@ -388,8 +300,8 @@ public class Skills implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static Skills parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			Skills object = new Skills();
+		public static Item parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
+			Item object = new Item();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -400,86 +312,40 @@ public class Skills implements org.apache.axis2.databinding.ADBBean {
 				while (!reader.isStartElement() && !reader.isEndElement())
 					reader.next();
 
-				if (reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "type") != null) {
-					java.lang.String fullTypeName = reader
-							.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "type");
-					if (fullTypeName != null) {
-						java.lang.String nsPrefix = null;
-						if (fullTypeName.indexOf(":") > -1) {
-							nsPrefix = fullTypeName.substring(0, fullTypeName.indexOf(":"));
-						}
-						nsPrefix = nsPrefix == null ? "" : nsPrefix;
-
-						java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":") + 1);
-
-						if (!"Skills".equals(type)) {
-							// find namespace for the prefix
-							java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-							return (Skills) hospital.doctor.ExtensionMapper.getTypeObject(nsUri, type, reader);
-						}
-
-					}
-
-				}
-
 				// Note all attributes that were handled. Used to differ normal attributes
 				// from anyAttributes.
 				java.util.Vector handledAttributes = new java.util.Vector();
 
-				reader.next();
+				while (!reader.isEndElement()) {
+					if (reader.isStartElement()) {
 
-				java.util.ArrayList list1 = new java.util.ArrayList();
+						if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "Item")
+								.equals(reader.getName())) {
 
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
-
-				if (reader.isStartElement()
-						&& new javax.xml.namespace.QName("http://hospital/doctor/", "Skill").equals(reader.getName())) {
-
-					// Process the array and step past its final element's end.
-					list1.add(reader.getElementText());
-
-					// loop until we find a start element that is not part of this array
-					boolean loopDone1 = false;
-					while (!loopDone1) {
-						// Ensure we are at the EndElement
-						while (!reader.isEndElement()) {
-							reader.next();
-						}
-						// Step out of this element
-						reader.next();
-						// Step to next element event.
-						while (!reader.isStartElement() && !reader.isEndElement())
-							reader.next();
-						if (reader.isEndElement()) {
-							// two continuous end elements means we are exiting the xml structure
-							loopDone1 = true;
-						} else {
-							if (new javax.xml.namespace.QName("http://hospital/doctor/", "Skill")
-									.equals(reader.getName())) {
-								list1.add(reader.getElementText());
-
-							} else {
-								loopDone1 = true;
+							nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+									"nil");
+							if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
+								throw new org.apache.axis2.databinding.ADBException(
+										"The element: " + "Item" + "  cannot be null");
 							}
+
+							java.lang.String content = reader.getElementText();
+
+							object.setItem(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+
+						} // End of if for expected property start element
+
+						else {
+							// A start element we are not expecting indicates an invalid parameter was
+							// passed
+							throw new org.apache.axis2.databinding.ADBException(
+									"Unexpected subelement " + reader.getName());
 						}
+
+					} else {
+						reader.next();
 					}
-					// call the converter utility to convert and set the array
-
-					object.setSkill((java.lang.String[]) list1.toArray(new java.lang.String[list1.size()]));
-
-				} // End of if for expected property start element
-
-				else {
-
-				}
-
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
-
-				if (reader.isStartElement())
-					// A start element we are not expecting indicates a trailing invalid property
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+				} // end of while loop
 
 			} catch (javax.xml.stream.XMLStreamException e) {
 				throw new java.lang.Exception(e);

@@ -5,6 +5,7 @@
 	xmlns:hos="http://hospital/schema/">
 
 	<!-- Import the client WSDL -->
+	<bpel:import namespace="http://hospital/schema/" location="hospital.xsd" importType="http://www.w3.org/2001/XMLSchema"></bpel:import>
 	<bpel:import location="room.wsdl" namespace="http://hospital/room/" importType="http://schemas.xmlsoap.org/wsdl/" />
 	<bpel:import location="doctor.wsdl" namespace="http://hospital/doctor/" importType="http://schemas.xmlsoap.org/wsdl/" />
 	<bpel:import location="patient.wsdl" namespace="http://hospital/patient/" importType="http://schemas.xmlsoap.org/wsdl/" />
@@ -15,6 +16,8 @@
 	<bpel:partnerLinks>
 		<bpel:partnerLink name="link_scheduler" partnerLinkType="sched:schedulingPartnerLinkType" myRole="schedulingService" />
 		<bpel:partnerLink name="link_room" partnerLinkType="room:roomLinkType" partnerRole="room" />
+		<bpel:partnerLink name="link_doctor" partnerLinkType="doctor:doctorLinkType" partnerRole="doctor"></bpel:partnerLink>
+		<bpel:partnerLink name="link_agenda" partnerLinkType="agenda:agendaLinkType" partnerRole="agenda" myRole="agendaCallback"></bpel:partnerLink>
 	</bpel:partnerLinks>
 	
 	<!-- variables -->
@@ -24,9 +27,11 @@
 		<bpel:variable name="findRoomRequest" messageType="room:findRoomRequest" />
 		<bpel:variable name="findRoomResponse" messageType="room:findRoomResponse" />
 		
-		<!-- room service, doctor service -->
-		<!-- notifications -->
-		<!-- callback, rescheduling notifies -->
+		<bpel:variable name="findDoctorRequest" messageType="doctor:findDoctorRequest"></bpel:variable>
+		<bpel:variable name="findDoctorResponse" messageType="doctor:findDoctorResponse"></bpel:variable>
+
+		<bpel:variable name="agendaRequest" messageType="agenda:scheduleTreatmentRequest"></bpel:variable>
+		<bpel:variable name="agendaCallback" element="hos:AgendaCallback"></bpel:variable>
 	</bpel:variables>
 
 	<!-- ================================================================= -->
@@ -49,7 +54,7 @@
 			<bpel:targets>
 				<bpel:target linkName="receive-to-response" />
 			</bpel:targets>
-			<bpel:assign validate="no" name="Assign">
+			<bpel:assign validate="no" name="Prepare-RoomService">
 				<bpel:copy>
 					<bpel:from>
 						<bpel:literal>
@@ -67,22 +72,68 @@
 					<bpel:to part="items" variable="findRoomRequest"></bpel:to>
 				</bpel:copy>
 			</bpel:assign>
-			<bpel:invoke partnerLink="link_room" portType="room:room" operation="findRoom" inputVariable="findRoomRequest" outputVariable="findRoomResponse" />
-			<bpel:assign>
-				
-                <bpel:copy>
-                    <bpel:from><bpel:literal><tns:RoomIDs xmlns:tns="http://hospital/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <tns:RoomID>tns:RoomID</tns:RoomID>
-</tns:RoomIDs>
-</bpel:literal></bpel:from>
-                    <bpel:to variable="finalAnswer" part="treatmentSchedule"></bpel:to>
-                </bpel:copy>
-                <bpel:copy>
-                    <bpel:from part="roomIDs" variable="findRoomResponse"></bpel:from>
-                    <bpel:to part="treatmentSchedule" variable="finalAnswer"></bpel:to>
-                </bpel:copy>
-            </bpel:assign>
-			<bpel:reply partnerLink="link_scheduler" portType="sched:scheduling" operation="scheduleTreatment" variable="finalAnswer" />
+			<bpel:invoke partnerLink="link_room" portType="room:room" operation="findRoom" inputVariable="findRoomRequest" outputVariable="findRoomResponse" name="Invoke-RoomService" />
+			<bpel:assign name="Prepare-DoctorService">
+				<bpel:copy>
+					<bpel:from>
+						<bpel:literal>
+							<tns:Skills xmlns:tns="http://hospital/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+								<tns:Skill>tns:Skill</tns:Skill>
+							</tns:Skills>
+						</bpel:literal>
+					</bpel:from>
+					<bpel:to variable="findDoctorRequest" part="skills"></bpel:to>
+				</bpel:copy>
+				<bpel:copy>
+					<bpel:from part="treatmentPlan" variable="originalRequest">
+						<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[hos:Skills]]></bpel:query>
+					</bpel:from>
+					<bpel:to part="skills" variable="findDoctorRequest"></bpel:to>
+				</bpel:copy>
+			</bpel:assign>
+			<bpel:invoke name="Invoke-DoctorService" partnerLink="link_doctor" operation="findDoctor" inputVariable="findDoctorRequest" outputVariable="findDoctorResponse"></bpel:invoke>
+			<bpel:assign validate="no" name="Prepare-AgendaService">
+				<bpel:copy>
+					<bpel:from>
+						<bpel:literal>
+							<tns:AgendaRequest xmlns:tns="http://hospital/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+								<tns:RoomIDs>
+									<tns:RoomID>tns:RoomID</tns:RoomID>
+								</tns:RoomIDs>
+								<tns:DoctorIDs>
+									<tns:DoctorID>tns:DoctorID</tns:DoctorID>
+								</tns:DoctorIDs>
+								<Duration>P1D</Duration>
+								<HighPriority>true</HighPriority>
+							</tns:AgendaRequest>
+						</bpel:literal>
+					</bpel:from>
+					<bpel:to variable="agendaRequest" part="treatmentPlan"></bpel:to>
+				</bpel:copy>
+				<bpel:copy>
+					<bpel:from part="roomIDs" variable="findRoomResponse"></bpel:from>
+					<bpel:to part="treatmentPlan" variable="agendaRequest">
+						<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                            <![CDATA[hos:RoomIDs]]>
+						</bpel:query>
+					</bpel:to>
+				</bpel:copy>
+				<bpel:copy>
+					<bpel:from part="doctorIDs" variable="findDoctorResponse"></bpel:from>
+					<bpel:to part="treatmentPlan" variable="agendaRequest">
+						<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                            <![CDATA[hos:DoctorIDs]]>
+						</bpel:query>
+					</bpel:to>
+				</bpel:copy>
+			</bpel:assign>
+			<bpel:invoke name="Invoke-AgendaService" partnerLink="link_agenda" operation="scheduleTreatment" portType="agenda:agenda" inputVariable="agendaRequest"></bpel:invoke>
+			<bpel:receive name="Receive-AgendaCallback" partnerLink="link_agenda" operation="receiveCallback" portType="agenda:agendaCallback">
+				<bpel:fromParts>
+					<bpel:fromPart part="treatmentPlan" toVariable="agendaCallback"></bpel:fromPart>
+				</bpel:fromParts>
+			</bpel:receive>
+			<bpel:reply partnerLink="link_scheduler" portType="sched:scheduling" operation="scheduleTreatment" variable="agendaRequest" />
 		</bpel:sequence>
 	</bpel:flow>
 </bpel:process>

@@ -10,9 +10,6 @@
 	<message name="scheduleTreatmentRequest">
 		<part name="treatmentPlan" element="hos:AgendaRequest" />
 	</message>
-	<message name="scheduleTreatmentResponse">
-		<part name="treatmentScheduling" element="hos:AgendaResponse" />
-	</message>
 	<message name="receiveCallbackRequest">
 		<part name="treatmentPlan" element="hos:AgendaCallback" />
 	</message>
@@ -21,7 +18,6 @@
 	<portType name="agenda">
 		<operation name="scheduleTreatment">
 			<input message="agenda:scheduleTreatmentRequest" />
-			<output message="agenda:scheduleTreatmentResponse" />
 		</operation>
 	</portType>
 	<portType name="agendaCallback">

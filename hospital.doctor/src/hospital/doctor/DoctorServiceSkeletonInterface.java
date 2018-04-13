@@ -15,10 +15,18 @@ public interface DoctorServiceSkeletonInterface {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @param notification
+	 * @param notificationRequest
 	 */
 
-	public void notify(hospital.doctor.Notification notification);
+	public void notify(hospital.schema.NotificationRequest notificationRequest);
+
+	/**
+	 * Auto generated method signature
+	 * 
+	 * @param agendaCallback
+	 */
+
+	public void notifyReschedule(hospital.schema.AgendaCallback agendaCallback);
 
 	/**
 	 * Auto generated method signature
@@ -26,6 +34,6 @@ public interface DoctorServiceSkeletonInterface {
 	 * @param skills
 	 */
 
-	public hospital.doctor.DoctorIDs findDoctor(hospital.doctor.Skills skills);
+	public hospital.schema.DoctorIDs findDoctor(hospital.schema.Skills skills);
 
 }

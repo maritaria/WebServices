@@ -10,6 +10,9 @@
         <operation name="notify" mep="http://www.w3.org/ns/wsdl/in-only" namespace="http://hospital/doctor/">
             <actionMapping>http://hospital/doctor/notify</actionMapping>
         </operation>
+        <operation name="notifyReschedule" mep="http://www.w3.org/ns/wsdl/in-only" namespace="http://hospital/doctor/">
+            <actionMapping>http://hospital/doctor/notifyReschedule</actionMapping>
+        </operation>
         <operation name="findDoctor" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://hospital/doctor/">
             <actionMapping>http://hospital/doctor/findDoctor</actionMapping>
             <outputActionMapping>http://hospital/doctor/doctor/findDoctorResponse</outputActionMapping>

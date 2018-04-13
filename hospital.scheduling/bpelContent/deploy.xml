@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:room="http://hospital/room/" xmlns:scheduling="http://hospital/scheduling/">
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:room="http://hospital/room/" xmlns:scheduling="http://hospital/scheduling/" xmlns:doctor="http://hospital/doctor/">
   <process name="scheduling:scheduling">
     <active>true</active>
     <retired>false</retired>
@@ -9,6 +9,9 @@
     </provide>
     <invoke partnerLink="link_room">
       <service name="room:RoomService" port="room"/>
+    </invoke>
+    <invoke partnerLink="link_doctor">
+      <service name="doctor:DoctorService" port="doctor"/>
     </invoke>
   </process>
 </deploy>
