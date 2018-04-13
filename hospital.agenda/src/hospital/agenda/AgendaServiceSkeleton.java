@@ -21,7 +21,7 @@ public class AgendaServiceSkeleton implements AgendaServiceSkeletonInterface {
 
 	public void scheduleTreatment(AgendaRequest agendaRequest0) {
 		// TODO : fill this with the necessary business logic
-		
+		throw new java.lang.UnsupportedOperationException("hello world");
 	}
 
 }

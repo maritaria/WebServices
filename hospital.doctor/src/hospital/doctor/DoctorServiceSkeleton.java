@@ -74,13 +74,7 @@ public class DoctorServiceSkeleton implements DoctorServiceSkeletonInterface {
 	}
 
 	@Override
-	public void notify(NotificationRequest notificationRequest) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void notifyReschedule(AgendaCallback agendaCallback) {
+	public void notify(AgendaCallback agendaCallback) {
 		// TODO Auto-generated method stub
 		
 	}
