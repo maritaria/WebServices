@@ -39,9 +39,6 @@
 			<input>
 				<soap:body use="literal" />
 			</input>
-			<output>
-				<soap:body use="literal" />
-			</output>
 		</operation>
 	</binding>
 	<!-- Service defines the address of Web service -->

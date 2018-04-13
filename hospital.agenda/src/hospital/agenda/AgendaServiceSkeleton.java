@@ -6,7 +6,7 @@
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:03:39 GMT)
  */
 package hospital.agenda;
-import hospital.schema.*;
+
 /**
  * AgendaServiceSkeleton java skeleton for the axisService
  */
@@ -19,7 +19,7 @@ public class AgendaServiceSkeleton implements AgendaServiceSkeletonInterface {
 	 * @return
 	 */
 
-	public void scheduleTreatment(AgendaRequest agendaRequest0) {
+	public void scheduleTreatment(hospital.schema.AgendaRequest agendaRequest0) {
 		// TODO : fill this with the necessary business logic
 		throw new java.lang.UnsupportedOperationException("hello world");
 	}

@@ -31,7 +31,7 @@
 		<bpel:variable name="findDoctorResponse" messageType="doctor:findDoctorResponse"></bpel:variable>
 
 		<bpel:variable name="agendaRequest" messageType="agenda:scheduleTreatmentRequest"></bpel:variable>
-		<bpel:variable name="agendaCallback" element="agenda:receiveCallbackRequest"></bpel:variable>
+		<bpel:variable name="agendaCallback" messageType="agenda:receiveCallbackRequest"></bpel:variable>
 	</bpel:variables>
 
 	<!-- ================================================================= -->
@@ -93,43 +93,80 @@
 			</bpel:assign>
 			<bpel:invoke name="Invoke-DoctorService" partnerLink="link_doctor" operation="findDoctor" inputVariable="findDoctorRequest" outputVariable="findDoctorResponse"></bpel:invoke>
 			<bpel:assign validate="no" name="Prepare-AgendaService">
-				<bpel:copy>
-					<bpel:from>
-						<bpel:literal>
-							<tns:AgendaRequest xmlns:tns="http://hospital/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-								<tns:RoomIDs>
-									<tns:RoomID>tns:RoomID</tns:RoomID>
-								</tns:RoomIDs>
-								<tns:DoctorIDs>
-									<tns:DoctorID>tns:DoctorID</tns:DoctorID>
-								</tns:DoctorIDs>
-								<Duration>P1D</Duration>
-								<HighPriority>true</HighPriority>
-							</tns:AgendaRequest>
-						</bpel:literal>
-					</bpel:from>
-					<bpel:to variable="agendaRequest" part="treatmentPlan"></bpel:to>
-				</bpel:copy>
-				<bpel:copy>
-					<bpel:from part="roomIDs" variable="findRoomResponse"></bpel:from>
-					<bpel:to part="treatmentPlan" variable="agendaRequest">
-						<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
-                            <![CDATA[hos:RoomIDs]]>
-						</bpel:query>
-					</bpel:to>
-				</bpel:copy>
-				<bpel:copy>
-					<bpel:from part="doctorIDs" variable="findDoctorResponse"></bpel:from>
-					<bpel:to part="treatmentPlan" variable="agendaRequest">
-						<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
-                            <![CDATA[hos:DoctorIDs]]>
-						</bpel:query>
-					</bpel:to>
-				</bpel:copy>
-			</bpel:assign>
+				
+				
+				
+                <bpel:copy>
+                    <bpel:from><bpel:literal><tns:AgendaRequest xmlns:tns="http://hospital/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <tns:SchedulingRequest>
+    <tns:PatientID>tns:PatientID</tns:PatientID>
+    <tns:Skills>
+      <tns:Skill>tns:Skill</tns:Skill>
+    </tns:Skills>
+    <tns:Items>
+      <tns:Item>tns:Item</tns:Item>
+    </tns:Items>
+    <Duration>P1D</Duration>
+    <HighPriority>true</HighPriority>
+  </tns:SchedulingRequest>
+  <tns:RoomIDs>
+    <tns:RoomID>tns:RoomID</tns:RoomID>
+  </tns:RoomIDs>
+  <tns:DoctorIDs>
+    <tns:DoctorID>tns:DoctorID</tns:DoctorID>
+  </tns:DoctorIDs>
+</tns:AgendaRequest>
+</bpel:literal></bpel:from>
+                    <bpel:to variable="agendaRequest" part="treatmentPlan"></bpel:to>
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from part="treatmentPlan" variable="originalRequest"></bpel:from>
+                    <bpel:to part="treatmentPlan" variable="agendaRequest">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[hos:SchedulingRequest]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from part="roomIDs" variable="findRoomResponse"></bpel:from>
+                    <bpel:to part="treatmentPlan" variable="agendaRequest">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[hos:RoomIDs]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from part="doctorIDs" variable="findDoctorResponse"></bpel:from>
+                    <bpel:to part="treatmentPlan" variable="agendaRequest">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[hos:DoctorIDs]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+            </bpel:assign>
 			<bpel:invoke name="Invoke-AgendaService" partnerLink="link_agenda" operation="scheduleTreatment" portType="agenda:agenda" inputVariable="agendaRequest"></bpel:invoke>
 			<bpel:receive name="Receive-AgendaCallback" partnerLink="link_agenda" operation="receiveCallback" portType="agenda:agendaCallback" variable="agendaCallback"></bpel:receive>
-			<bpel:reply partnerLink="link_scheduler" portType="sched:scheduling" operation="scheduleTreatment" variable="agendaCallback" />
+            <bpel:assign validate="no" name="Prepare-Reply">
+                
+                <bpel:copy>
+                    <bpel:from><bpel:literal><tns:AgendaCallback xmlns:tns="http://hospital/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ScheduleInfo>
+    <tns:PatientID>tns:PatientID</tns:PatientID>
+    <tns:DoctorID>tns:DoctorID</tns:DoctorID>
+    <tns:RoomID>tns:RoomID</tns:RoomID>
+    <When>2001-12-31T12:00:00</When>
+  </ScheduleInfo>
+  <RescheduledTreatment>
+    <tns:PatientID>tns:PatientID</tns:PatientID>
+    <tns:DoctorID>tns:DoctorID</tns:DoctorID>
+    <tns:RoomID>tns:RoomID</tns:RoomID>
+    <When>2001-12-31T12:00:00</When>
+    <WhenOriginally>2001-12-31T12:00:00</WhenOriginally>
+  </RescheduledTreatment>
+</tns:AgendaCallback>
+</bpel:literal></bpel:from>
+                    <bpel:to variable="finalAnswer" part="treatmentSchedule"></bpel:to>
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from part="treatmentPlan" variable="agendaCallback"></bpel:from>
+                    <bpel:to part="treatmentSchedule" variable="finalAnswer"></bpel:to>
+                </bpel:copy>
+            </bpel:assign>
+            <bpel:reply partnerLink="link_scheduler" portType="sched:scheduling" operation="scheduleTreatment" variable="finalAnswer" />
 		</bpel:sequence>
 	</bpel:flow>
 </bpel:process>

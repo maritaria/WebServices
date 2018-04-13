@@ -32,9 +32,6 @@
       <input>
         <soap:body use="literal"/>
       </input>
-      <output>
-        <soap:body use="literal"/>
-      </output>
     </operation>
   </binding>
   <binding name="callbackBinding" type="agenda:agendaCallback">

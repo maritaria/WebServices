@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:room="http://hospital/room/" xmlns:scheduling="http://hospital/scheduling/" xmlns:doctor="http://hospital/doctor/">
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:agenda="http://hospital/agenda/" xmlns:doctor="http://hospital/doctor/" xmlns:room="http://hospital/room/" xmlns:scheduling="http://hospital/scheduling/">
   <process name="scheduling:scheduling">
     <active>true</active>
     <retired>false</retired>
@@ -7,11 +7,17 @@
     <provide partnerLink="link_scheduler">
       <service name="scheduling:SchedulingService" port="scheduling"/>
     </provide>
+    <provide partnerLink="link_agenda">
+      <service name="agenda:AgendaCallbackService" port="agendaCallback"/>
+    </provide>
     <invoke partnerLink="link_room">
       <service name="room:RoomService" port="room"/>
     </invoke>
     <invoke partnerLink="link_doctor">
       <service name="doctor:DoctorService" port="doctor"/>
+    </invoke>
+    <invoke partnerLink="link_agenda">
+      <service name="agenda:AgendaService" port="agenda"/>
     </invoke>
   </process>
 </deploy>

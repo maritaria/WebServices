@@ -62,11 +62,6 @@
 			<locationURI>WORKSPACE_LOC/wsdl/scheduling.bpel</locationURI>
 		</link>
 		<link>
-			<name>bpelContent/scheduling.bpelex</name>
-			<type>1</type>
-			<locationURI>WORKSPACE_LOC/wsdl/scheduling.bpelex</locationURI>
-		</link>
-		<link>
 			<name>bpelContent/scheduling.wsdl</name>
 			<type>1</type>
 			<locationURI>WORKSPACE_LOC/wsdl/scheduling.wsdl</locationURI>
