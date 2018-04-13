@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://hospital/schema/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://hospital/schema/">
+    <xs:element name="PatientID" type="xs:string"/>
+    <xs:element name="PatientIDs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:PatientID"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DoctorID" type="xs:string"/>
+    <xs:element name="DoctorIDs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:DoctorID"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Skill" type="xs:string"/>
+    <xs:element name="Skills">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:Skill"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="RoomID" type="xs:string"/>
+    <xs:element name="RoomIDs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:RoomID"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Item" type="xs:string"/>
+    <xs:element name="Items">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:Item"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SchedulingRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:PatientID"/>
+                <xs:element ref="tns:Skills"/>
+                <xs:element ref="tns:Items"/>
+                <xs:element name="Duration" type="xs:duration"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SchedulingResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:PatientID"/>
+                <xs:element ref="tns:RoomID"/>
+                <xs:element ref="tns:DoctorID"/>
+                <xs:element ref="tns:RoomIDs"/>
+                <xs:element name="Duration" type="xs:duration"/>
+                <xs:element name="When" type="xs:dateTime"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AgendaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:RoomIDs"/>
+                <xs:element ref="tns:DoctorIDs"/>
+                <xs:element name="Duration" type="xs:duration"/>
+                <xs:element name="HighPriority" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AgendaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:RoomID"/>
+                <xs:element ref="tns:DoctorID"/>
+                <xs:element name="When" type="xs:dateTime"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="RescheduleInfo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:PatientID"/>
+                <xs:element ref="tns:DoctorID"/>
+                <xs:element ref="tns:RoomID"/>
+                <xs:element name="When" type="xs:dateTime"/>
+                <xs:element name="WhenOriginally" type="xs:dateTime"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AgendaCallback">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ScheduleInfo">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="tns:PatientID"/>
+                            <xs:element ref="tns:DoctorID"/>
+                            <xs:element ref="tns:RoomID"/>
+                            <xs:element name="When" type="xs:dateTime"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="RescheduledTreatment">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="tns:PatientID"/>
+                            <xs:element ref="tns:DoctorID"/>
+                            <xs:element ref="tns:RoomID"/>
+                            <xs:element name="When" type="xs:dateTime"/>
+                            <xs:element name="WhenOriginally" type="xs:dateTime"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="NotificationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:PatientID"/>
+                <xs:element ref="tns:AgendaResponse"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

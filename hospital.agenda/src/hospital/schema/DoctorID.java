@@ -6,7 +6,7 @@
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
  */
 
-package hospital.agenda;
+package hospital.schema;
 
 /**
  * DoctorID bean class
@@ -15,8 +15,8 @@ package hospital.agenda;
 
 public class DoctorID implements org.apache.axis2.databinding.ADBBean {
 
-	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/agenda/",
-			"DoctorID", "ns3");
+	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/schema/",
+			"DoctorID", "ns1");
 
 	/**
 	 * field for DoctorID
@@ -70,14 +70,14 @@ public class DoctorID implements org.apache.axis2.databinding.ADBBean {
 
 		// We can safely assume an element has only one type associated with it
 
-		java.lang.String namespace = "http://hospital/agenda/";
+		java.lang.String namespace = "http://hospital/schema/";
 		java.lang.String _localName = "DoctorID";
 
 		writeStartElement(null, namespace, _localName, xmlWriter);
 
 		// add the type details if this is used in a simple type
 		if (serializeType) {
-			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/agenda/");
+			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/schema/");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
 				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type",
 						namespacePrefix + ":DoctorID", xmlWriter);
@@ -101,8 +101,8 @@ public class DoctorID implements org.apache.axis2.databinding.ADBBean {
 	}
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
-		if (namespace.equals("http://hospital/agenda/")) {
-			return "ns3";
+		if (namespace.equals("http://hospital/schema/")) {
+			return "ns1";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
 	}
@@ -320,7 +320,7 @@ public class DoctorID implements org.apache.axis2.databinding.ADBBean {
 					if (reader.isStartElement()) {
 
 						if (reader.isStartElement()
-								&& new javax.xml.namespace.QName("http://hospital/agenda/", "DoctorID")
+								&& new javax.xml.namespace.QName("http://hospital/schema/", "DoctorID")
 										.equals(reader.getName())) {
 
 							nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",

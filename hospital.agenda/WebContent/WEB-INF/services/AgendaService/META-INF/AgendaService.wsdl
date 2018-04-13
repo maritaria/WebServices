@@ -1,49 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions targetNamespace="http://hospital/agenda/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:agenda="http://hospital/agenda/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<definitions targetNamespace="http://hospital/agenda/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:agenda="http://hospital/agenda/" xmlns:hos="http://hospital/schema/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <types>
     <xsd:schema targetNamespace="http://hospital/agenda/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-			<xsd:element name="PatientID" type="xsd:string"/>
-			<xsd:element name="DoctorID" type="xsd:string"/>
-			<xsd:element name="RoomID" type="xsd:string"/>
-			<xsd:element name="TreatmentPlan">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="Duration" type="xsd:duration"/>
-						<xsd:element ref="agenda:DoctorID"/>
-						<xsd:element ref="agenda:PatientID"/>
-						<xsd:element ref="agenda:RoomID"/>
-						<xsd:element name="HighPriority" type="xsd:boolean"/>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
-			<xsd:element name="TreatmentScheduling">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="Duration" type="xsd:duration"/>
-						<xsd:element ref="agenda:DoctorID"/>
-						<xsd:element ref="agenda:PatientID"/>
-						<xsd:element ref="agenda:RoomID"/>
-						<xsd:element name="When" type="xsd:dateTime"/>
-						<xsd:element minOccurs="0" name="WhenOriginally" type="xsd:dateTime"/>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
+			<xsd:import namespace="http://hospital/schema/" schemaLocation="hospital.xsd"/>
 		</xsd:schema>
   </types>
   <message name="scheduleTreatmentRequest">
-    <part name="treatmentPlan" element="agenda:TreatmentPlan">
+    <part name="treatmentPlan" element="hos:AgendaRequest">
     </part>
   </message>
-  <message name="scheduleTreatmentResponse">
-    <part name="treatmentScheduling" element="agenda:TreatmentScheduling">
+  <message name="receiveCallbackRequest">
+    <part name="treatmentPlan" element="hos:AgendaCallback">
     </part>
   </message>
+  <portType name="agendaCallback">
+    <operation name="receiveCallback">
+      <input message="agenda:receiveCallbackRequest">
+    </input>
+    </operation>
+  </portType>
   <portType name="agenda">
     <operation name="scheduleTreatment">
       <input message="agenda:scheduleTreatmentRequest">
     </input>
-      <output message="agenda:scheduleTreatmentResponse">
-    </output>
     </operation>
   </portType>
   <binding name="AgendaBinding" type="agenda:agenda">
@@ -60,7 +39,11 @@
   </binding>
   <service name="AgendaService">
     <port name="agenda" binding="agenda:AgendaBinding">
-      <soap:address location="http://localhost:8080/hospital.agenda/services/AgendaService"/>
+      <soap:address location="http://localhost:9080/hospital.agenda/services/AgendaService"/>
     </port>
   </service>
+    <plnk:partnerLinkType name="agendaLinkType">
+		<plnk:role name="agenda" portType="agenda:agenda"/>
+		<plnk:role name="agendaCallback" portType="agenda:agendaCallback"/>
+	</plnk:partnerLinkType>
 </definitions>

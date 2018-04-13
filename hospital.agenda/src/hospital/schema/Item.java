@@ -1,47 +1,47 @@
 
 /**
- * RoomID.java
+ * Item.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
  */
 
-package hospital.agenda;
+package hospital.schema;
 
 /**
- * RoomID bean class
+ * Item bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class RoomID implements org.apache.axis2.databinding.ADBBean {
+public class Item implements org.apache.axis2.databinding.ADBBean {
 
-	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/agenda/",
-			"RoomID", "ns3");
+	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/schema/",
+			"Item", "ns1");
 
 	/**
-	 * field for RoomID
+	 * field for Item
 	 */
 
-	protected java.lang.String localRoomID;
+	protected java.lang.String localItem;
 
 	/**
 	 * Auto generated getter method
 	 * 
 	 * @return java.lang.String
 	 */
-	public java.lang.String getRoomID() {
-		return localRoomID;
+	public java.lang.String getItem() {
+		return localItem;
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            RoomID
+	 *            Item
 	 */
-	public void setRoomID(java.lang.String param) {
+	public void setItem(java.lang.String param) {
 
-		this.localRoomID = param;
+		this.localItem = param;
 
 	}
 
@@ -70,29 +70,29 @@ public class RoomID implements org.apache.axis2.databinding.ADBBean {
 
 		// We can safely assume an element has only one type associated with it
 
-		java.lang.String namespace = "http://hospital/agenda/";
-		java.lang.String _localName = "RoomID";
+		java.lang.String namespace = "http://hospital/schema/";
+		java.lang.String _localName = "Item";
 
 		writeStartElement(null, namespace, _localName, xmlWriter);
 
 		// add the type details if this is used in a simple type
 		if (serializeType) {
-			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/agenda/");
+			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/schema/");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", namespacePrefix + ":RoomID",
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", namespacePrefix + ":Item",
 						xmlWriter);
 			} else {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "RoomID", xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "Item", xmlWriter);
 			}
 		}
 
-		if (localRoomID == null) {
+		if (localItem == null) {
 
-			throw new org.apache.axis2.databinding.ADBException("RoomID cannot be null !!");
+			throw new org.apache.axis2.databinding.ADBException("Item cannot be null !!");
 
 		} else {
 
-			xmlWriter.writeCharacters(localRoomID);
+			xmlWriter.writeCharacters(localItem);
 
 		}
 
@@ -101,8 +101,8 @@ public class RoomID implements org.apache.axis2.databinding.ADBBean {
 	}
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
-		if (namespace.equals("http://hospital/agenda/")) {
-			return "ns3";
+		if (namespace.equals("http://hospital/schema/")) {
+			return "ns1";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
 	}
@@ -281,7 +281,7 @@ public class RoomID implements org.apache.axis2.databinding.ADBBean {
 		// We can safely assume an element has only one type associated with it
 		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(MY_QNAME,
 				new java.lang.Object[] { org.apache.axis2.databinding.utils.reader.ADBXMLStreamReader.ELEMENT_TEXT,
-						org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRoomID) },
+						org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localItem) },
 				null);
 
 	}
@@ -300,8 +300,8 @@ public class RoomID implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static RoomID parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			RoomID object = new RoomID();
+		public static Item parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
+			Item object = new Item();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -319,20 +319,19 @@ public class RoomID implements org.apache.axis2.databinding.ADBBean {
 				while (!reader.isEndElement()) {
 					if (reader.isStartElement()) {
 
-						if (reader.isStartElement()
-								&& new javax.xml.namespace.QName("http://hospital/agenda/", "RoomID")
-										.equals(reader.getName())) {
+						if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "Item")
+								.equals(reader.getName())) {
 
 							nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
 									"nil");
 							if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
 								throw new org.apache.axis2.databinding.ADBException(
-										"The element: " + "RoomID" + "  cannot be null");
+										"The element: " + "Item" + "  cannot be null");
 							}
 
 							java.lang.String content = reader.getElementText();
 
-							object.setRoomID(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+							object.setItem(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
 
 						} // End of if for expected property start element
 

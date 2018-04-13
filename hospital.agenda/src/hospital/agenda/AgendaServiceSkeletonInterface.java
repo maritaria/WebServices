@@ -15,9 +15,9 @@ public interface AgendaServiceSkeletonInterface {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @param treatmentPlan
+	 * @param agendaRequest
 	 */
 
-	public hospital.agenda.TreatmentScheduling scheduleTreatment(hospital.agenda.TreatmentPlan treatmentPlan);
+	public void scheduleTreatment(hospital.schema.AgendaRequest agendaRequest);
 
 }
