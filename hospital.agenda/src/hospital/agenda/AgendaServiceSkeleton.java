@@ -7,6 +7,8 @@
  */
 package hospital.agenda;
 
+import hospital.schema.*;
+
 /**
  * AgendaServiceSkeleton java skeleton for the axisService
  */
@@ -19,7 +21,7 @@ public class AgendaServiceSkeleton implements AgendaServiceSkeletonInterface {
 	 * @return
 	 */
 
-	public void scheduleTreatment(hospital.schema.AgendaRequest agendaRequest0) {
+	public void scheduleTreatment(AgendaRequest agendaRequest0) {
 		// TODO : fill this with the necessary business logic
 		throw new java.lang.UnsupportedOperationException("hello world");
 	}
