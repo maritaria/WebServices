@@ -26,12 +26,12 @@
 		<bpel:variable name="finalAnswer" messageType="sched:scheduleTreatmentResponse" />
 		<bpel:variable name="findRoomRequest" messageType="room:findRoomRequest" />
 		<bpel:variable name="findRoomResponse" messageType="room:findRoomResponse" />
-		
+
 		<bpel:variable name="findDoctorRequest" messageType="doctor:findDoctorRequest"></bpel:variable>
 		<bpel:variable name="findDoctorResponse" messageType="doctor:findDoctorResponse"></bpel:variable>
 
 		<bpel:variable name="agendaRequest" messageType="agenda:scheduleTreatmentRequest"></bpel:variable>
-		<bpel:variable name="agendaCallback" element="hos:AgendaCallback"></bpel:variable>
+		<bpel:variable name="agendaCallback" element="agenda:receiveCallbackRequest"></bpel:variable>
 	</bpel:variables>
 
 	<!-- ================================================================= -->
@@ -128,12 +128,8 @@
 				</bpel:copy>
 			</bpel:assign>
 			<bpel:invoke name="Invoke-AgendaService" partnerLink="link_agenda" operation="scheduleTreatment" portType="agenda:agenda" inputVariable="agendaRequest"></bpel:invoke>
-			<bpel:receive name="Receive-AgendaCallback" partnerLink="link_agenda" operation="receiveCallback" portType="agenda:agendaCallback">
-				<bpel:fromParts>
-					<bpel:fromPart part="treatmentPlan" toVariable="agendaCallback"></bpel:fromPart>
-				</bpel:fromParts>
-			</bpel:receive>
-			<bpel:reply partnerLink="link_scheduler" portType="sched:scheduling" operation="scheduleTreatment" variable="agendaRequest" />
+			<bpel:receive name="Receive-AgendaCallback" partnerLink="link_agenda" operation="receiveCallback" portType="agenda:agendaCallback" variable="agendaCallback"></bpel:receive>
+			<bpel:reply partnerLink="link_scheduler" portType="sched:scheduling" operation="scheduleTreatment" variable="agendaCallback" />
 		</bpel:sequence>
 	</bpel:flow>
 </bpel:process>

@@ -37,16 +37,16 @@ public class DoctorServiceMessageReceiverInOut extends org.apache.axis2.receiver
 
 				if ("findDoctor".equals(methodName)) {
 
-					hospital.schema.DoctorIDs doctorIDs15 = null;
+					hospital.schema.DoctorIDs doctorIDs11 = null;
 					hospital.schema.Skills wrappedParam = (hospital.schema.Skills) fromOM(
 							msgContext.getEnvelope().getBody().getFirstElement(), hospital.schema.Skills.class,
 							getEnvelopeNamespaces(msgContext.getEnvelope()));
 
-					doctorIDs15 =
+					doctorIDs11 =
 
 							skel.findDoctor(wrappedParam);
 
-					envelope = toEnvelope(getSOAPFactory(msgContext), doctorIDs15, false,
+					envelope = toEnvelope(getSOAPFactory(msgContext), doctorIDs11, false,
 							new javax.xml.namespace.QName("http://hospital/doctor/", "findDoctor"));
 
 				} else {
@@ -61,18 +61,6 @@ public class DoctorServiceMessageReceiverInOut extends org.apache.axis2.receiver
 	}
 
 	//
-	private org.apache.axiom.om.OMElement toOM(hospital.schema.NotificationRequest param, boolean optimizeContent)
-			throws org.apache.axis2.AxisFault {
-
-		try {
-			return param.getOMElement(hospital.schema.NotificationRequest.MY_QNAME,
-					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
-		} catch (org.apache.axis2.databinding.ADBException e) {
-			throw org.apache.axis2.AxisFault.makeFault(e);
-		}
-
-	}
-
 	private org.apache.axiom.om.OMElement toOM(hospital.schema.AgendaCallback param, boolean optimizeContent)
 			throws org.apache.axis2.AxisFault {
 
@@ -149,12 +137,6 @@ public class DoctorServiceMessageReceiverInOut extends org.apache.axis2.receiver
 			if (hospital.schema.DoctorIDs.class.equals(type)) {
 
 				return hospital.schema.DoctorIDs.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (hospital.schema.NotificationRequest.class.equals(type)) {
-
-				return hospital.schema.NotificationRequest.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

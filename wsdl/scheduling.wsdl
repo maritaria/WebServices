@@ -13,7 +13,7 @@
 		<part name="treatmentPlan" element="hos:SchedulingRequest" />
 	</message>
 	<message name="scheduleTreatmentResponse">
-		<part name="treatmentSchedule" element="hos:AgendaRequest" />
+		<part name="treatmentSchedule" element="hos:AgendaCallback" />
 	</message>
 
 	<!-- portType definitions -->

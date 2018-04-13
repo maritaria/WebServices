@@ -37,6 +37,15 @@
       </output>
     </operation>
   </binding>
+  <binding name="callbackBinding" type="agenda:agendaCallback">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="receiveCallback">
+      <soap:operation soapAction="http://hospital/agenda/receiveCallback"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+    </operation>
+  </binding>
   <service name="AgendaService">
     <port name="agenda" binding="agenda:AgendaBinding">
       <soap:address location="http://localhost:9080/hospital.agenda/services/AgendaService"/>

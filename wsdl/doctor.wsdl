@@ -14,9 +14,6 @@
 		<part name="doctorIDs" element="hos:DoctorIDs" />
 	</message>
 	<message name="notifyRequest">
-		<part name="notification" element="hos:NotificationRequest" />
-	</message>
-	<message name="notifyRescheduleRequest">
 		<part name="notification" element="hos:AgendaCallback" />
 	</message>
 
@@ -29,9 +26,6 @@
 		</operation>
 		<operation name="notify">
 			<input message="doctor:notifyRequest" />
-		</operation>
-		<operation name="notifyReschedule">
-			<input message="doctor:notifyRescheduleRequest"></input>
 		</operation>
 	</portType>
 	
@@ -54,12 +48,6 @@
 		</operation>
 		<operation name="notify">
 			<soap:operation soapAction="http://hospital/doctor/notify" />
-			<input>
-				<soap:body use="literal" />
-			</input>
-		</operation>
-		<operation name="notifyReschedule">
-			<soap:operation soapAction="http://hospital/doctor/notifyReschedule" />
 			<input>
 				<soap:body use="literal" />
 			</input>

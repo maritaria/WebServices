@@ -8,9 +8,6 @@
 		</xsd:schema>
 	</types>
 	<message name="notifyRequest">
-		<part name="notification" element="hos:NotificationRequest" />
-	</message>
-	<message name="notifyRescheduledRequest">
 		<part name="notification" element="hos:AgendaCallback" />
 	</message>
 
@@ -18,9 +15,6 @@
 	<portType name="patient">
 		<operation name="notify">
 			<input message="patient:notifyRequest" />
-		</operation>
-		<operation name="notifyRescheduled">
-			<input message="patient:notifyRescheduledRequest"></input>
 		</operation>
 	</portType>
 	
@@ -33,12 +27,6 @@
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
 		<operation name="notify">
 			<soap:operation soapAction="http://hospital/patient/notify" />
-			<input>
-				<soap:body use="literal" />
-			</input>
-		</operation>
-		<operation name="notifyRescheduled">
-			<soap:operation soapAction="http://hospital/patient/notifyRescheduled" />
 			<input>
 				<soap:body use="literal" />
 			</input>

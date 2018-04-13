@@ -37,18 +37,11 @@ public class DoctorServiceMessageReceiverInOnly extends org.apache.axis2.receive
 
 				if ("notify".equals(methodName)) {
 
-					hospital.schema.NotificationRequest wrappedParam = (hospital.schema.NotificationRequest) fromOM(
-							inMessage.getEnvelope().getBody().getFirstElement(),
-							hospital.schema.NotificationRequest.class, getEnvelopeNamespaces(inMessage.getEnvelope()));
-
-					skel.notify(wrappedParam);
-				} else if ("notifyReschedule".equals(methodName)) {
-
 					hospital.schema.AgendaCallback wrappedParam = (hospital.schema.AgendaCallback) fromOM(
 							inMessage.getEnvelope().getBody().getFirstElement(), hospital.schema.AgendaCallback.class,
 							getEnvelopeNamespaces(inMessage.getEnvelope()));
 
-					skel.notifyReschedule(wrappedParam);
+					skel.notify(wrappedParam);
 
 				} else {
 					throw new java.lang.RuntimeException("method not found");
@@ -61,18 +54,6 @@ public class DoctorServiceMessageReceiverInOnly extends org.apache.axis2.receive
 	}
 
 	//
-	private org.apache.axiom.om.OMElement toOM(hospital.schema.NotificationRequest param, boolean optimizeContent)
-			throws org.apache.axis2.AxisFault {
-
-		try {
-			return param.getOMElement(hospital.schema.NotificationRequest.MY_QNAME,
-					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
-		} catch (org.apache.axis2.databinding.ADBException e) {
-			throw org.apache.axis2.AxisFault.makeFault(e);
-		}
-
-	}
-
 	private org.apache.axiom.om.OMElement toOM(hospital.schema.AgendaCallback param, boolean optimizeContent)
 			throws org.apache.axis2.AxisFault {
 
@@ -149,12 +130,6 @@ public class DoctorServiceMessageReceiverInOnly extends org.apache.axis2.receive
 			if (hospital.schema.DoctorIDs.class.equals(type)) {
 
 				return hospital.schema.DoctorIDs.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (hospital.schema.NotificationRequest.class.equals(type)) {
-
-				return hospital.schema.NotificationRequest.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

@@ -5,12 +5,8 @@
 			<xsd:import namespace="http://hospital/schema/" schemaLocation="hospital.xsd"/>
 		</xsd:schema>
   </types>
-  <message name="notifyRescheduleRequest">
-    <part name="notification" element="hos:AgendaCallback">
-    </part>
-  </message>
   <message name="notifyRequest">
-    <part name="notification" element="hos:NotificationRequest">
+    <part name="notification" element="hos:AgendaCallback">
     </part>
   </message>
   <message name="findDoctorResponse">
@@ -32,10 +28,6 @@
       <input message="doctor:notifyRequest">
     </input>
     </operation>
-    <operation name="notifyReschedule">
-      <input message="doctor:notifyRescheduleRequest">
-    </input>
-    </operation>
   </portType>
   <binding name="DoctorBinding" type="doctor:doctor">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -50,12 +42,6 @@
     </operation>
     <operation name="notify">
       <soap:operation soapAction="http://hospital/doctor/notify"/>
-      <input>
-        <soap:body use="literal"/>
-      </input>
-    </operation>
-    <operation name="notifyReschedule">
-      <soap:operation soapAction="http://hospital/doctor/notifyReschedule"/>
       <input>
         <soap:body use="literal"/>
       </input>

@@ -15,18 +15,10 @@ public interface DoctorServiceSkeletonInterface {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @param notificationRequest
-	 */
-
-	public void notify(hospital.schema.NotificationRequest notificationRequest);
-
-	/**
-	 * Auto generated method signature
-	 * 
 	 * @param agendaCallback
 	 */
 
-	public void notifyReschedule(hospital.schema.AgendaCallback agendaCallback);
+	public void notify(hospital.schema.AgendaCallback agendaCallback);
 
 	/**
 	 * Auto generated method signature

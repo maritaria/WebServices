@@ -55,6 +55,7 @@
 				<xs:element ref="tns:Skills" />
 				<xs:element ref="tns:Items" />
 				<xs:element name="Duration" type="xs:duration" />
+				<xs:element name="HighPriority" type="xs:boolean" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -76,20 +77,9 @@
 	<xs:element name="AgendaRequest">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element ref="tns:SchedulingRequest" />
 				<xs:element ref="tns:RoomIDs" />
 				<xs:element ref="tns:DoctorIDs" />
-				<xs:element name="Duration" type="xs:duration" />
-				<xs:element name="HighPriority" type="xs:boolean" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="AgendaResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="tns:RoomID" />
-				<xs:element ref="tns:DoctorID" />
-				<xs:element name="When" type="xs:dateTime" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -133,15 +123,5 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-
-	<xs:element name="NotificationRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="tns:PatientID" />
-				<xs:element ref="tns:AgendaResponse" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
 </xs:schema>
 

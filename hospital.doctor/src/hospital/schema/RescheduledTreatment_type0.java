@@ -1,6 +1,6 @@
 
 /**
- * AgendaRequest.java
+ * RescheduledTreatment_type0.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
@@ -9,93 +9,149 @@
 package hospital.schema;
 
 /**
- * AgendaRequest bean class
+ * RescheduledTreatment_type0 bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class AgendaRequest implements org.apache.axis2.databinding.ADBBean {
-
-	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/schema/",
-			"AgendaRequest", "ns1");
-
-	/**
-	 * field for SchedulingRequest
+public class RescheduledTreatment_type0 implements org.apache.axis2.databinding.ADBBean {
+	/*
+	 * This type was generated from the piece of schema that had name =
+	 * RescheduledTreatment_type0 Namespace URI = http://hospital/schema/ Namespace
+	 * Prefix = ns1
 	 */
 
-	protected hospital.schema.SchedulingRequest_type0 localSchedulingRequest;
+	/**
+	 * field for PatientID
+	 */
+
+	protected java.lang.String localPatientID;
 
 	/**
 	 * Auto generated getter method
 	 * 
-	 * @return hospital.schema.SchedulingRequest_type0
+	 * @return java.lang.String
 	 */
-	public hospital.schema.SchedulingRequest_type0 getSchedulingRequest() {
-		return localSchedulingRequest;
+	public java.lang.String getPatientID() {
+		return localPatientID;
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            SchedulingRequest
+	 *            PatientID
 	 */
-	public void setSchedulingRequest(hospital.schema.SchedulingRequest_type0 param) {
+	public void setPatientID(java.lang.String param) {
 
-		this.localSchedulingRequest = param;
+		this.localPatientID = param;
 
 	}
 
 	/**
-	 * field for RoomIDs
+	 * field for DoctorID
 	 */
 
-	protected hospital.schema.RoomIDs_type0 localRoomIDs;
+	protected java.lang.String localDoctorID;
 
 	/**
 	 * Auto generated getter method
 	 * 
-	 * @return hospital.schema.RoomIDs_type0
+	 * @return java.lang.String
 	 */
-	public hospital.schema.RoomIDs_type0 getRoomIDs() {
-		return localRoomIDs;
+	public java.lang.String getDoctorID() {
+		return localDoctorID;
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            RoomIDs
+	 *            DoctorID
 	 */
-	public void setRoomIDs(hospital.schema.RoomIDs_type0 param) {
+	public void setDoctorID(java.lang.String param) {
 
-		this.localRoomIDs = param;
+		this.localDoctorID = param;
 
 	}
 
 	/**
-	 * field for DoctorIDs
+	 * field for RoomID
 	 */
 
-	protected hospital.schema.DoctorIDs_type0 localDoctorIDs;
+	protected java.lang.String localRoomID;
 
 	/**
 	 * Auto generated getter method
 	 * 
-	 * @return hospital.schema.DoctorIDs_type0
+	 * @return java.lang.String
 	 */
-	public hospital.schema.DoctorIDs_type0 getDoctorIDs() {
-		return localDoctorIDs;
+	public java.lang.String getRoomID() {
+		return localRoomID;
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            DoctorIDs
+	 *            RoomID
 	 */
-	public void setDoctorIDs(hospital.schema.DoctorIDs_type0 param) {
+	public void setRoomID(java.lang.String param) {
 
-		this.localDoctorIDs = param;
+		this.localRoomID = param;
+
+	}
+
+	/**
+	 * field for When
+	 */
+
+	protected java.util.Calendar localWhen;
+
+	/**
+	 * Auto generated getter method
+	 * 
+	 * @return java.util.Calendar
+	 */
+	public java.util.Calendar getWhen() {
+		return localWhen;
+	}
+
+	/**
+	 * Auto generated setter method
+	 * 
+	 * @param param
+	 *            When
+	 */
+	public void setWhen(java.util.Calendar param) {
+
+		this.localWhen = param;
+
+	}
+
+	/**
+	 * field for WhenOriginally
+	 */
+
+	protected java.util.Calendar localWhenOriginally;
+
+	/**
+	 * Auto generated getter method
+	 * 
+	 * @return java.util.Calendar
+	 */
+	public java.util.Calendar getWhenOriginally() {
+		return localWhenOriginally;
+	}
+
+	/**
+	 * Auto generated setter method
+	 * 
+	 * @param param
+	 *            WhenOriginally
+	 */
+	public void setWhenOriginally(java.util.Calendar param) {
+
+		this.localWhenOriginally = param;
 
 	}
 
@@ -108,8 +164,8 @@ public class AgendaRequest implements org.apache.axis2.databinding.ADBBean {
 	public org.apache.axiom.om.OMElement getOMElement(final javax.xml.namespace.QName parentQName,
 			final org.apache.axiom.om.OMFactory factory) throws org.apache.axis2.databinding.ADBException {
 
-		org.apache.axiom.om.OMDataSource dataSource = new org.apache.axis2.databinding.ADBDataSource(this, MY_QNAME);
-		return factory.createOMElement(dataSource, MY_QNAME);
+		org.apache.axiom.om.OMDataSource dataSource = new org.apache.axis2.databinding.ADBDataSource(this, parentQName);
+		return factory.createOMElement(dataSource, parentQName);
 
 	}
 
@@ -134,28 +190,94 @@ public class AgendaRequest implements org.apache.axis2.databinding.ADBBean {
 			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/schema/");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
 				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type",
-						namespacePrefix + ":AgendaRequest", xmlWriter);
+						namespacePrefix + ":RescheduledTreatment_type0", xmlWriter);
 			} else {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "AgendaRequest", xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "RescheduledTreatment_type0",
+						xmlWriter);
 			}
 
 		}
 
-		if (localSchedulingRequest == null) {
-			throw new org.apache.axis2.databinding.ADBException("SchedulingRequest cannot be null!!");
-		}
-		localSchedulingRequest.serialize(new javax.xml.namespace.QName("http://hospital/schema/", "SchedulingRequest"),
-				xmlWriter);
+		namespace = "http://hospital/schema/";
+		writeStartElement(null, namespace, "PatientID", xmlWriter);
 
-		if (localRoomIDs == null) {
-			throw new org.apache.axis2.databinding.ADBException("RoomIDs cannot be null!!");
-		}
-		localRoomIDs.serialize(new javax.xml.namespace.QName("http://hospital/schema/", "RoomIDs"), xmlWriter);
+		if (localPatientID == null) {
+			// write the nil attribute
 
-		if (localDoctorIDs == null) {
-			throw new org.apache.axis2.databinding.ADBException("DoctorIDs cannot be null!!");
+			throw new org.apache.axis2.databinding.ADBException("PatientID cannot be null!!");
+
+		} else {
+
+			xmlWriter.writeCharacters(localPatientID);
+
 		}
-		localDoctorIDs.serialize(new javax.xml.namespace.QName("http://hospital/schema/", "DoctorIDs"), xmlWriter);
+
+		xmlWriter.writeEndElement();
+
+		namespace = "http://hospital/schema/";
+		writeStartElement(null, namespace, "DoctorID", xmlWriter);
+
+		if (localDoctorID == null) {
+			// write the nil attribute
+
+			throw new org.apache.axis2.databinding.ADBException("DoctorID cannot be null!!");
+
+		} else {
+
+			xmlWriter.writeCharacters(localDoctorID);
+
+		}
+
+		xmlWriter.writeEndElement();
+
+		namespace = "http://hospital/schema/";
+		writeStartElement(null, namespace, "RoomID", xmlWriter);
+
+		if (localRoomID == null) {
+			// write the nil attribute
+
+			throw new org.apache.axis2.databinding.ADBException("RoomID cannot be null!!");
+
+		} else {
+
+			xmlWriter.writeCharacters(localRoomID);
+
+		}
+
+		xmlWriter.writeEndElement();
+
+		namespace = "";
+		writeStartElement(null, namespace, "When", xmlWriter);
+
+		if (localWhen == null) {
+			// write the nil attribute
+
+			throw new org.apache.axis2.databinding.ADBException("When cannot be null!!");
+
+		} else {
+
+			xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localWhen));
+
+		}
+
+		xmlWriter.writeEndElement();
+
+		namespace = "";
+		writeStartElement(null, namespace, "WhenOriginally", xmlWriter);
+
+		if (localWhenOriginally == null) {
+			// write the nil attribute
+
+			throw new org.apache.axis2.databinding.ADBException("WhenOriginally cannot be null!!");
+
+		} else {
+
+			xmlWriter.writeCharacters(
+					org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localWhenOriginally));
+
+		}
+
+		xmlWriter.writeEndElement();
 
 		xmlWriter.writeEndElement();
 
@@ -342,26 +464,45 @@ public class AgendaRequest implements org.apache.axis2.databinding.ADBBean {
 		java.util.ArrayList elementList = new java.util.ArrayList();
 		java.util.ArrayList attribList = new java.util.ArrayList();
 
-		elementList.add(new javax.xml.namespace.QName("http://hospital/schema/", "SchedulingRequest"));
+		elementList.add(new javax.xml.namespace.QName("http://hospital/schema/", "PatientID"));
 
-		if (localSchedulingRequest == null) {
-			throw new org.apache.axis2.databinding.ADBException("SchedulingRequest cannot be null!!");
+		if (localPatientID != null) {
+			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localPatientID));
+		} else {
+			throw new org.apache.axis2.databinding.ADBException("PatientID cannot be null!!");
 		}
-		elementList.add(localSchedulingRequest);
 
-		elementList.add(new javax.xml.namespace.QName("http://hospital/schema/", "RoomIDs"));
+		elementList.add(new javax.xml.namespace.QName("http://hospital/schema/", "DoctorID"));
 
-		if (localRoomIDs == null) {
-			throw new org.apache.axis2.databinding.ADBException("RoomIDs cannot be null!!");
+		if (localDoctorID != null) {
+			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDoctorID));
+		} else {
+			throw new org.apache.axis2.databinding.ADBException("DoctorID cannot be null!!");
 		}
-		elementList.add(localRoomIDs);
 
-		elementList.add(new javax.xml.namespace.QName("http://hospital/schema/", "DoctorIDs"));
+		elementList.add(new javax.xml.namespace.QName("http://hospital/schema/", "RoomID"));
 
-		if (localDoctorIDs == null) {
-			throw new org.apache.axis2.databinding.ADBException("DoctorIDs cannot be null!!");
+		if (localRoomID != null) {
+			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRoomID));
+		} else {
+			throw new org.apache.axis2.databinding.ADBException("RoomID cannot be null!!");
 		}
-		elementList.add(localDoctorIDs);
+
+		elementList.add(new javax.xml.namespace.QName("", "When"));
+
+		if (localWhen != null) {
+			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localWhen));
+		} else {
+			throw new org.apache.axis2.databinding.ADBException("When cannot be null!!");
+		}
+
+		elementList.add(new javax.xml.namespace.QName("", "WhenOriginally"));
+
+		if (localWhenOriginally != null) {
+			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localWhenOriginally));
+		} else {
+			throw new org.apache.axis2.databinding.ADBException("WhenOriginally cannot be null!!");
+		}
 
 		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(),
 				attribList.toArray());
@@ -382,8 +523,9 @@ public class AgendaRequest implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static AgendaRequest parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			AgendaRequest object = new AgendaRequest();
+		public static RescheduledTreatment_type0 parse(javax.xml.stream.XMLStreamReader reader)
+				throws java.lang.Exception {
+			RescheduledTreatment_type0 object = new RescheduledTreatment_type0();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -406,10 +548,11 @@ public class AgendaRequest implements org.apache.axis2.databinding.ADBBean {
 
 						java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":") + 1);
 
-						if (!"AgendaRequest".equals(type)) {
+						if (!"RescheduledTreatment_type0".equals(type)) {
 							// find namespace for the prefix
 							java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-							return (AgendaRequest) hospital.doctor.ExtensionMapper.getTypeObject(nsUri, type, reader);
+							return (RescheduledTreatment_type0) hospital.doctor.ExtensionMapper.getTypeObject(nsUri,
+									type, reader);
 						}
 
 					}
@@ -425,47 +568,122 @@ public class AgendaRequest implements org.apache.axis2.databinding.ADBBean {
 				while (!reader.isStartElement() && !reader.isEndElement())
 					reader.next();
 
+				if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "PatientID")
+						.equals(reader.getName())) {
+
+					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
+					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
+						throw new org.apache.axis2.databinding.ADBException(
+								"The element: " + "PatientID" + "  cannot be null");
+					}
+
+					java.lang.String content = reader.getElementText();
+
+					object.setPatientID(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+
+					reader.next();
+
+				} // End of if for expected property start element
+
+				else {
+					// A start element we are not expecting indicates an invalid parameter was
+					// passed
+					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+				}
+
+				while (!reader.isStartElement() && !reader.isEndElement())
+					reader.next();
+
+				if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "DoctorID")
+						.equals(reader.getName())) {
+
+					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
+					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
+						throw new org.apache.axis2.databinding.ADBException(
+								"The element: " + "DoctorID" + "  cannot be null");
+					}
+
+					java.lang.String content = reader.getElementText();
+
+					object.setDoctorID(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+
+					reader.next();
+
+				} // End of if for expected property start element
+
+				else {
+					// A start element we are not expecting indicates an invalid parameter was
+					// passed
+					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+				}
+
+				while (!reader.isStartElement() && !reader.isEndElement())
+					reader.next();
+
+				if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "RoomID")
+						.equals(reader.getName())) {
+
+					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
+					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
+						throw new org.apache.axis2.databinding.ADBException(
+								"The element: " + "RoomID" + "  cannot be null");
+					}
+
+					java.lang.String content = reader.getElementText();
+
+					object.setRoomID(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+
+					reader.next();
+
+				} // End of if for expected property start element
+
+				else {
+					// A start element we are not expecting indicates an invalid parameter was
+					// passed
+					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+				}
+
+				while (!reader.isStartElement() && !reader.isEndElement())
+					reader.next();
+
+				if (reader.isStartElement() && new javax.xml.namespace.QName("", "When").equals(reader.getName())) {
+
+					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
+					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
+						throw new org.apache.axis2.databinding.ADBException(
+								"The element: " + "When" + "  cannot be null");
+					}
+
+					java.lang.String content = reader.getElementText();
+
+					object.setWhen(org.apache.axis2.databinding.utils.ConverterUtil.convertToDateTime(content));
+
+					reader.next();
+
+				} // End of if for expected property start element
+
+				else {
+					// A start element we are not expecting indicates an invalid parameter was
+					// passed
+					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+				}
+
+				while (!reader.isStartElement() && !reader.isEndElement())
+					reader.next();
+
 				if (reader.isStartElement()
-						&& new javax.xml.namespace.QName("http://hospital/schema/", "SchedulingRequest")
-								.equals(reader.getName())) {
+						&& new javax.xml.namespace.QName("", "WhenOriginally").equals(reader.getName())) {
 
-					object.setSchedulingRequest(hospital.schema.SchedulingRequest_type0.Factory.parse(reader));
+					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
+					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
+						throw new org.apache.axis2.databinding.ADBException(
+								"The element: " + "WhenOriginally" + "  cannot be null");
+					}
 
-					reader.next();
+					java.lang.String content = reader.getElementText();
 
-				} // End of if for expected property start element
-
-				else {
-					// A start element we are not expecting indicates an invalid parameter was
-					// passed
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-				}
-
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
-
-				if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "RoomIDs")
-						.equals(reader.getName())) {
-
-					object.setRoomIDs(hospital.schema.RoomIDs_type0.Factory.parse(reader));
-
-					reader.next();
-
-				} // End of if for expected property start element
-
-				else {
-					// A start element we are not expecting indicates an invalid parameter was
-					// passed
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-				}
-
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
-
-				if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "DoctorIDs")
-						.equals(reader.getName())) {
-
-					object.setDoctorIDs(hospital.schema.DoctorIDs_type0.Factory.parse(reader));
+					object.setWhenOriginally(
+							org.apache.axis2.databinding.utils.ConverterUtil.convertToDateTime(content));
 
 					reader.next();
 

@@ -18,9 +18,9 @@ public class ExtensionMapper {
 	public static java.lang.Object getTypeObject(java.lang.String namespaceURI, java.lang.String typeName,
 			javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
 
-		if ("http://hospital/schema/".equals(namespaceURI) && "AgendaResponse_type0".equals(typeName)) {
+		if ("http://hospital/schema/".equals(namespaceURI) && "SchedulingRequest_type0".equals(typeName)) {
 
-			return hospital.schema.AgendaResponse_type0.Factory.parse(reader);
+			return hospital.schema.SchedulingRequest_type0.Factory.parse(reader);
 
 		}
 
