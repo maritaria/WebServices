@@ -1,6 +1,6 @@
 
 /**
- * AgendaCallback.java
+ * PatientIDs.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
@@ -9,72 +9,45 @@
 package hospital.schema;
 
 /**
- * AgendaCallback bean class
+ * PatientIDs bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
+public class PatientIDs implements org.apache.axis2.databinding.ADBBean {
 
 	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/schema/",
-			"AgendaCallback", "ns1");
+			"PatientIDs", "ns1");
 
 	/**
-	 * field for ScheduleInfo
+	 * field for PatientID This was an Array!
 	 */
 
-	protected hospital.schema.ScheduleInfo_type0 localScheduleInfo;
-
-	/**
-	 * Auto generated getter method
-	 * 
-	 * @return hospital.schema.ScheduleInfo_type0
-	 */
-	public hospital.schema.ScheduleInfo_type0 getScheduleInfo() {
-		return localScheduleInfo;
-	}
-
-	/**
-	 * Auto generated setter method
-	 * 
-	 * @param param
-	 *            ScheduleInfo
-	 */
-	public void setScheduleInfo(hospital.schema.ScheduleInfo_type0 param) {
-
-		this.localScheduleInfo = param;
-
-	}
-
-	/**
-	 * field for RescheduledTreatment This was an Array!
-	 */
-
-	protected hospital.schema.RescheduledTreatment_type0[] localRescheduledTreatment;
+	protected java.lang.String[] localPatientID;
 
 	/*
 	 * This tracker boolean wil be used to detect whether the user called the set
 	 * method for this attribute. It will be used to determine whether to include
 	 * this field in the serialized XML
 	 */
-	protected boolean localRescheduledTreatmentTracker = false;
+	protected boolean localPatientIDTracker = false;
 
-	public boolean isRescheduledTreatmentSpecified() {
-		return localRescheduledTreatmentTracker;
+	public boolean isPatientIDSpecified() {
+		return localPatientIDTracker;
 	}
 
 	/**
 	 * Auto generated getter method
 	 * 
-	 * @return hospital.schema.RescheduledTreatment_type0[]
+	 * @return java.lang.String[]
 	 */
-	public hospital.schema.RescheduledTreatment_type0[] getRescheduledTreatment() {
-		return localRescheduledTreatment;
+	public java.lang.String[] getPatientID() {
+		return localPatientID;
 	}
 
 	/**
-	 * validate the array for RescheduledTreatment
+	 * validate the array for PatientID
 	 */
-	protected void validateRescheduledTreatment(hospital.schema.RescheduledTreatment_type0[] param) {
+	protected void validatePatientID(java.lang.String[] param) {
 
 	}
 
@@ -82,35 +55,34 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            RescheduledTreatment
+	 *            PatientID
 	 */
-	public void setRescheduledTreatment(hospital.schema.RescheduledTreatment_type0[] param) {
+	public void setPatientID(java.lang.String[] param) {
 
-		validateRescheduledTreatment(param);
+		validatePatientID(param);
 
-		localRescheduledTreatmentTracker = param != null;
+		localPatientIDTracker = param != null;
 
-		this.localRescheduledTreatment = param;
+		this.localPatientID = param;
 	}
 
 	/**
 	 * Auto generated add method for the array for convenience
 	 * 
 	 * @param param
-	 *            hospital.schema.RescheduledTreatment_type0
+	 *            java.lang.String
 	 */
-	public void addRescheduledTreatment(hospital.schema.RescheduledTreatment_type0 param) {
-		if (localRescheduledTreatment == null) {
-			localRescheduledTreatment = new hospital.schema.RescheduledTreatment_type0[] {};
+	public void addPatientID(java.lang.String param) {
+		if (localPatientID == null) {
+			localPatientID = new java.lang.String[] {};
 		}
 
 		// update the setting tracker
-		localRescheduledTreatmentTracker = true;
+		localPatientIDTracker = true;
 
-		java.util.List list = org.apache.axis2.databinding.utils.ConverterUtil.toList(localRescheduledTreatment);
+		java.util.List list = org.apache.axis2.databinding.utils.ConverterUtil.toList(localPatientID);
 		list.add(param);
-		this.localRescheduledTreatment = (hospital.schema.RescheduledTreatment_type0[]) list
-				.toArray(new hospital.schema.RescheduledTreatment_type0[list.size()]);
+		this.localPatientID = (java.lang.String[]) list.toArray(new java.lang.String[list.size()]);
 
 	}
 
@@ -149,35 +121,39 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/schema/");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
 				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type",
-						namespacePrefix + ":AgendaCallback", xmlWriter);
+						namespacePrefix + ":PatientIDs", xmlWriter);
 			} else {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "AgendaCallback", xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "PatientIDs", xmlWriter);
 			}
 
 		}
+		if (localPatientIDTracker) {
+			if (localPatientID != null) {
+				namespace = "http://hospital/schema/";
+				for (int i = 0; i < localPatientID.length; i++) {
 
-		if (localScheduleInfo == null) {
-			throw new org.apache.axis2.databinding.ADBException("ScheduleInfo cannot be null!!");
-		}
-		localScheduleInfo.serialize(new javax.xml.namespace.QName("", "ScheduleInfo"), xmlWriter);
-		if (localRescheduledTreatmentTracker) {
-			if (localRescheduledTreatment != null) {
-				for (int i = 0; i < localRescheduledTreatment.length; i++) {
-					if (localRescheduledTreatment[i] != null) {
-						localRescheduledTreatment[i]
-								.serialize(new javax.xml.namespace.QName("", "RescheduledTreatment"), xmlWriter);
+					if (localPatientID[i] != null) {
+
+						writeStartElement(null, namespace, "PatientID", xmlWriter);
+
+						xmlWriter.writeCharacters(
+								org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localPatientID[i]));
+
+						xmlWriter.writeEndElement();
+
 					} else {
 
-						// we don't have to do any thing since minOccures is zero
+						// we have to do nothing since minOccurs is zero
 
 					}
 
 				}
 			} else {
 
-				throw new org.apache.axis2.databinding.ADBException("RescheduledTreatment cannot be null!!");
+				throw new org.apache.axis2.databinding.ADBException("PatientID cannot be null!!");
 
 			}
+
 		}
 		xmlWriter.writeEndElement();
 
@@ -364,29 +340,24 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 		java.util.ArrayList elementList = new java.util.ArrayList();
 		java.util.ArrayList attribList = new java.util.ArrayList();
 
-		elementList.add(new javax.xml.namespace.QName("", "ScheduleInfo"));
+		if (localPatientIDTracker) {
+			if (localPatientID != null) {
+				for (int i = 0; i < localPatientID.length; i++) {
 
-		if (localScheduleInfo == null) {
-			throw new org.apache.axis2.databinding.ADBException("ScheduleInfo cannot be null!!");
-		}
-		elementList.add(localScheduleInfo);
-		if (localRescheduledTreatmentTracker) {
-			if (localRescheduledTreatment != null) {
-				for (int i = 0; i < localRescheduledTreatment.length; i++) {
-
-					if (localRescheduledTreatment[i] != null) {
-						elementList.add(new javax.xml.namespace.QName("", "RescheduledTreatment"));
-						elementList.add(localRescheduledTreatment[i]);
+					if (localPatientID[i] != null) {
+						elementList.add(new javax.xml.namespace.QName("http://hospital/schema/", "PatientID"));
+						elementList.add(
+								org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localPatientID[i]));
 					} else {
 
-						// nothing to do
+						// have to do nothing
 
 					}
 
 				}
 			} else {
 
-				throw new org.apache.axis2.databinding.ADBException("RescheduledTreatment cannot be null!!");
+				throw new org.apache.axis2.databinding.ADBException("PatientID cannot be null!!");
 
 			}
 
@@ -411,8 +382,8 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static AgendaCallback parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			AgendaCallback object = new AgendaCallback();
+		public static PatientIDs parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
+			PatientIDs object = new PatientIDs();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -435,10 +406,10 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 
 						java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":") + 1);
 
-						if (!"AgendaCallback".equals(type)) {
+						if (!"PatientIDs".equals(type)) {
 							// find namespace for the prefix
 							java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-							return (AgendaCallback) hospital.room.ExtensionMapper.getTypeObject(nsUri, type, reader);
+							return (PatientIDs) hospital.patient.ExtensionMapper.getTypeObject(nsUri, type, reader);
 						}
 
 					}
@@ -451,41 +422,24 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 
 				reader.next();
 
-				java.util.ArrayList list2 = new java.util.ArrayList();
+				java.util.ArrayList list1 = new java.util.ArrayList();
 
 				while (!reader.isStartElement() && !reader.isEndElement())
 					reader.next();
 
-				if (reader.isStartElement()
-						&& new javax.xml.namespace.QName("", "ScheduleInfo").equals(reader.getName())) {
-
-					object.setScheduleInfo(hospital.schema.ScheduleInfo_type0.Factory.parse(reader));
-
-					reader.next();
-
-				} // End of if for expected property start element
-
-				else {
-					// A start element we are not expecting indicates an invalid parameter was
-					// passed
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-				}
-
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
-
-				if (reader.isStartElement()
-						&& new javax.xml.namespace.QName("", "RescheduledTreatment").equals(reader.getName())) {
+				if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "PatientID")
+						.equals(reader.getName())) {
 
 					// Process the array and step past its final element's end.
-					list2.add(hospital.schema.RescheduledTreatment_type0.Factory.parse(reader));
+					list1.add(reader.getElementText());
 
 					// loop until we find a start element that is not part of this array
-					boolean loopDone2 = false;
-					while (!loopDone2) {
-						// We should be at the end element, but make sure
-						while (!reader.isEndElement())
+					boolean loopDone1 = false;
+					while (!loopDone1) {
+						// Ensure we are at the EndElement
+						while (!reader.isEndElement()) {
 							reader.next();
+						}
 						// Step out of this element
 						reader.next();
 						// Step to next element event.
@@ -493,21 +447,20 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 							reader.next();
 						if (reader.isEndElement()) {
 							// two continuous end elements means we are exiting the xml structure
-							loopDone2 = true;
+							loopDone1 = true;
 						} else {
-							if (new javax.xml.namespace.QName("", "RescheduledTreatment").equals(reader.getName())) {
-								list2.add(hospital.schema.RescheduledTreatment_type0.Factory.parse(reader));
+							if (new javax.xml.namespace.QName("http://hospital/schema/", "PatientID")
+									.equals(reader.getName())) {
+								list1.add(reader.getElementText());
 
 							} else {
-								loopDone2 = true;
+								loopDone1 = true;
 							}
 						}
 					}
 					// call the converter utility to convert and set the array
 
-					object.setRescheduledTreatment(
-							(hospital.schema.RescheduledTreatment_type0[]) org.apache.axis2.databinding.utils.ConverterUtil
-									.convertToArray(hospital.schema.RescheduledTreatment_type0.class, list2));
+					object.setPatientID((java.lang.String[]) list1.toArray(new java.lang.String[list1.size()]));
 
 				} // End of if for expected property start element
 

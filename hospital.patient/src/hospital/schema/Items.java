@@ -1,6 +1,6 @@
 
 /**
- * AgendaResponse.java
+ * Items.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
@@ -9,39 +9,39 @@
 package hospital.schema;
 
 /**
- * AgendaResponse bean class
+ * Items bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class AgendaResponse implements org.apache.axis2.databinding.ADBBean {
+public class Items implements org.apache.axis2.databinding.ADBBean {
 
 	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/schema/",
-			"AgendaResponse", "ns1");
+			"Items", "ns1");
 
 	/**
-	 * field for AgendaResponse
+	 * field for Items
 	 */
 
-	protected hospital.schema.AgendaResponse_type0 localAgendaResponse;
+	protected hospital.schema.Items_type0 localItems;
 
 	/**
 	 * Auto generated getter method
 	 * 
-	 * @return hospital.schema.AgendaResponse_type0
+	 * @return hospital.schema.Items_type0
 	 */
-	public hospital.schema.AgendaResponse_type0 getAgendaResponse() {
-		return localAgendaResponse;
+	public hospital.schema.Items_type0 getItems() {
+		return localItems;
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            AgendaResponse
+	 *            Items
 	 */
-	public void setAgendaResponse(hospital.schema.AgendaResponse_type0 param) {
+	public void setItems(hospital.schema.Items_type0 param) {
 
-		this.localAgendaResponse = param;
+		this.localItems = param;
 
 	}
 
@@ -70,10 +70,10 @@ public class AgendaResponse implements org.apache.axis2.databinding.ADBBean {
 
 		// We can safely assume an element has only one type associated with it
 
-		if (localAgendaResponse == null) {
-			throw new org.apache.axis2.databinding.ADBException("AgendaResponse cannot be null!");
+		if (localItems == null) {
+			throw new org.apache.axis2.databinding.ADBException("Items cannot be null!");
 		}
-		localAgendaResponse.serialize(MY_QNAME, xmlWriter);
+		localItems.serialize(MY_QNAME, xmlWriter);
 
 	}
 
@@ -256,7 +256,7 @@ public class AgendaResponse implements org.apache.axis2.databinding.ADBBean {
 			throws org.apache.axis2.databinding.ADBException {
 
 		// We can safely assume an element has only one type associated with it
-		return localAgendaResponse.getPullParser(MY_QNAME);
+		return localItems.getPullParser(MY_QNAME);
 
 	}
 
@@ -274,8 +274,8 @@ public class AgendaResponse implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static AgendaResponse parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			AgendaResponse object = new AgendaResponse();
+		public static Items parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
+			Items object = new Items();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -293,11 +293,10 @@ public class AgendaResponse implements org.apache.axis2.databinding.ADBBean {
 				while (!reader.isEndElement()) {
 					if (reader.isStartElement()) {
 
-						if (reader.isStartElement()
-								&& new javax.xml.namespace.QName("http://hospital/schema/", "AgendaResponse")
-										.equals(reader.getName())) {
+						if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "Items")
+								.equals(reader.getName())) {
 
-							object.setAgendaResponse(hospital.schema.AgendaResponse_type0.Factory.parse(reader));
+							object.setItems(hospital.schema.Items_type0.Factory.parse(reader));
 
 						} // End of if for expected property start element
 

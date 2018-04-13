@@ -15,9 +15,9 @@ public interface PatientServiceSkeletonInterface {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @param notification
+	 * @param agendaCallback
 	 */
 
-	public void notify(hospital.patient.Notification notification);
+	public void notify(hospital.schema.AgendaCallback agendaCallback);
 
 }

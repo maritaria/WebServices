@@ -37,8 +37,8 @@ public class PatientServiceMessageReceiverInOnly extends org.apache.axis2.receiv
 
 				if ("notify".equals(methodName)) {
 
-					hospital.patient.Notification wrappedParam = (hospital.patient.Notification) fromOM(
-							inMessage.getEnvelope().getBody().getFirstElement(), hospital.patient.Notification.class,
+					hospital.schema.AgendaCallback wrappedParam = (hospital.schema.AgendaCallback) fromOM(
+							inMessage.getEnvelope().getBody().getFirstElement(), hospital.schema.AgendaCallback.class,
 							getEnvelopeNamespaces(inMessage.getEnvelope()));
 
 					skel.notify(wrappedParam);
@@ -54,11 +54,11 @@ public class PatientServiceMessageReceiverInOnly extends org.apache.axis2.receiv
 	}
 
 	//
-	private org.apache.axiom.om.OMElement toOM(hospital.patient.Notification param, boolean optimizeContent)
+	private org.apache.axiom.om.OMElement toOM(hospital.schema.AgendaCallback param, boolean optimizeContent)
 			throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(hospital.patient.Notification.MY_QNAME,
+			return param.getOMElement(hospital.schema.AgendaCallback.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -78,9 +78,9 @@ public class PatientServiceMessageReceiverInOnly extends org.apache.axis2.receiv
 
 		try {
 
-			if (hospital.patient.Notification.class.equals(type)) {
+			if (hospital.schema.AgendaCallback.class.equals(type)) {
 
-				return hospital.patient.Notification.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return hospital.schema.AgendaCallback.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

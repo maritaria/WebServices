@@ -1,6 +1,6 @@
 
 /**
- * RoomResponse.java
+ * DoctorID.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
@@ -9,39 +9,39 @@
 package hospital.schema;
 
 /**
- * RoomResponse bean class
+ * DoctorID bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class RoomResponse implements org.apache.axis2.databinding.ADBBean {
+public class DoctorID implements org.apache.axis2.databinding.ADBBean {
 
 	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/schema/",
-			"RoomResponse", "ns1");
+			"DoctorID", "ns1");
 
 	/**
-	 * field for RoomIDs
+	 * field for DoctorID
 	 */
 
-	protected hospital.schema.RoomIDs_type0 localRoomIDs;
+	protected java.lang.String localDoctorID;
 
 	/**
 	 * Auto generated getter method
 	 * 
-	 * @return hospital.schema.RoomIDs_type0
+	 * @return java.lang.String
 	 */
-	public hospital.schema.RoomIDs_type0 getRoomIDs() {
-		return localRoomIDs;
+	public java.lang.String getDoctorID() {
+		return localDoctorID;
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            RoomIDs
+	 *            DoctorID
 	 */
-	public void setRoomIDs(hospital.schema.RoomIDs_type0 param) {
+	public void setDoctorID(java.lang.String param) {
 
-		this.localRoomIDs = param;
+		this.localDoctorID = param;
 
 	}
 
@@ -68,29 +68,33 @@ public class RoomResponse implements org.apache.axis2.databinding.ADBBean {
 			boolean serializeType)
 			throws javax.xml.stream.XMLStreamException, org.apache.axis2.databinding.ADBException {
 
-		java.lang.String prefix = null;
-		java.lang.String namespace = null;
+		// We can safely assume an element has only one type associated with it
 
-		prefix = parentQName.getPrefix();
-		namespace = parentQName.getNamespaceURI();
-		writeStartElement(prefix, namespace, parentQName.getLocalPart(), xmlWriter);
+		java.lang.String namespace = "http://hospital/schema/";
+		java.lang.String _localName = "DoctorID";
 
+		writeStartElement(null, namespace, _localName, xmlWriter);
+
+		// add the type details if this is used in a simple type
 		if (serializeType) {
-
 			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/schema/");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
 				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type",
-						namespacePrefix + ":RoomResponse", xmlWriter);
+						namespacePrefix + ":DoctorID", xmlWriter);
 			} else {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "RoomResponse", xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "DoctorID", xmlWriter);
 			}
-
 		}
 
-		if (localRoomIDs == null) {
-			throw new org.apache.axis2.databinding.ADBException("RoomIDs cannot be null!!");
+		if (localDoctorID == null) {
+
+			throw new org.apache.axis2.databinding.ADBException("DoctorID cannot be null !!");
+
+		} else {
+
+			xmlWriter.writeCharacters(localDoctorID);
+
 		}
-		localRoomIDs.serialize(new javax.xml.namespace.QName("http://hospital/schema/", "RoomIDs"), xmlWriter);
 
 		xmlWriter.writeEndElement();
 
@@ -274,18 +278,11 @@ public class RoomResponse implements org.apache.axis2.databinding.ADBBean {
 	public javax.xml.stream.XMLStreamReader getPullParser(javax.xml.namespace.QName qName)
 			throws org.apache.axis2.databinding.ADBException {
 
-		java.util.ArrayList elementList = new java.util.ArrayList();
-		java.util.ArrayList attribList = new java.util.ArrayList();
-
-		elementList.add(new javax.xml.namespace.QName("http://hospital/schema/", "RoomIDs"));
-
-		if (localRoomIDs == null) {
-			throw new org.apache.axis2.databinding.ADBException("RoomIDs cannot be null!!");
-		}
-		elementList.add(localRoomIDs);
-
-		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(),
-				attribList.toArray());
+		// We can safely assume an element has only one type associated with it
+		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(MY_QNAME,
+				new java.lang.Object[] { org.apache.axis2.databinding.utils.reader.ADBXMLStreamReader.ELEMENT_TEXT,
+						org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDoctorID) },
+				null);
 
 	}
 
@@ -303,8 +300,8 @@ public class RoomResponse implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static RoomResponse parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			RoomResponse object = new RoomResponse();
+		public static DoctorID parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
+			DoctorID object = new DoctorID();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -315,58 +312,42 @@ public class RoomResponse implements org.apache.axis2.databinding.ADBBean {
 				while (!reader.isStartElement() && !reader.isEndElement())
 					reader.next();
 
-				if (reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "type") != null) {
-					java.lang.String fullTypeName = reader
-							.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "type");
-					if (fullTypeName != null) {
-						java.lang.String nsPrefix = null;
-						if (fullTypeName.indexOf(":") > -1) {
-							nsPrefix = fullTypeName.substring(0, fullTypeName.indexOf(":"));
-						}
-						nsPrefix = nsPrefix == null ? "" : nsPrefix;
-
-						java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":") + 1);
-
-						if (!"RoomResponse".equals(type)) {
-							// find namespace for the prefix
-							java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-							return (RoomResponse) hospital.room.ExtensionMapper.getTypeObject(nsUri, type, reader);
-						}
-
-					}
-
-				}
-
 				// Note all attributes that were handled. Used to differ normal attributes
 				// from anyAttributes.
 				java.util.Vector handledAttributes = new java.util.Vector();
 
-				reader.next();
+				while (!reader.isEndElement()) {
+					if (reader.isStartElement()) {
 
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
+						if (reader.isStartElement()
+								&& new javax.xml.namespace.QName("http://hospital/schema/", "DoctorID")
+										.equals(reader.getName())) {
 
-				if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "RoomIDs")
-						.equals(reader.getName())) {
+							nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+									"nil");
+							if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
+								throw new org.apache.axis2.databinding.ADBException(
+										"The element: " + "DoctorID" + "  cannot be null");
+							}
 
-					object.setRoomIDs(hospital.schema.RoomIDs_type0.Factory.parse(reader));
+							java.lang.String content = reader.getElementText();
 
-					reader.next();
+							object.setDoctorID(
+									org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
 
-				} // End of if for expected property start element
+						} // End of if for expected property start element
 
-				else {
-					// A start element we are not expecting indicates an invalid parameter was
-					// passed
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-				}
+						else {
+							// A start element we are not expecting indicates an invalid parameter was
+							// passed
+							throw new org.apache.axis2.databinding.ADBException(
+									"Unexpected subelement " + reader.getName());
+						}
 
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
-
-				if (reader.isStartElement())
-					// A start element we are not expecting indicates a trailing invalid property
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+					} else {
+						reader.next();
+					}
+				} // end of while loop
 
 			} catch (javax.xml.stream.XMLStreamException e) {
 				throw new java.lang.Exception(e);

@@ -438,7 +438,7 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 						if (!"AgendaCallback".equals(type)) {
 							// find namespace for the prefix
 							java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-							return (AgendaCallback) hospital.room.ExtensionMapper.getTypeObject(nsUri, type, reader);
+							return (AgendaCallback) hospital.patient.ExtensionMapper.getTypeObject(nsUri, type, reader);
 						}
 
 					}

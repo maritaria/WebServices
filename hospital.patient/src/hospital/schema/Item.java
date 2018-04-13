@@ -1,84 +1,47 @@
 
 /**
- * Notification.java
+ * Item.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
  */
 
-package hospital.patient;
+package hospital.schema;
 
 /**
- * Notification bean class
+ * Item bean class
  */
 @SuppressWarnings({ "unchecked", "unused" })
 
-public class Notification implements org.apache.axis2.databinding.ADBBean {
+public class Item implements org.apache.axis2.databinding.ADBBean {
 
-	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/patient/",
-			"Notification", "ns4");
+	public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://hospital/schema/",
+			"Item", "ns1");
 
 	/**
-	 * field for Message
+	 * field for Item
 	 */
 
-	protected java.lang.String localMessage;
-	
-	
-	public Notification() {
-	}
-	
-	public Notification(String patientId, String message) {
-		setPatientID(patientId);
-		setMessage(message);
-	}
-	
+	protected java.lang.String localItem;
 
 	/**
 	 * Auto generated getter method
 	 * 
 	 * @return java.lang.String
 	 */
-	public java.lang.String getMessage() {
-		return localMessage;
+	public java.lang.String getItem() {
+		return localItem;
 	}
 
 	/**
 	 * Auto generated setter method
 	 * 
 	 * @param param
-	 *            Message
+	 *            Item
 	 */
-	public void setMessage(java.lang.String param) {
+	public void setItem(java.lang.String param) {
 
-		this.localMessage = param;
-
-	}
-
-	/**
-	 * field for PatientID
-	 */
-
-	protected java.lang.String localPatientID;
-
-	/**
-	 * Auto generated getter method
-	 * 
-	 * @return java.lang.String
-	 */
-	public java.lang.String getPatientID() {
-		return localPatientID;
-	}
-
-	/**
-	 * Auto generated setter method
-	 * 
-	 * @param param
-	 *            PatientID
-	 */
-	public void setPatientID(java.lang.String param) {
-
-		this.localPatientID = param;
+		this.localItem = param;
 
 	}
 
@@ -105,64 +68,41 @@ public class Notification implements org.apache.axis2.databinding.ADBBean {
 			boolean serializeType)
 			throws javax.xml.stream.XMLStreamException, org.apache.axis2.databinding.ADBException {
 
-		java.lang.String prefix = null;
-		java.lang.String namespace = null;
+		// We can safely assume an element has only one type associated with it
 
-		prefix = parentQName.getPrefix();
-		namespace = parentQName.getNamespaceURI();
-		writeStartElement(prefix, namespace, parentQName.getLocalPart(), xmlWriter);
+		java.lang.String namespace = "http://hospital/schema/";
+		java.lang.String _localName = "Item";
 
+		writeStartElement(null, namespace, _localName, xmlWriter);
+
+		// add the type details if this is used in a simple type
 		if (serializeType) {
-
-			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/patient/");
+			java.lang.String namespacePrefix = registerPrefix(xmlWriter, "http://hospital/schema/");
 			if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)) {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type",
-						namespacePrefix + ":Notification", xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", namespacePrefix + ":Item",
+						xmlWriter);
 			} else {
-				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "Notification", xmlWriter);
+				writeAttribute("xsi", "http://www.w3.org/2001/XMLSchema-instance", "type", "Item", xmlWriter);
 			}
-
 		}
 
-		namespace = "";
-		writeStartElement(null, namespace, "Message", xmlWriter);
+		if (localItem == null) {
 
-		if (localMessage == null) {
-			// write the nil attribute
-
-			throw new org.apache.axis2.databinding.ADBException("Message cannot be null!!");
+			throw new org.apache.axis2.databinding.ADBException("Item cannot be null !!");
 
 		} else {
 
-			xmlWriter.writeCharacters(localMessage);
+			xmlWriter.writeCharacters(localItem);
 
 		}
-
-		xmlWriter.writeEndElement();
-
-		namespace = "http://hospital/patient/";
-		writeStartElement(null, namespace, "PatientID", xmlWriter);
-
-		if (localPatientID == null) {
-			// write the nil attribute
-
-			throw new org.apache.axis2.databinding.ADBException("PatientID cannot be null!!");
-
-		} else {
-
-			xmlWriter.writeCharacters(localPatientID);
-
-		}
-
-		xmlWriter.writeEndElement();
 
 		xmlWriter.writeEndElement();
 
 	}
 
 	private static java.lang.String generatePrefix(java.lang.String namespace) {
-		if (namespace.equals("http://hospital/patient/")) {
-			return "ns4";
+		if (namespace.equals("http://hospital/schema/")) {
+			return "ns1";
 		}
 		return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
 	}
@@ -338,27 +278,11 @@ public class Notification implements org.apache.axis2.databinding.ADBBean {
 	public javax.xml.stream.XMLStreamReader getPullParser(javax.xml.namespace.QName qName)
 			throws org.apache.axis2.databinding.ADBException {
 
-		java.util.ArrayList elementList = new java.util.ArrayList();
-		java.util.ArrayList attribList = new java.util.ArrayList();
-
-		elementList.add(new javax.xml.namespace.QName("", "Message"));
-
-		if (localMessage != null) {
-			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localMessage));
-		} else {
-			throw new org.apache.axis2.databinding.ADBException("Message cannot be null!!");
-		}
-
-		elementList.add(new javax.xml.namespace.QName("http://hospital/patient/", "PatientID"));
-
-		if (localPatientID != null) {
-			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localPatientID));
-		} else {
-			throw new org.apache.axis2.databinding.ADBException("PatientID cannot be null!!");
-		}
-
-		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(),
-				attribList.toArray());
+		// We can safely assume an element has only one type associated with it
+		return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(MY_QNAME,
+				new java.lang.Object[] { org.apache.axis2.databinding.utils.reader.ADBXMLStreamReader.ELEMENT_TEXT,
+						org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localItem) },
+				null);
 
 	}
 
@@ -376,8 +300,8 @@ public class Notification implements org.apache.axis2.databinding.ADBBean {
 		 * at its end element If this object is a complex type, the reader is positioned
 		 * at the end element of its outer element
 		 */
-		public static Notification parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-			Notification object = new Notification();
+		public static Item parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
+			Item object = new Item();
 
 			int event;
 			java.lang.String nillableValue = null;
@@ -388,91 +312,40 @@ public class Notification implements org.apache.axis2.databinding.ADBBean {
 				while (!reader.isStartElement() && !reader.isEndElement())
 					reader.next();
 
-				if (reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "type") != null) {
-					java.lang.String fullTypeName = reader
-							.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "type");
-					if (fullTypeName != null) {
-						java.lang.String nsPrefix = null;
-						if (fullTypeName.indexOf(":") > -1) {
-							nsPrefix = fullTypeName.substring(0, fullTypeName.indexOf(":"));
-						}
-						nsPrefix = nsPrefix == null ? "" : nsPrefix;
-
-						java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":") + 1);
-
-						if (!"Notification".equals(type)) {
-							// find namespace for the prefix
-							java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-							return (Notification) hospital.patient.ExtensionMapper.getTypeObject(nsUri, type, reader);
-						}
-
-					}
-
-				}
-
 				// Note all attributes that were handled. Used to differ normal attributes
 				// from anyAttributes.
 				java.util.Vector handledAttributes = new java.util.Vector();
 
-				reader.next();
+				while (!reader.isEndElement()) {
+					if (reader.isStartElement()) {
 
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
+						if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/schema/", "Item")
+								.equals(reader.getName())) {
 
-				if (reader.isStartElement() && new javax.xml.namespace.QName("", "Message").equals(reader.getName())) {
+							nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+									"nil");
+							if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
+								throw new org.apache.axis2.databinding.ADBException(
+										"The element: " + "Item" + "  cannot be null");
+							}
 
-					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
-					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
-						throw new org.apache.axis2.databinding.ADBException(
-								"The element: " + "Message" + "  cannot be null");
+							java.lang.String content = reader.getElementText();
+
+							object.setItem(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+
+						} // End of if for expected property start element
+
+						else {
+							// A start element we are not expecting indicates an invalid parameter was
+							// passed
+							throw new org.apache.axis2.databinding.ADBException(
+									"Unexpected subelement " + reader.getName());
+						}
+
+					} else {
+						reader.next();
 					}
-
-					java.lang.String content = reader.getElementText();
-
-					object.setMessage(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-
-					reader.next();
-
-				} // End of if for expected property start element
-
-				else {
-					// A start element we are not expecting indicates an invalid parameter was
-					// passed
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-				}
-
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
-
-				if (reader.isStartElement() && new javax.xml.namespace.QName("http://hospital/patient/", "PatientID")
-						.equals(reader.getName())) {
-
-					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
-					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
-						throw new org.apache.axis2.databinding.ADBException(
-								"The element: " + "PatientID" + "  cannot be null");
-					}
-
-					java.lang.String content = reader.getElementText();
-
-					object.setPatientID(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-
-					reader.next();
-
-				} // End of if for expected property start element
-
-				else {
-					// A start element we are not expecting indicates an invalid parameter was
-					// passed
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-				}
-
-				while (!reader.isStartElement() && !reader.isEndElement())
-					reader.next();
-
-				if (reader.isStartElement())
-					// A start element we are not expecting indicates a trailing invalid property
-					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+				} // end of while loop
 
 			} catch (javax.xml.stream.XMLStreamException e) {
 				throw new java.lang.Exception(e);
