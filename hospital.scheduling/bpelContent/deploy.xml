@@ -19,5 +19,8 @@
     <invoke partnerLink="link_agenda">
       <service name="agenda:AgendaService" port="agenda"/>
     </invoke>
+    <invoke partnerLink="link_patient">
+      <service name="patient:PatientService" port="patient"/>
+    </invoke>
   </process>
 </deploy>
