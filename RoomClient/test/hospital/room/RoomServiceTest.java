@@ -19,7 +19,9 @@ import hospital.room.RoomServiceStub.RoomIDs;
 
 public class RoomServiceTest extends junit.framework.TestCase {
 
-	//at this point of development, rooms are hardcoded in the skeleton since there are no CRUD operations for rooms (yet).
+	/*at this point of development, rooms are hardcoded in the skeleton
+	 * since there are no CRUD operations for rooms (yet).
+	 */
 	
 	public void testFindNoRoom() throws java.lang.Exception {
 		hospital.room.RoomServiceStub stub = new hospital.room.RoomServiceStub();
@@ -58,7 +60,7 @@ public class RoomServiceTest extends junit.framework.TestCase {
 		assertEquals(Arrays.asList("1", "2"), Arrays.asList(roomIds));
 	}
 	
-	public Items createItems(String... names) {
+	private static Items createItems(String... names) {
 		Items items = new Items();
 		Items_type0 itemz = new Items_type0();
 		itemz.setItem(names);
