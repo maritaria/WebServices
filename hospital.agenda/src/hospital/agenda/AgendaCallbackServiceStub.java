@@ -12,6 +12,8 @@ package hospital.agenda;
 */
 
 public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
+	private static final String BASE_URL = "http://localhost:8080/ode/processes/AgendaCallbackService";
+
 	protected org.apache.axis2.description.AxisOperation[] _operations;
 
 	// hashmaps to keep the fault mapping
