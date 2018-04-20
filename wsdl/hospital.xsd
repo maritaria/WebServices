@@ -51,6 +51,7 @@
 	<xs:element name="SchedulingRequest">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element name="RequestID" type="xs:string" />
 				<xs:element ref="tns:PatientID" />
 				<xs:element ref="tns:Skills" />
 				<xs:element ref="tns:Items" />
@@ -99,6 +100,7 @@
 	<xs:element name="AgendaCallback">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element name="RequestID" type="xs:string" />
 				<xs:element name="ScheduleInfo">
 					<xs:complexType>
 						<xs:sequence>
