@@ -19,6 +19,33 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 			"AgendaCallback", "ns1");
 
 	/**
+	 * field for RequestID
+	 */
+
+	protected java.lang.String localRequestID;
+
+	/**
+	 * Auto generated getter method
+	 * 
+	 * @return java.lang.String
+	 */
+	public java.lang.String getRequestID() {
+		return localRequestID;
+	}
+
+	/**
+	 * Auto generated setter method
+	 * 
+	 * @param param
+	 *            RequestID
+	 */
+	public void setRequestID(java.lang.String param) {
+
+		this.localRequestID = param;
+
+	}
+
+	/**
 	 * field for ScheduleInfo
 	 */
 
@@ -155,6 +182,22 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 			}
 
 		}
+
+		namespace = "";
+		writeStartElement(null, namespace, "RequestID", xmlWriter);
+
+		if (localRequestID == null) {
+			// write the nil attribute
+
+			throw new org.apache.axis2.databinding.ADBException("RequestID cannot be null!!");
+
+		} else {
+
+			xmlWriter.writeCharacters(localRequestID);
+
+		}
+
+		xmlWriter.writeEndElement();
 
 		if (localScheduleInfo == null) {
 			throw new org.apache.axis2.databinding.ADBException("ScheduleInfo cannot be null!!");
@@ -364,6 +407,14 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 		java.util.ArrayList elementList = new java.util.ArrayList();
 		java.util.ArrayList attribList = new java.util.ArrayList();
 
+		elementList.add(new javax.xml.namespace.QName("", "RequestID"));
+
+		if (localRequestID != null) {
+			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRequestID));
+		} else {
+			throw new org.apache.axis2.databinding.ADBException("RequestID cannot be null!!");
+		}
+
 		elementList.add(new javax.xml.namespace.QName("", "ScheduleInfo"));
 
 		if (localScheduleInfo == null) {
@@ -451,7 +502,33 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 
 				reader.next();
 
-				java.util.ArrayList list2 = new java.util.ArrayList();
+				java.util.ArrayList list3 = new java.util.ArrayList();
+
+				while (!reader.isStartElement() && !reader.isEndElement())
+					reader.next();
+
+				if (reader.isStartElement()
+						&& new javax.xml.namespace.QName("", "RequestID").equals(reader.getName())) {
+
+					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
+					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
+						throw new org.apache.axis2.databinding.ADBException(
+								"The element: " + "RequestID" + "  cannot be null");
+					}
+
+					java.lang.String content = reader.getElementText();
+
+					object.setRequestID(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+
+					reader.next();
+
+				} // End of if for expected property start element
+
+				else {
+					// A start element we are not expecting indicates an invalid parameter was
+					// passed
+					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+				}
 
 				while (!reader.isStartElement() && !reader.isEndElement())
 					reader.next();
@@ -478,11 +555,11 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 						&& new javax.xml.namespace.QName("", "RescheduledTreatment").equals(reader.getName())) {
 
 					// Process the array and step past its final element's end.
-					list2.add(hospital.schema.RescheduledTreatment_type0.Factory.parse(reader));
+					list3.add(hospital.schema.RescheduledTreatment_type0.Factory.parse(reader));
 
 					// loop until we find a start element that is not part of this array
-					boolean loopDone2 = false;
-					while (!loopDone2) {
+					boolean loopDone3 = false;
+					while (!loopDone3) {
 						// We should be at the end element, but make sure
 						while (!reader.isEndElement())
 							reader.next();
@@ -493,13 +570,13 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 							reader.next();
 						if (reader.isEndElement()) {
 							// two continuous end elements means we are exiting the xml structure
-							loopDone2 = true;
+							loopDone3 = true;
 						} else {
 							if (new javax.xml.namespace.QName("", "RescheduledTreatment").equals(reader.getName())) {
-								list2.add(hospital.schema.RescheduledTreatment_type0.Factory.parse(reader));
+								list3.add(hospital.schema.RescheduledTreatment_type0.Factory.parse(reader));
 
 							} else {
-								loopDone2 = true;
+								loopDone3 = true;
 							}
 						}
 					}
@@ -507,7 +584,7 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 
 					object.setRescheduledTreatment(
 							(hospital.schema.RescheduledTreatment_type0[]) org.apache.axis2.databinding.utils.ConverterUtil
-									.convertToArray(hospital.schema.RescheduledTreatment_type0.class, list2));
+									.convertToArray(hospital.schema.RescheduledTreatment_type0.class, list3));
 
 				} // End of if for expected property start element
 
