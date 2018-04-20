@@ -45,7 +45,7 @@
   </binding>
   <service name="AgendaService">
     <port name="agenda" binding="agenda:AgendaBinding">
-      <soap:address location="http://localhost:9080/hospital.agenda/services/AgendaService"/>
+      <soap:address location="http://localhost:9081/hospital.agenda/services/AgendaService"/>
     </port>
   </service>
     <plnk:partnerLinkType name="agendaLinkType">

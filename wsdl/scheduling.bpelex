@@ -30,11 +30,11 @@
   </extensions>
   <extensions>
     <extendedObject href="scheduling.bpel#//@activity/@activities.0"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension" x="62" y="8"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension" />
   </extensions>
   <extensions>
     <extendedObject href="scheduling.bpel#//@activity/@activities.1"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension" x="5" y="74"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension" />
   </extensions>
   <extensions>
     <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.0"/>

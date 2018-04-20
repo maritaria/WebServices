@@ -2,10 +2,11 @@
 <!-- Date: Wed Jan 18 15:24:37 CET 2012 -->
 <bpel:process name="scheduling" targetNamespace="http://hospital/scheduling/" suppressJoinFailure="yes" xmlns:sched="http://hospital/scheduling/" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
 	xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:doctor="http://hospital/doctor/" xmlns:patient="http://hospital/patient/" xmlns:room="http://hospital/room/" xmlns:agenda="http://hospital/agenda/"
-	xmlns:hos="http://hospital/schema/">
+	xmlns:hos="http://hospital/schema/" xmlns:ns1="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://hospital/scheduling/Artifacts">
 
 	<!-- Import the client WSDL -->
-	<bpel:import namespace="http://hospital/schema/" location="hospital.xsd" importType="http://www.w3.org/2001/XMLSchema"></bpel:import>
+    <bpel:import namespace="http://hospital/scheduling/Artifacts" location="schedulingArtifacts.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+    <bpel:import namespace="http://hospital/schema/" location="hospital.xsd" importType="http://www.w3.org/2001/XMLSchema"></bpel:import>
 	<bpel:import location="room.wsdl" namespace="http://hospital/room/" importType="http://schemas.xmlsoap.org/wsdl/" />
 	<bpel:import location="doctor.wsdl" namespace="http://hospital/doctor/" importType="http://schemas.xmlsoap.org/wsdl/" />
 	<bpel:import location="patient.wsdl" namespace="http://hospital/patient/" importType="http://schemas.xmlsoap.org/wsdl/" />
@@ -39,7 +40,10 @@
 	<!-- Set of activities coordinating the flow of messages across the -->
 	<!-- services integrated within this business process -->
 	<!-- ================================================================= -->
-	<bpel:flow name="main">
+    <bpel:correlationSets>
+        <bpel:correlationSet name="AsyncCorrelation" properties="ns:agenda3_RequestID"></bpel:correlationSet>
+    </bpel:correlationSets>
+    <bpel:flow name="main">
 		<bpel:links>
 			<bpel:link name="receive-to-response" />
 		</bpel:links>
@@ -49,7 +53,10 @@
 				<bpel:source linkName="receive-to-response">
 				</bpel:source>
 			</bpel:sources>
-		</bpel:receive>
+            <bpel:correlations>
+                <bpel:correlation set="AsyncCorrelation" initiate="yes"></bpel:correlation>
+            </bpel:correlations>
+        </bpel:receive>
 		<bpel:sequence>
 			<bpel:targets>
 				<bpel:target linkName="receive-to-response" />
@@ -138,8 +145,13 @@
                     </bpel:to>
                 </bpel:copy>
             </bpel:assign>
-			<bpel:invoke name="Invoke-AgendaService" partnerLink="link_agenda" operation="scheduleTreatment" portType="agenda:agenda" inputVariable="agendaRequest"></bpel:invoke>
-			<bpel:receive name="Receive-AgendaCallback" partnerLink="link_agenda" operation="receiveCallback" portType="agenda:agendaCallback" variable="agendaCallback"></bpel:receive>
+			<bpel:invoke name="Invoke-AgendaService" partnerLink="link_agenda" operation="scheduleTreatment" portType="agenda:agenda" inputVariable="agendaRequest">
+            </bpel:invoke>
+			<bpel:receive name="Receive-AgendaCallback" partnerLink="link_agenda" operation="receiveCallback" portType="agenda:agendaCallback" variable="agendaCallback">
+                <bpel:correlations>
+                    <bpel:correlation set="AsyncCorrelation"></bpel:correlation>
+                </bpel:correlations>
+            </bpel:receive>
             <bpel:assign validate="no" name="Prepare-Reply">
                 
                 <bpel:copy>

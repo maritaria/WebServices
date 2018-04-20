@@ -110,7 +110,7 @@
   </extensions>
   <extensions>
     <extendedObject href="scheduling.bpel#/"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1523614609019"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1524222626261"/>
   </extensions>
   <extensions>
     <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.7"/>
@@ -122,6 +122,10 @@
   </extensions>
   <extensions>
     <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.7/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.4/@copy.3"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
 </extensionmodel:ExtensionMap>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:tns="http://hospital/scheduling/Artifacts" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:wsdl="http://hospital/agenda/" xmlns:wsdl1="http://hospital/scheduling/" xmlns:xsd="http://hospital/schema/" xmlns:xsd1="http://www.w3.org/2001/XMLSchema" name="schedulingArtifacts" targetNamespace="http://hospital/scheduling/Artifacts" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <vprop:property name="agenda3_RequestID" type="xsd1:string"/>
+  <vprop:propertyAlias messageType="wsdl:receiveCallbackRequest" part="treatmentPlan" propertyName="tns:agenda3_RequestID">
+    <vprop:query><![CDATA[/RequestID]]></vprop:query>
+  </vprop:propertyAlias>
+  <vprop:propertyAlias messageType="wsdl1:scheduleTreatmentRequest" part="treatmentPlan" propertyName="tns:agenda3_RequestID">
+    <vprop:query><![CDATA[/RequestID]]></vprop:query>
+  </vprop:propertyAlias>
+  <import location="agenda.wsdl" namespace="http://hospital/agenda/"/>
+  <import location="scheduling.wsdl" namespace="http://hospital/scheduling/"/>
+</definitions>
