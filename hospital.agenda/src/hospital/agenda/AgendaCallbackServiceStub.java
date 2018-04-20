@@ -112,7 +112,7 @@ public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void receiveCallback(hospital.agenda.AgendaCallbackServiceStub.AgendaCallback agendaCallback
+	public void receiveCallback(hospital.schema.AgendaCallback agendaCallback
 
 	) throws java.rmi.RemoteException
 
@@ -10565,11 +10565,11 @@ public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(hospital.agenda.AgendaCallbackServiceStub.AgendaCallback param,
+	private org.apache.axiom.om.OMElement toOM(hospital.schema.AgendaCallback param,
 			boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(hospital.agenda.AgendaCallbackServiceStub.AgendaCallback.MY_QNAME,
+			return param.getOMElement(hospital.schema.AgendaCallback.MY_QNAME,
 					org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -10578,14 +10578,14 @@ public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
 	}
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-			hospital.agenda.AgendaCallbackServiceStub.AgendaCallback param, boolean optimizeContent,
+			hospital.schema.AgendaCallback param, boolean optimizeContent,
 			javax.xml.namespace.QName methodQName) throws org.apache.axis2.AxisFault {
 
 		try {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody().addChild(
-					param.getOMElement(hospital.agenda.AgendaCallbackServiceStub.AgendaCallback.MY_QNAME, factory));
+					param.getOMElement(hospital.schema.AgendaCallback.MY_QNAME, factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -10607,9 +10607,9 @@ public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
 
 		try {
 
-			if (hospital.agenda.AgendaCallbackServiceStub.AgendaCallback.class.equals(type)) {
+			if (hospital.schema.AgendaCallback.class.equals(type)) {
 
-				return hospital.agenda.AgendaCallbackServiceStub.AgendaCallback.Factory
+				return hospital.schema.AgendaCallback.Factory
 						.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}

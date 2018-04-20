@@ -8,6 +8,8 @@
 
 package hospital.schema;
 
+import hospital.agenda.AgendaServiceSkeleton.ScheduledTreatment;
+
 /**
  * AgendaCallback bean class
  */
@@ -23,6 +25,15 @@ public class AgendaCallback implements org.apache.axis2.databinding.ADBBean {
 	 */
 
 	protected java.lang.String localRequestID;
+
+	public AgendaCallback() {
+	}
+	
+	public AgendaCallback(AgendaRequest request, ScheduledTreatment result) {
+		setRequestID(request.getSchedulingRequest().getRequestID());
+		setScheduleInfo(result.toSoap());
+		setRescheduledTreatment(new RescheduledTreatment_type0[0]);
+	}
 
 	/**
 	 * Auto generated getter method
