@@ -26,7 +26,8 @@ public class DoctorServiceSkeleton implements DoctorServiceSkeletonInterface {
 
 	public DoctorServiceSkeleton() {
 		this.doctors.add(new Doctor("patrick star", Arrays.asList("heart-surgery")));
-		this.doctors.add(new Doctor("quidward tentacles", Arrays.asList("brain-surgery")));
+		this.doctors.add(new Doctor("squidward tentacles", Arrays.asList("brain-surgery")));
+		this.doctors.add(new Doctor("spongebob squarepants", Arrays.asList("baking-crab-burgers", "brain-surgery")));
 	}
 
 	/**
