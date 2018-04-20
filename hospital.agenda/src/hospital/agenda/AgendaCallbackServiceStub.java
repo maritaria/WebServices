@@ -86,7 +86,7 @@ public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
 	public AgendaCallbackServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext)
 			throws org.apache.axis2.AxisFault {
 
-		this(configurationContext, "http://localhost:8080/ode/processes/AgendaCallbackService");
+		this(configurationContext, BASE_URL);
 
 	}
 
@@ -95,7 +95,7 @@ public class AgendaCallbackServiceStub extends org.apache.axis2.client.Stub {
 	 */
 	public AgendaCallbackServiceStub() throws org.apache.axis2.AxisFault {
 
-		this("http://localhost:8080/ode/processes/AgendaCallbackService");
+		this(BASE_URL);
 
 	}
 
