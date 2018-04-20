@@ -30,11 +30,11 @@
   </extensions>
   <extensions>
     <extendedObject href="scheduling.bpel#//@activity/@activities.0"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension" />
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension" x="72" y="8"/>
   </extensions>
   <extensions>
     <extendedObject href="scheduling.bpel#//@activity/@activities.1"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension" />
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension" x="8" y="51"/>
   </extensions>
   <extensions>
     <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.0"/>
@@ -65,7 +65,7 @@
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.7"/>
+    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.9"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
   </extensions>
   <extensions>
@@ -74,7 +74,7 @@
   </extensions>
   <extensions>
     <extendedObject href="scheduling.bpel#/"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1523617052085"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1524228686572"/>
   </extensions>
   <extensions>
     <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.2/@copy.1"/>
@@ -101,15 +101,15 @@
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.7/@copy.0"/>
+    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.9/@copy.0"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.7/@copy.1"/>
+    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.9/@copy.1"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.8"/>
+    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.10"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
   </extensions>
   <extensions>
@@ -126,6 +126,26 @@
   </extensions>
   <extensions>
     <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.4/@copy.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.7"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.8"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="scheduling.bpel#//@variables/@children.8"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.7/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="scheduling.bpel#//@activity/@activities.1/@activities.7/@copy.0"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
 </extensionmodel:ExtensionMap>

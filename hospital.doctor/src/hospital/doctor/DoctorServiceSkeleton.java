@@ -76,8 +76,7 @@ public class DoctorServiceSkeleton implements DoctorServiceSkeletonInterface {
 
 	@Override
 	public void notify(AgendaCallback agendaCallback) {
-		// TODO Auto-generated method stub
-		
+		throw new UnsupportedOperationException("Notified doctor");
 	}
 
 }
