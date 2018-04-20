@@ -7,6 +7,13 @@
  */
 package hospital.agenda;
 
+import java.rmi.RemoteException;
+import java.util.Calendar;
+
+import org.apache.axis2.context.ConfigurationContext;
+import org.apache.axis2.context.MessageContext;
+import org.apache.axis2.engine.AxisConfiguration;
+
 import hospital.schema.*;
 
 /**
@@ -21,9 +28,32 @@ public class AgendaServiceSkeleton implements AgendaServiceSkeletonInterface {
 	 * @return
 	 */
 
-	public void scheduleTreatment(AgendaRequest agendaRequest0) {
-		// TODO : fill this with the necessary business logic
-		throw new java.lang.UnsupportedOperationException("hello world");
+	public void scheduleTreatment(hospital.schema.AgendaRequest agendaRequest0) {
+		Thread t = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try {
+					Thread.sleep(2000);
+					AxisConfiguration axisConfiguration = new AxisConfiguration();
+					AgendaCallbackServiceStub stub = new AgendaCallbackServiceStub();
+					AgendaCallbackServiceStub.AgendaCallback agendaCallback = new AgendaCallbackServiceStub.AgendaCallback();
+					AgendaCallbackServiceStub.ScheduleInfo_type0 scheduleInfo = new AgendaCallbackServiceStub.ScheduleInfo_type0();
+					scheduleInfo.setPatientID(agendaRequest0.getSchedulingRequest().getPatientID());
+					scheduleInfo.setRoomID(agendaRequest0.getRoomIDs().getRoomID()[0]);
+					scheduleInfo.setDoctorID(agendaRequest0.getDoctorIDs().getDoctorID()[0]);
+					scheduleInfo.setWhen(Calendar.getInstance());
+					agendaCallback.setRescheduledTreatment(new AgendaCallbackServiceStub.RescheduledTreatment_type0[0]);
+					agendaCallback.setScheduleInfo(scheduleInfo);
+					stub.receiveCallback(agendaCallback);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					throw new java.lang.UnsupportedOperationException(e);
+				}
+			}
+		});
+		t.start();
 	}
 
 }

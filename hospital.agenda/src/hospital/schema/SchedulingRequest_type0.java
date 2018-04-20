@@ -21,6 +21,33 @@ public class SchedulingRequest_type0 implements org.apache.axis2.databinding.ADB
 	 */
 
 	/**
+	 * field for RequestID
+	 */
+
+	protected java.lang.String localRequestID;
+
+	/**
+	 * Auto generated getter method
+	 * 
+	 * @return java.lang.String
+	 */
+	public java.lang.String getRequestID() {
+		return localRequestID;
+	}
+
+	/**
+	 * Auto generated setter method
+	 * 
+	 * @param param
+	 *            RequestID
+	 */
+	public void setRequestID(java.lang.String param) {
+
+		this.localRequestID = param;
+
+	}
+
+	/**
 	 * field for PatientID
 	 */
 
@@ -197,6 +224,22 @@ public class SchedulingRequest_type0 implements org.apache.axis2.databinding.ADB
 			}
 
 		}
+
+		namespace = "";
+		writeStartElement(null, namespace, "RequestID", xmlWriter);
+
+		if (localRequestID == null) {
+			// write the nil attribute
+
+			throw new org.apache.axis2.databinding.ADBException("RequestID cannot be null!!");
+
+		} else {
+
+			xmlWriter.writeCharacters(localRequestID);
+
+		}
+
+		xmlWriter.writeEndElement();
 
 		namespace = "http://hospital/schema/";
 		writeStartElement(null, namespace, "PatientID", xmlWriter);
@@ -439,6 +482,14 @@ public class SchedulingRequest_type0 implements org.apache.axis2.databinding.ADB
 		java.util.ArrayList elementList = new java.util.ArrayList();
 		java.util.ArrayList attribList = new java.util.ArrayList();
 
+		elementList.add(new javax.xml.namespace.QName("", "RequestID"));
+
+		if (localRequestID != null) {
+			elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRequestID));
+		} else {
+			throw new org.apache.axis2.databinding.ADBException("RequestID cannot be null!!");
+		}
+
 		elementList.add(new javax.xml.namespace.QName("http://hospital/schema/", "PatientID"));
 
 		if (localPatientID != null) {
@@ -533,6 +584,32 @@ public class SchedulingRequest_type0 implements org.apache.axis2.databinding.ADB
 				java.util.Vector handledAttributes = new java.util.Vector();
 
 				reader.next();
+
+				while (!reader.isStartElement() && !reader.isEndElement())
+					reader.next();
+
+				if (reader.isStartElement()
+						&& new javax.xml.namespace.QName("", "RequestID").equals(reader.getName())) {
+
+					nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance", "nil");
+					if ("true".equals(nillableValue) || "1".equals(nillableValue)) {
+						throw new org.apache.axis2.databinding.ADBException(
+								"The element: " + "RequestID" + "  cannot be null");
+					}
+
+					java.lang.String content = reader.getElementText();
+
+					object.setRequestID(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+
+					reader.next();
+
+				} // End of if for expected property start element
+
+				else {
+					// A start element we are not expecting indicates an invalid parameter was
+					// passed
+					throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+				}
 
 				while (!reader.isStartElement() && !reader.isEndElement())
 					reader.next();
