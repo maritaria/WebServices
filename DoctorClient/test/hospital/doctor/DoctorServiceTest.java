@@ -66,8 +66,6 @@ public class DoctorServiceTest extends junit.framework.TestCase {
 		assertTrue(foundDoctors.getDoctorIDs().getDoctorID().length == 1);
 		// the doctor we expect is patrick star
 		assertEquals("patrick star", foundDoctors.getDoctorIDs().getDoctorID()[0]);
-
-		// test for multiple doctors (squidward and spongebob)
 	}
 	
 	public void testMultipleDoctors() throws Exception {
