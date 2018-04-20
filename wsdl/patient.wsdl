@@ -18,9 +18,9 @@
 		</operation>
 	</portType>
 	
-	<plnk:parterLinkType>
+	<plnk:partnerLinkType name="patientLinkType">
 		<plnk:role name="patient" portType="patient:patient" />
-	</plnk:parterLinkType>
+	</plnk:partnerLinkType>
 
 	<!-- binding definition -->
 	<binding name="PatientBinding" type="patient:patient">

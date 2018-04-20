@@ -9,15 +9,16 @@
     <bpel:import namespace="http://hospital/schema/" location="hospital.xsd" importType="http://www.w3.org/2001/XMLSchema"></bpel:import>
 	<bpel:import location="room.wsdl" namespace="http://hospital/room/" importType="http://schemas.xmlsoap.org/wsdl/" />
 	<bpel:import location="doctor.wsdl" namespace="http://hospital/doctor/" importType="http://schemas.xmlsoap.org/wsdl/" />
-	<bpel:import location="patient.wsdl" namespace="http://hospital/patient/" importType="http://schemas.xmlsoap.org/wsdl/" />
 	<bpel:import location="agenda.wsdl" namespace="http://hospital/agenda/" importType="http://schemas.xmlsoap.org/wsdl/" />
 	<bpel:import location="scheduling.wsdl" namespace="http://hospital/scheduling/" importType="http://schemas.xmlsoap.org/wsdl/" />
+	<bpel:import location="patient.wsdl" namespace="http://hospital/patient/" importType="http://schemas.xmlsoap.org/wsdl/" />
 
 	<!-- partner links TODO -->
 	<bpel:partnerLinks>
 		<bpel:partnerLink name="link_scheduler" partnerLinkType="sched:schedulingPartnerLinkType" myRole="schedulingService" />
 		<bpel:partnerLink name="link_room" partnerLinkType="room:roomLinkType" partnerRole="room" />
 		<bpel:partnerLink name="link_doctor" partnerLinkType="doctor:doctorLinkType" partnerRole="doctor"></bpel:partnerLink>
+		<bpel:partnerLink name="link_patient" partnerLinkType="patient:patientLinkType" partnerRole="patient"></bpel:partnerLink>
 		<bpel:partnerLink name="link_agenda" partnerLinkType="agenda:agendaLinkType" partnerRole="agenda" myRole="agendaCallback"></bpel:partnerLink>
 	</bpel:partnerLinks>
 	
@@ -33,7 +34,9 @@
 
 		<bpel:variable name="agendaRequest" messageType="agenda:scheduleTreatmentRequest"></bpel:variable>
 		<bpel:variable name="agendaCallback" messageType="agenda:receiveCallbackRequest"></bpel:variable>
-        <bpel:variable name="doctorNotification" element="hos:AgendaCallback"></bpel:variable>
+		
+        <bpel:variable name="doctorNotification" messageType="doctor:notifyRequest"></bpel:variable>
+        <bpel:variable name="patientNotification" messageType="patient:notifyRequest"></bpel:variable>
     </bpel:variables>
 
 	<!-- ================================================================= -->
@@ -155,6 +158,10 @@
             </bpel:receive>
             <bpel:assign validate="no" name="Prepare-Notify-Doctor">
                 
+                
+                
+                
+                
                 <bpel:copy>
                     <bpel:from><bpel:literal><tns:AgendaCallback xmlns:tns="http://hospital/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <RequestID>RequestID</RequestID>
@@ -173,19 +180,42 @@
   </RescheduledTreatment>
 </tns:AgendaCallback>
 </bpel:literal></bpel:from>
-                    <bpel:to variable="doctorNotification"></bpel:to>
+                    <bpel:to variable="doctorNotification" part="notification"></bpel:to>
                 </bpel:copy>
-                
                 <bpel:copy>
                     <bpel:from part="treatmentPlan" variable="agendaCallback"></bpel:from>
-                    <bpel:to variable="doctorNotification"></bpel:to>
+                    <bpel:to part="notification" variable="doctorNotification"></bpel:to>
                 </bpel:copy>
             </bpel:assign>
-            <bpel:invoke name="Invoke-Notify-Doctor" partnerLink="link_doctor" operation="notify" portType="doctor:doctor">
-                <bpel:fromParts>
-                    <bpel:fromPart part="notification" toVariable="doctorNotification"></bpel:fromPart>
-                </bpel:fromParts>
+            <bpel:invoke name="Invoke-Notify-Doctor" partnerLink="link_doctor" operation="notify" portType="doctor:doctor" inputVariable="doctorNotification">
             </bpel:invoke>
+            <bpel:assign validate="no" name="Prepare-Notify-Patient">
+                <bpel:copy>
+                    <bpel:from><bpel:literal><tns:AgendaCallback xmlns:tns="http://hospital/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RequestID>RequestID</RequestID>
+  <ScheduleInfo>
+    <tns:PatientID>tns:PatientID</tns:PatientID>
+    <tns:DoctorID>tns:DoctorID</tns:DoctorID>
+    <tns:RoomID>tns:RoomID</tns:RoomID>
+    <When>2001-12-31T12:00:00</When>
+  </ScheduleInfo>
+  <RescheduledTreatment>
+    <tns:PatientID>tns:PatientID</tns:PatientID>
+    <tns:DoctorID>tns:DoctorID</tns:DoctorID>
+    <tns:RoomID>tns:RoomID</tns:RoomID>
+    <When>2001-12-31T12:00:00</When>
+    <WhenOriginally>2001-12-31T12:00:00</WhenOriginally>
+  </RescheduledTreatment>
+</tns:AgendaCallback>
+</bpel:literal></bpel:from>
+                    <bpel:to variable="patientNotification" part="notification"></bpel:to>
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from part="treatmentPlan" variable="agendaCallback"></bpel:from>
+                    <bpel:to part="notification" variable="patientNotification"></bpel:to>
+                </bpel:copy>
+            </bpel:assign>
+            <bpel:invoke name="Invoke-Notify-Patient" partnerLink="link_patient" operation="notify" portType="patient:patient" inputVariable="patientNotification"></bpel:invoke>
             <bpel:assign validate="no" name="Prepare-Reply">
                 
                 <bpel:copy>
