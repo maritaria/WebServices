@@ -185,6 +185,7 @@ public class AgendaServiceSkeleton implements AgendaServiceSkeletonInterface {
 			// So we update the proposed time to the endtime of that operation
 			plannedTime = getEndTime(overlap);
 		}
+		result.when = plannedTime;
 	}
 
 	private Calendar getEndTime(ScheduledTreatment overlap) {
