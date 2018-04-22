@@ -56,6 +56,9 @@ public class AgendaServiceTest extends junit.framework.TestCase {
 		skills.setSkill(new String[0]);
 		schedulingRequestType.setSkills(skills);
 		
+
+		schedulingRequestType.setRequestID("0");
+		
 		agendaRequest2.setSchedulingRequest(schedulingRequestType);
 		
 		// There is no output to be tested!
