@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:agenda="http://hospital/agenda/" xmlns:doctor="http://hospital/doctor/" xmlns:room="http://hospital/room/" xmlns:scheduling="http://hospital/scheduling/">
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:patient="http://hospital/patient/" xmlns:agenda="http://hospital/agenda/" xmlns:doctor="http://hospital/doctor/" xmlns:room="http://hospital/room/" xmlns:scheduling="http://hospital/scheduling/">
   <process name="scheduling:scheduling">
     <active>true</active>
     <retired>false</retired>
